@@ -1,0 +1,114 @@
+commit c1b27dc8ef533a1cf1106a48b7588e144bdf45ef
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 13:07:45 2019 +0200
+
+    poisto ja uudelleennimeaminen
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 2adcc791e4000d60d4875150c2d6bc9bc40948e3
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 13:05:35 2019 +0200
+
+    tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 30a730c1d5c04bb91006aa4fd0c1b95f34164f56
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 13:03:20 2019 +0200
+
+    muutoksia
+
+ eka.txt    | 4 ++--
+ kolmas.txt | 5 ++++-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+commit f61071acecaea3e1939bb03e0c05f054c33a10b5
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 13:02:05 2019 +0200
+
+    uudelleennimeaminen
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit adc3ab4f80b198362c7fb46ea9916268073957c9
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 13:01:34 2019 +0200
+
+    poista toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit c7e699d70cd35c7531410cb8c46efbe5e8ec8e6a
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 12:57:39 2019 +0200
+
+    poisto ja lisays
+
+ tiedosto.txt | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+commit 97e9475b61010d63d806998895541d4086da2d19
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 12:56:56 2019 +0200
+
+    lipsum
+
+ tiedosto.txt | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+commit 99908f87c567ebef20b73f69ae49240fd32f5345
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 12:55:52 2019 +0200
+
+    lisaa alihakemisto
+
+ stuff/jokin | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 995257b1fe11f6bb3ed5339d59b35e8b61c99f1b
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 12:55:19 2019 +0200
+
+    kahden tiedoston muutos
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit f416425f9f178e958e4634b077d561fd0eeaa305
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 12:54:44 2019 +0200
+
+    lisaa kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e0ef30d06316fabeb88a0539e5c7146d83726ca1
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 12:54:18 2019 +0200
+
+    muutos ja lisays
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 855cf5d51bba76d207eafce387df298ba0e7207f
+Author: chzesa <chzesa+git@gmail.com>
+Date:   Tue Nov 5 12:53:29 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
