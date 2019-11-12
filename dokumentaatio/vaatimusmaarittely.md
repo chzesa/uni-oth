@@ -1,25 +1,25 @@
-# Vaatimusmaarittely
+# aatimusmäärittely
 
 ## Sovelluksen tarkoitus
-Sovellus on shakkiin pohjautuva vuoropohjainen videopeli, jossa pelaajan 'joukkue' kasataan yhdistamalla shakkinappula hahmoluokkaan. Hahmoluokat antavat shakkinapeille erilaisia kykyja joiden toiminta pohjautuu valittuun shakkinappulaan, esimerkiksi lahetti liikkuu ja hyokkaa edelleen vinosuuntaan, mutta hyokkayksen ominaisuudet saattavat muuttua. Pelaaja pelaa joko tekoalyvastustajaa vastaan tai samalla laitteella vuorotellen toisen pelaajan kanssa.
+Sovellus on shakkiin pohjautuva vuoropohjainen videopeli, jossa pelaajan 'joukkue' kasataan yhdistämälla shakkinappuloita hahmoluokkiin. Hahmoluokat antavat shakkinapeille erilaisia kykyjä joiden toiminta pohjautuu valittuun shakkinappulaan, esimerkiksi lähetti liikkuu ja hyökkaa edelleen vinottain, mutta hyökkäyksen ominaisuudet saattavat muuttua. Pelaaja pelaa joko tekoälyvastustajaa vastaan tai samalla laitteella vuorotellen toisen pelaajan kanssa.
 
-Ohjelmistossa on kaksi paatilaa: peli ja joukkueen kasaus.
+Sovelluksessa on kaksi päätilaa: peli ja joukkueen kasaus.
 
 ### Shakkipeli
-Normishakista poiketen yksikoilla on hp- ja hyokkays-arvot, ja siina missa normishakissa nappi syo toisen ja siirtyy sen paikalle, tassa pelissa yksikot voivat hyokata niita vastustajia kohti jonka se pystyisi normaalisti syomaan. Hyokkaykset vahentavat puolustajan hp-arvoa ja jos jonkin yksikon hp tippuu nollaan tai alle se poistetaan pelista. Hyokkaaminen ei liikuta hyokkaajaa.
+Normishakista poiketen yksiköilla on hp- ja hyökkays-arvot, ja siinä missä normishakissa nappi syö toisen ja siirtyy sen paikalle, tässa pelissä yksikot voivat hyökätä niitä vastustajia kohti jotka se pystyisi normaalisti syomään. Hyökkäykset vähentävät puolustajan hp-arvoa ja jos jonkin yksikön hp tippuu nollaan tai alle se poistetaan pelistä. Hyökkääminen ei liikuta hyökkääjää.
 
-Shakkinappulan tyyppi (esim. lahetti, sotilas) maaraa sen hp- ja hyokkays-arvot seka asettaa pistekertoimen hahmoluokan hinnalle.
+Shakkinappulan tyyppi (esim. lähetti, sotilas) määrää sen hp- ja hyökkäys-arvot sekä asettaa pistekertoimen hahmoluokan hinnalle.
 
-Hahmoluokat antavat yksikoille lisakykyja joita yksikko voi kayttaa hyokkaamisen tai liikkumisen sijaan. Lisakyvyilla voi olla rajoite kuinka usein tietty yksikko pystyy niita kayttamaan.
+Hahmoluokat antavat yksiköille lisäkykyjä joita yksikkö voi käyttää hyökkäämisen tai liikkumisen sijaan. Lisäkyvyillä voi olla rajoite kuinka usein tietty yksikkö pystyy niitä käyttämään.
 
-Peli jatkuu kunnes toisen pelaajan johtaja (huom. ei kuningas) poistetaan pelista tai kumpikaan pelaaja ei pysty suorittamaan laillista siirtoa.
+Peli jatkuu kunnes toisen pelaajan johtaja (huom. ei kuningas) poistetaan pelistä tai kumpikaan pelaaja ei pysty suorittamaan laillista siirtoa.
 
-Pelitilanteen voi tallentaa ja ladata levylta.
+Pelitilanteen voi tallentaa ja ladata levyltä.
 
 ### Joukkueen kasaus
-Joukkueelle asetetaan pistemaara, johon asti joukkueeseen voi lisata yksikkoja. Yksikolle valitaan seka shakkinappula etta hahmoluokka. Jokaisella shakkinappulalla on pistekerroin joka vaikuttaa luokan hintaan. Nappulalle voi valita myos pohjaluokan jolloin se toimii normaaliin tapaan.
+Joukkueelle asetetaan pistemäärä, johon asti joukkueeseen voi lisätä yksikköjä. Yksikölle valitaan sekä shakkinappula että hahmoluokka. Jokaisella shakkinappulalla on pistekerroin joka vaikuttaa luokan hintaan. Nappulalle voi valita myos pohjaluokan jolloin se toimii normaaliin tapaan.
 
-Joukkueessa voi olla maksimissaan 16 yksikkoa joista yksi korotetaan johtajaksi kunkin pelaajan ensimmaisella vuorolla. Ennen pelin alkua kumpikin pelaaja asettaa joukkueensa aloitusalueelleen (8x2 alue laudan laidassa) haluamallaan tavalla. Aloitusasetelmat naytetaan toiselle pelaajalle vasta ensimmaisen pelajaan ensimmaisen vuoron alussa.
+Joukkueessa voi olla maksimissaan 16 yksikköä joista yksi korotetaan johtajaksi kunkin pelaajan ensimmäisella vuorolla. Ennen pelin alkua kumpikin pelaaja asettaa joukkueensa aloitusalueelleen (8x2 alue laudan laidassa) haluamallaan tavalla. Aloitusasetelmat näytetaan toiselle pelaajalle vasta ensimmäisen pelajaan ensimmäisen vuoron alussa.
 
-Joukkuekokoonpanon voi tallentaa ja ladata levylta.
+Joukkuekokoonpanon voi tallentaa ja ladata levyltä.
 
