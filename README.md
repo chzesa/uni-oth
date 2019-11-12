@@ -5,3 +5,5 @@
 
 [komentorivi.txt](https://github.com/chzesa/uni-oth/blob/master/laskarit/viikko1/komentorivi.txt)
 
+### Viikko 2
+[coverage.png](https://github.com/chzesa/uni-oth/blob/master/laskarit/viikko2/coverage.png)
