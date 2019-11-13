@@ -1,4 +1,4 @@
-# aatimusmäärittely
+# Vaatimusmäärittely
 
 ## Sovelluksen tarkoitus
 Sovellus on shakkiin pohjautuva vuoropohjainen videopeli, jossa pelaajan 'joukkue' kasataan yhdistämälla shakkinappuloita hahmoluokkiin. Hahmoluokat antavat shakkinapeille erilaisia kykyjä joiden toiminta pohjautuu valittuun shakkinappulaan, esimerkiksi lähetti liikkuu ja hyökkaa edelleen vinottain, mutta hyökkäyksen ominaisuudet saattavat muuttua. Pelaaja pelaa joko tekoälyvastustajaa vastaan tai samalla laitteella vuorotellen toisen pelaajan kanssa.
