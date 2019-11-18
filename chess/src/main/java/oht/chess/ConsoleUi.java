@@ -3,20 +3,19 @@ package oht.chess;
 import oht.chess.GameState;
 import oht.chess.Faction;
 import oht.chess.Role;
-import java.util.List;
-import java.util.ArrayList;
+import java.lang.Iterable;
 
 public class ConsoleUi implements IGui
 {	
-	List<Tcoord> _highlighted = new ArrayList<>();
-	List<Tcoord> _selected = new ArrayList<>();
+	Iterable<Tcoord> _highlighted;
+	Iterable<Tcoord> _selected;
 
-	public void setSelected(List<Tcoord> coords)
+	public void setSelected(Iterable<Tcoord> coords)
 	{
 		_highlighted = coords;
 	}
 
-	public void setSelectables(List<Tcoord> coords)
+	public void setSelectables(Iterable<Tcoord> coords)
 	{
 		_selected = coords;
 	}
@@ -41,6 +40,7 @@ public class ConsoleUi implements IGui
 			}
 		}
 
+		if (_highlighted != null)
 		for (Tcoord c : _highlighted)
 		{
 			cells[c.x()][c.y()].set(ForegroundColor.Purple);
@@ -50,6 +50,7 @@ public class ConsoleUi implements IGui
 			}
 		}
 
+		if (_selected != null)
 		for (Tcoord c : _selected)
 		{
 			cells[c.x()][c.y()].set(ForegroundColor.Cyan);

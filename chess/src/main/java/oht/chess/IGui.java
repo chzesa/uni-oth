@@ -1,9 +1,9 @@
 package oht.chess;
-import java.util.List;
+import java.lang.Iterable;
 
 interface IGui
 {
 	public boolean draw(GameState state);
-	public void setSelected(List<Tcoord> coords);
-	public void setSelectables(List<Tcoord> coords);
+	public void setSelected(Iterable<Tcoord> coords);
+	public void setSelectables(Iterable<Tcoord> coords);
 }
