@@ -1,5 +1,11 @@
-package oht.chess;
+package oht.chess.unit;
 import java.util.ArrayList;
+import oht.chess.Actor;
+import oht.chess.Chesspiece;
+import oht.chess.Faction;
+import oht.chess.Role;
+import oht.chess.Tcoord;
+import oht.chess.Vector;
 
 class Pawn extends Actor
 {
@@ -9,7 +15,7 @@ class Pawn extends Actor
 	}
 
 	@Override
-	ArrayList<Vector> movementVectors()
+	public ArrayList<Vector> movementVectors()
 	{
 		ArrayList<Vector> ret = new ArrayList<>();
 		ret.add(_fwd);
@@ -17,7 +23,7 @@ class Pawn extends Actor
 	}
 
 	@Override
-	ArrayList<Vector> attackVectors()
+	public ArrayList<Vector> attackVectors()
 	{
 		ArrayList<Vector> ret = new ArrayList<>();
 		Vector left = new Vector( Vector.add(_fwd, new Tcoord(-1, 0)), 1 );

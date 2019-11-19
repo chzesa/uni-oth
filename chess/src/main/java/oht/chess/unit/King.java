@@ -1,5 +1,11 @@
-package oht.chess;
+package oht.chess.unit;
 import java.util.ArrayList;
+import oht.chess.Actor;
+import oht.chess.Chesspiece;
+import oht.chess.Faction;
+import oht.chess.Role;
+import oht.chess.Tcoord;
+import oht.chess.Vector;
 
 class King extends Actor
 {
@@ -9,7 +15,7 @@ class King extends Actor
 	}
 
 	@Override
-	ArrayList<Vector> movementVectors()
+	public ArrayList<Vector> movementVectors()
 	{
 		ArrayList<Vector> ret = new ArrayList<>();
 		ret.add(new Vector(0, 1, 1)); // up
@@ -28,7 +34,7 @@ class King extends Actor
 	}
 
 	@Override
-	ArrayList<Vector> attackVectors() { return this.movementVectors(); }
+	public ArrayList<Vector> attackVectors() { return this.movementVectors(); }
 
 	@Override
 	public char toChar() { return _faction == Faction.White ? '♔' : '♚'; }

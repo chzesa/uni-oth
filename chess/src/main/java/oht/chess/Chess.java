@@ -5,6 +5,7 @@ import oht.chess.ui.ConsoleUi;
 import oht.chess.ui.ConsolePlayer;
 import java.util.ArrayList;
 import java.util.Random;
+import oht.chess.unit.UnitFactory;
 public class Chess
 {
 	public static void main(String[] args)
@@ -19,44 +20,44 @@ public class Chess
 		for (int i = 0; i < 8; i++)
 		{
 			Tcoord pos = new Tcoord(i, 6);
-			b.emplace(new Pawn(roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
+			b.emplace(UnitFactory.make(Chesspiece.Pawn, roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
 			pos = new Tcoord(i, 1);
-			b.emplace(new Pawn(roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
+			b.emplace(UnitFactory.make(Chesspiece.Pawn, roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
 		}
 
 		Tcoord pos = new Tcoord(0, 0);
-		b.emplace(new Rook(roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Rook, roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
 		pos = new Tcoord(1, 0);
-		b.emplace(new Knight(roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Knight, roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
 		pos = new Tcoord(2, 0);
-		b.emplace(new Bishop(roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Bishop, roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
 		pos = new Tcoord(3, 0);
-		b.emplace(new Queen(roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Queen, roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
 		pos = new Tcoord(4, 0);
-		b.emplace(new King(roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
+		b.emplace(UnitFactory.make(Chesspiece.King, roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
 		pos = new Tcoord(5, 0);
-		b.emplace(new Bishop(roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Bishop, roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
 		pos = new Tcoord(6, 0);
-		b.emplace(new Knight(roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Knight, roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
 		pos = new Tcoord(7, 0);
-		b.emplace(new Rook(roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Rook, roles[rand.nextInt(roles.length)], pos, Faction.White), pos);
 
 		pos = new Tcoord(0, 7);
-		b.emplace(new Rook(roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Rook, roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
 		pos = new Tcoord(1, 7);
-		b.emplace(new Knight(roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Knight, roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
 		pos = new Tcoord(2, 7);
-		b.emplace(new Bishop(roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Bishop, roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
 		pos = new Tcoord(3, 7);
-		b.emplace(new Queen(roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
+		b.emplace(UnitFactory.make(Chesspiece.King, roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
 		pos = new Tcoord(4, 7);
-		b.emplace(new King(roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Queen, roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
 		pos = new Tcoord(5, 7);
-		b.emplace(new Bishop(roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Bishop, roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
 		pos = new Tcoord(6, 7);
-		b.emplace(new Knight(roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Knight, roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
 		pos = new Tcoord(7, 7);
-		b.emplace(new Rook(roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
+		b.emplace(UnitFactory.make(Chesspiece.Rook, roles[rand.nextInt(roles.length)], pos, Faction.Black), pos);
 
 		turn: while(true)
 		{

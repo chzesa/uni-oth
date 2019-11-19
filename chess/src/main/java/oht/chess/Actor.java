@@ -1,20 +1,15 @@
 package oht.chess;
 import java.util.ArrayList;
-import oht.chess.Faction;
-import oht.chess.RoleData;
-import oht.chess.Tcoord;
-import oht.chess.Vector;
-import oht.chess.IAbility;
 
 public class Actor extends Unit
 {
-	Tcoord _pos;
-	Faction _faction;
-	int _hp;
-	int _maxHp;
-	int _damage;
-	Vector _fwd;
-	AbilitySet _abilities;
+	protected Tcoord _pos;
+	protected Faction _faction;
+	protected int _hp;
+	protected int _maxHp;
+	protected int _damage;
+	protected Vector _fwd;
+	protected AbilitySet _abilities;
 
 	protected void initAbilities(Role role)
 	{
@@ -63,8 +58,8 @@ public class Actor extends Unit
 
 	public int damage() { return _damage; }
 
-	ArrayList<Vector> movementVectors() { throw new UnsupportedOperationException(); }
-	ArrayList<Vector> attackVectors() { throw new UnsupportedOperationException(); }
+	public ArrayList<Vector> movementVectors() { throw new UnsupportedOperationException(); }
+	public ArrayList<Vector> attackVectors() { throw new UnsupportedOperationException(); }
 	Vector forward() { return _fwd; }
 
 	public IAbility ability(int index)
