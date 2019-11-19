@@ -1,14 +1,26 @@
-# Ohjelmistotekniikka
+# Shakkipeli
+Sovellus on kehitetty Helsingin Yliopiston ohjelmistotekniikka kurssille.
+
+Peli on shakkivariantti jossa shakkinappuloilla on hahmoluokat. Peli loppuu kun jommalla kummalla pelaajalla ei ole enään johtohahmoa pelissä.
+
 ## Dokumentaatio
 [Vaatimusmäärittely](https://github.com/chzesa/uni-oth/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Tuntikirjanpito](https://github.com/chzesa/uni-oth/blob/master/dokumentaatio/tuntikirjanpito.md)
 
-## Teht
-### Viikko 1
-[gitlog.txt](https://github.com/chzesa/uni-oth/blob/master/laskarit/viikko1/gitlog.txt)
+## Komennot
+### Testaus
+Testien suorittaminen:
+```sh
+mvn test
+```
 
-[komentorivi.txt](https://github.com/chzesa/uni-oth/blob/master/laskarit/viikko1/komentorivi.txt)
+Testikattavuusraportin generointi:
+```sh
+mvn test jacoco:report
+```
 
-### Viikko 2
-[coverage.png](https://github.com/chzesa/uni-oth/blob/master/laskarit/viikko2/coverage.png)
+### Suorittaminen
+```sh
+mvn compile exec:java -Dexec.mainClass=oht.chess.Chess
+```
