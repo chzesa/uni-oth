@@ -1,16 +1,10 @@
 package oht.chess;
 
-import oht.chess.GameState;
-import oht.chess.ConsoleUi;
-import oht.chess.Faction;
-import oht.chess.Tcoord;
-import oht.chess.Chesspiece;
-import oht.chess.Role;
-import oht.chess.ConsolePlayer;
+import oht.chess.ui.MoveDescriptor;
+import oht.chess.ui.ConsoleUi;
+import oht.chess.ui.ConsolePlayer;
 import java.util.ArrayList;
-import oht.chess.TargetSet;
 import java.util.Random;
-
 public class Chess
 {
 	public static void main(String[] args)

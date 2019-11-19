@@ -1,9 +1,8 @@
-package oht.chess;
+package oht.chess.ui;
 
+import oht.chess.Actor;
 import oht.chess.GameState;
-import oht.chess.Faction;
-import oht.chess.Role;
-import java.lang.Iterable;
+import oht.chess.Tcoord;
 
 public class ConsoleUi implements IGui
 {	

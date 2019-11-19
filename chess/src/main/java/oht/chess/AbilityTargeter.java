@@ -6,7 +6,7 @@ import oht.chess.TargetSet;
 import oht.chess.Tcoord;
 import java.util.List;
 
-class AbilityTargeter
+public class AbilityTargeter
 {
 	IAbility _abty;
 	Actor _usr;
@@ -30,7 +30,7 @@ class AbilityTargeter
 		_sets.add(_wSet);
 	}
 
-	TargetSet current() { return _wSet; }
+	public TargetSet current() { return _wSet; }
 	boolean isComplete() { return _wSet.isComplete() && _abty.isComplete(this); }
 	int numSets() { return _sets.size(); }
 	List<TargetSet> sets() { return _sets; }

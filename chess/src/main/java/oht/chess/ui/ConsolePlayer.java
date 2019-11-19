@@ -1,8 +1,13 @@
-package oht.chess;
+package oht.chess.ui;
 import java.util.Scanner;
 import java.util.regex.*;
+import oht.chess.AbilityTargeter;
+import oht.chess.Actor;
+import oht.chess.GameState;
+import oht.chess.IAbility;
+import oht.chess.Tcoord;
 
-class ConsolePlayer implements IPlayerController
+public class ConsolePlayer implements IPlayerController
 {
 	static Pattern _digits = Pattern.compile("^\\d*$");
 	Actor _selected;

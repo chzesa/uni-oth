@@ -1,7 +1,7 @@
 package oht.chess;
 import oht.chess.Actor;
 
-class Board
+public class Board
 {
 	Actor[][] _board;
 	int _w, _h;
@@ -33,12 +33,12 @@ class Board
 		return a;
 	}
 
-	Actor get(Tcoord coord) { return get(coord.x(), coord.y()); }
-	Actor get(int x, int y) { return _board[x][y]; }
+	public Actor get(Tcoord coord) { return get(coord.x(), coord.y()); }
+	public Actor get(int x, int y) { return _board[x][y]; }
 
-	int width() { return _w; }
-	int height() { return _h; }
-	boolean isOob(Tcoord coord)
+	public int width() { return _w; }
+	public int height() { return _h; }
+	public boolean isOob(Tcoord coord)
 	{
 		return coord.x() < 0 || coord.y() < 0 || coord.x() >= _w || coord.y() >= _h;
 	}

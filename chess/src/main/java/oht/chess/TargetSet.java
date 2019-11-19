@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 import oht.chess.Tcoord;
 
-class TargetSet
+public class TargetSet
 {
 	Set<Tcoord> _refSet;
 	HashSet<Tcoord> _wSet = new HashSet<>();

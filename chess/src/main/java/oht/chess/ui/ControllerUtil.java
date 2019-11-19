@@ -1,6 +1,6 @@
-package oht.chess;
-import oht.chess.Tcoord;
+package oht.chess.ui;
 import java.util.regex.*;
+import oht.chess.Tcoord;
 
 class ControllerUtil
 {

@@ -5,17 +5,17 @@ public class Tcoord
 	int _y;
 	int _x;
 
-	Tcoord(int x, int y)
+	public Tcoord(int x, int y)
 	{
 		_x = x;
 		_y = y;
 	}
 
-	int x() { return _x; }
-	int y() { return _y; }
+	public int x() { return _x; }
+	public int y() { return _y; }
 
-	int distance(Tcoord other) { return distance(this, other); }
-	static int distance(Tcoord first, Tcoord second)
+	public int distance(Tcoord other) { return distance(this, other); }
+	public static int distance(Tcoord first, Tcoord second)
 	{
 		return Math.abs(first._y - second._y)
 			+ Math.abs(first._x - second._x);

@@ -1,7 +1,7 @@
 package oht.chess;
 
 import oht.chess.GameState;
-import oht.chess.IPlayerController;
+import oht.chess.ui.IPlayerController;
 
 public class Game
 {

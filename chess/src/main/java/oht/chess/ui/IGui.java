@@ -1,5 +1,6 @@
-package oht.chess;
-import java.lang.Iterable;
+package oht.chess.ui;
+import oht.chess.GameState;
+import oht.chess.Tcoord;
 
 interface IGui
 {

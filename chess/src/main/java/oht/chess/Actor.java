@@ -6,7 +6,7 @@ import oht.chess.Tcoord;
 import oht.chess.Vector;
 import oht.chess.IAbility;
 
-class Actor extends Unit
+public class Actor extends Unit
 {
 	Tcoord _pos;
 	Faction _faction;
@@ -49,32 +49,32 @@ class Actor extends Unit
 		initAbilities(role);
 	}
 
-	Tcoord pos() { return _pos; }
+	public Tcoord pos() { return _pos; }
 
 	void setPos(Tcoord coord) { _pos = coord; }
-	Faction faction() { return _faction; }
+	public Faction faction() { return _faction; }
 
-	int hp() { return _hp; }
+	public int hp() { return _hp; }
 	int setHp(int hp)
 	{
 		_hp = Math.min(0, Math.max(_maxHp, hp));
 		return _hp;
 	}
 
-	int damage() { return _damage; }
+	public int damage() { return _damage; }
 
 	ArrayList<Vector> movementVectors() { throw new UnsupportedOperationException(); }
 	ArrayList<Vector> attackVectors() { throw new UnsupportedOperationException(); }
 	Vector forward() { return _fwd; }
 
-	IAbility ability(int index)
+	public IAbility ability(int index)
 	{
 		IAbility a = _abilities.get(index);
 		if (a == null) { return new Move(this); } // todo
 		return a;
 	}
 
-	int numAbilities() { return _abilities.numAbilities(); }
+	public int numAbilities() { return _abilities.numAbilities(); }
 
 	@Override
 	public String toString()

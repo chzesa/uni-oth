@@ -13,13 +13,13 @@ public class GameState
 		_b = new Board(w, h);
 	}
 
-	Faction activeFaction()
+	public Faction activeFaction()
 	{
 		if (_turnCount % 2 == 0) { return Faction.White; }
 		return Faction.Black;
 	}
 
-	int turn() { return _turnCount; }
-	Board board() { return _b; }
+	public int turn() { return _turnCount; }
+	public Board board() { return _b; }
 	Faction nextTurn() { _turnCount++; return activeFaction(); }
 }
