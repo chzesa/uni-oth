@@ -1,7 +1,7 @@
 # Shakkipeli
 Sovellus on kehitetty Helsingin Yliopiston ohjelmistotekniikka kurssille.
 
-Peli on shakkivariantti jossa shakkinappuloilla on hahmoluokat. Peli loppuu kun jommalla kummalla pelaajalla ei ole enään johtohahmoa pelissä.
+Peli on shakkivariantti jossa shakkinappuloilla on hahmoluokat.
 
 ## Dokumentaatio
 [Vaatimusmäärittely](https://github.com/chzesa/uni-oth/blob/master/dokumentaatio/vaatimusmaarittely.md)
