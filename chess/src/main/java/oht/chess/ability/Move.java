@@ -1,14 +1,15 @@
-package oht.chess;
+package oht.chess.ability;
 import java.util.Set;
-import oht.chess.Board;
-import oht.chess.TargetSet;
+import oht.chess.Actor;
+import oht.chess.Effect;
+import oht.chess.GameState;
 import oht.chess.Tcoord;
-import oht.chess.Vector;
 
-class Move implements IAbility
+// todo make non-public
+public class Move implements IAbility
 {
 	Actor _usr;
-	Move(Actor user) { _usr = user; }
+	public Move(Actor user) { _usr = user; }
 
 	@Override
 	public AbilityTargeter beginUse(GameState state) {

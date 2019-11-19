@@ -2,9 +2,9 @@ package oht.chess;
 import oht.chess.Actor;
 import oht.chess.Board;
 
-class Effect
+public class Effect
 {
-	static void damage(Actor src, Actor dst, int amount, Board b)
+	public static void damage(Actor src, Actor dst, int amount, Board b)
 	{
 		System.out.println(src.toString() + " attacks " + dst.toString() + " for " + amount + " damage!");
 
@@ -26,7 +26,7 @@ class Effect
 		// raise event
 	}
 
-	static void move(Actor a, Tcoord moveTo, Board b)
+	public static void move(Actor a, Tcoord moveTo, Board b)
 	{
 		System.out.println("Moving " + a.toString() + " to " + moveTo.toString() );
 

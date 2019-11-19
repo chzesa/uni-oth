@@ -1,9 +1,9 @@
-package oht.chess;
+package oht.chess.ability;
 import java.util.Set;
-import oht.chess.Board;
-import oht.chess.TargetSet;
+import oht.chess.Actor;
+import oht.chess.Effect;
+import oht.chess.GameState;
 import oht.chess.Tcoord;
-import oht.chess.Vector;
 
 class Attack implements IAbility
 {

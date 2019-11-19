@@ -1,18 +1,19 @@
-package oht.chess;
+package oht.chess.ability;
 import java.util.ArrayList;
+import oht.chess.Actor;
 
-class AbilitySet
+public class AbilitySet
 {
 	Actor _caster;
 	ArrayList<IAbility> _abts = new ArrayList<>();
 
 	AbilitySet(Actor caster) { _caster = caster; }
 
-	IAbility get(int i)
+	public IAbility get(int i)
 	{
 		if (i < 0 || i >= _abts.size()) { return null; }
 		return _abts.get(i);
 	}
 
-	int numAbilities() { return _abts.size(); }
+	public int numAbilities() { return _abts.size(); }
 }

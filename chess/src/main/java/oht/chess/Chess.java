@@ -1,5 +1,8 @@
 package oht.chess;
 
+import oht.chess.ability.IAbility;
+import oht.chess.ability.TargetSet;
+import oht.chess.ability.AbilityTargeter;
 import oht.chess.ui.MoveDescriptor;
 import oht.chess.ui.ConsoleUi;
 import oht.chess.ui.ConsolePlayer;

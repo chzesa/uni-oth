@@ -1,8 +1,12 @@
-package oht.chess;
+package oht.chess.ability;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+import oht.chess.Actor;
+import oht.chess.Board;
+import oht.chess.Tcoord;
+import oht.chess.Vector;
 
 class AbilityUtil
 {

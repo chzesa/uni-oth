@@ -1,4 +1,10 @@
 package oht.chess;
+import oht.chess.ability.IAbility;
+import oht.chess.ability.BaseRole;
+import oht.chess.ability.FeyRole;
+import oht.chess.ability.KineticistRole;
+import oht.chess.ability.Move;
+import oht.chess.ability.AbilitySet;
 import java.util.ArrayList;
 
 public class Actor extends Unit

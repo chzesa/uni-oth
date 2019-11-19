@@ -1,10 +1,10 @@
 package oht.chess.ui;
 import java.util.Scanner;
 import java.util.regex.*;
-import oht.chess.AbilityTargeter;
+import oht.chess.ability.AbilityTargeter;
 import oht.chess.Actor;
 import oht.chess.GameState;
-import oht.chess.IAbility;
+import oht.chess.ability.IAbility;
 import oht.chess.Tcoord;
 
 public class ConsolePlayer implements IPlayerController

@@ -1,10 +1,9 @@
-package oht.chess;
+package oht.chess.ability;
 
 import java.util.ArrayList;
-import oht.chess.IAbility;
-import oht.chess.TargetSet;
-import oht.chess.Tcoord;
 import java.util.List;
+import oht.chess.Actor;
+import oht.chess.GameState;
 
 public class AbilityTargeter
 {
@@ -31,7 +30,7 @@ public class AbilityTargeter
 	}
 
 	public TargetSet current() { return _wSet; }
-	boolean isComplete() { return _wSet.isComplete() && _abty.isComplete(this); }
+	public boolean isComplete() { return _wSet.isComplete() && _abty.isComplete(this); }
 	int numSets() { return _sets.size(); }
 	List<TargetSet> sets() { return _sets; }
 	TargetSet set(int i)

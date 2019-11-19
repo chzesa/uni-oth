@@ -1,4 +1,4 @@
-package oht.chess;
+package oht.chess.ability;
 import java.util.HashSet;
 import java.util.Set;
 import oht.chess.Tcoord;
@@ -48,8 +48,8 @@ public class TargetSet
 
 	public int minTargets() { return _min; }
 	public int maxTargets() { return _max; }
-	Set<Tcoord> targets() { return _wSet; }
-	Set<Tcoord> targetables() { return _refSet; }
+	public Set<Tcoord> targets() { return _wSet; }
+	public Set<Tcoord> targetables() { return _refSet; }
 	public int numTargets() { return _wSet.size(); }
 	boolean isComplete() { return _min <= _wSet.size() && _wSet.size() <= _max; }
 
