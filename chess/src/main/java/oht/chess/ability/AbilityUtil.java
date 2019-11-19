@@ -30,26 +30,17 @@ class AbilityUtil
 
 	static Set<Tcoord> filterEmpty(ArrayList<Vector> vec, Tcoord origin, Board b)
 	{
-		HashSet<Tcoord> ret = new HashSet<>();
-
-		for (Vector v : vec)
-		{
-			for (int i = 1; i <= v.mag(); i++)
-			{
-				Vector d = new Vector(v.dir(), i);
-				Tcoord coord = Vector.add(origin, d);
-				if (b.isOob(coord)) { break; }
-
-				Actor a = b.get(coord);
-				if (a != null) { break; }
-				ret.add(coord);
-			}
-		}
-
-		return ret;
+		return filterValid(vec, origin, b).stream()
+			.filter(c -> b.get(c) == null).collect(Collectors.toSet());
 	}
 
 	static Set<Tcoord> filterNonempty(ArrayList<Vector> vec, Tcoord origin, Board b)
+	{
+		return filterValid(vec, origin, b).stream()
+			.filter(c -> b.get(c) != null).collect(Collectors.toSet());
+	}
+
+	static Set<Tcoord> filterValid(ArrayList<Vector> vec, Tcoord origin, Board b)
 	{
 		HashSet<Tcoord> ret = new HashSet<>();
 
@@ -60,13 +51,8 @@ class AbilityUtil
 				Vector d = new Vector(v.dir(), i);
 				Tcoord coord = Vector.add(origin, d);
 				if (b.isOob(coord)) { break; }
-
-				Actor a = b.get(coord);
-				if (a != null)
-				{
-					ret.add(coord);
-					break;
-				}
+				ret.add(coord);
+				if (b.get(coord) != null) { break; }
 			}
 		}
 
