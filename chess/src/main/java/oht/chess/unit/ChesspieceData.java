@@ -1,6 +1,6 @@
-package oht.chess;
+package oht.chess.unit;
 
-import oht.chess.Chesspiece;
+import oht.chess.unit.Chesspiece;
 
 public class ChesspieceData
 {

@@ -1,11 +1,9 @@
 package oht.chess.unit;
 import java.util.ArrayList;
-import oht.chess.Actor;
-import oht.chess.Chesspiece;
-import oht.chess.Faction;
-import oht.chess.Role;
-import oht.chess.Tcoord;
-import oht.chess.Vector;
+import oht.chess.game.Faction;
+import oht.chess.ability.Role;
+import oht.chess.util.Tcoord;
+import oht.chess.util.Vector;
 
 class Pawn extends Actor
 {

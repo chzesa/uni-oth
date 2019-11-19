@@ -1,4 +1,4 @@
-package oht.chess;
+package oht.chess.ability;
 
 public enum Role
 {

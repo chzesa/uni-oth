@@ -1,9 +1,9 @@
 package oht.chess.ability;
 
-import oht.chess.Actor;
-import oht.chess.GameState;
-import oht.chess.GameState;
-import oht.chess.Tcoord;
+import oht.chess.unit.Actor;
+import oht.chess.game.GameState;
+import oht.chess.game.GameState;
+import oht.chess.util.Tcoord;
 import oht.chess.ability.AbilityTargeter;
 
 public interface IAbility

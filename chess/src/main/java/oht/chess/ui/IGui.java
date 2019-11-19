@@ -1,6 +1,6 @@
 package oht.chess.ui;
-import oht.chess.GameState;
-import oht.chess.Tcoord;
+import oht.chess.game.GameState;
+import oht.chess.util.Tcoord;
 
 interface IGui
 {

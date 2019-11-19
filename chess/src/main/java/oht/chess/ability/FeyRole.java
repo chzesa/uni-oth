@@ -1,6 +1,6 @@
 package oht.chess.ability;
 
-import oht.chess.Actor;
+import oht.chess.unit.Actor;
 
 public class FeyRole extends BaseRole
 {

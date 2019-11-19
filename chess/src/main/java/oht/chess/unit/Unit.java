@@ -1,6 +1,6 @@
-package oht.chess;
-import oht.chess.Chesspiece;
-import oht.chess.Role;
+package oht.chess.unit;
+import oht.chess.unit.Chesspiece;
+import oht.chess.ability.Role;
 
 public class Unit
 {

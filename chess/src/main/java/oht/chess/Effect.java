@@ -1,6 +1,7 @@
 package oht.chess;
-import oht.chess.Actor;
-import oht.chess.Board;
+import oht.chess.util.Tcoord;
+import oht.chess.unit.Actor;
+import oht.chess.game.Board;
 
 public class Effect
 {

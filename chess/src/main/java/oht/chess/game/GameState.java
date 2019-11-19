@@ -1,13 +1,13 @@
-package oht.chess;
-import oht.chess.Board;
-import oht.chess.Faction;
+package oht.chess.game;
+import oht.chess.game.Board;
+import oht.chess.game.Faction;
 
 public class GameState
 {
 	int _turnCount;
 	Board _b;
 
-	GameState(int w, int h)
+	public GameState(int w, int h)
 	{
 		_turnCount = 0;
 		_b = new Board(w, h);
@@ -21,5 +21,5 @@ public class GameState
 
 	public int turn() { return _turnCount; }
 	public Board board() { return _b; }
-	Faction nextTurn() { _turnCount++; return activeFaction(); }
+	public Faction nextTurn() { _turnCount++; return activeFaction(); }
 }

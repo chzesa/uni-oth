@@ -1,4 +1,8 @@
-package oht.chess;
+package oht.chess.unit;
+import oht.chess.unit.Unit;
+import oht.chess.unit.ChesspieceData;
+import oht.chess.unit.Chesspiece;
+import oht.chess.ability.Role;
 import oht.chess.ability.IAbility;
 import oht.chess.ability.BaseRole;
 import oht.chess.ability.FeyRole;
@@ -6,6 +10,9 @@ import oht.chess.ability.KineticistRole;
 import oht.chess.ability.Move;
 import oht.chess.ability.AbilitySet;
 import java.util.ArrayList;
+import oht.chess.game.Faction;
+import oht.chess.util.Tcoord;
+import oht.chess.util.Vector;
 
 public class Actor extends Unit
 {
@@ -52,11 +59,11 @@ public class Actor extends Unit
 
 	public Tcoord pos() { return _pos; }
 
-	void setPos(Tcoord coord) { _pos = coord; }
+	public void setPos(Tcoord coord) { _pos = coord; }
 	public Faction faction() { return _faction; }
 
 	public int hp() { return _hp; }
-	int setHp(int hp)
+	public int setHp(int hp)
 	{
 		_hp = Math.min(0, Math.max(_maxHp, hp));
 		return _hp;

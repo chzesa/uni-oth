@@ -2,8 +2,8 @@ package oht.chess.ability;
 
 import java.util.ArrayList;
 import java.util.List;
-import oht.chess.Actor;
-import oht.chess.GameState;
+import oht.chess.unit.Actor;
+import oht.chess.game.GameState;
 
 public class AbilityTargeter
 {

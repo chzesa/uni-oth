@@ -1,6 +1,6 @@
-package oht.chess;
+package oht.chess.util;
 
-import oht.chess.Tcoord;
+import oht.chess.util.Tcoord;
 
 public class Vector
 {

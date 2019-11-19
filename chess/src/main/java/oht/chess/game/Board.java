@@ -1,18 +1,19 @@
-package oht.chess;
-import oht.chess.Actor;
+package oht.chess.game;
+import oht.chess.util.Tcoord;
+import oht.chess.unit.Actor;
 
 public class Board
 {
 	Actor[][] _board;
 	int _w, _h;
 
-	Board(int width, int height)
+	public Board(int width, int height)
 	{
 		_w = width; _h = height;
 		_board = new Actor[_w][_h];
 	}
 
-	boolean emplace(Actor actor, Tcoord coord)
+	public boolean emplace(Actor actor, Tcoord coord)
 	{
 		if (_board[coord.x()][coord.y()] == null)
 		{
@@ -25,7 +26,7 @@ public class Board
 		return false;
 	}
 
-	Actor remove(Tcoord coord)
+	public Actor remove(Tcoord coord)
 	{
 		Actor a = _board[coord.x()][coord.y()];
 		_board[coord.x()][coord.y()] = null;

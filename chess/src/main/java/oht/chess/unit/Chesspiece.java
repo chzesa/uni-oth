@@ -1,4 +1,4 @@
-package oht.chess;
+package oht.chess.unit;
 
 public enum Chesspiece
 {

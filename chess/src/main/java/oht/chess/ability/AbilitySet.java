@@ -1,6 +1,6 @@
 package oht.chess.ability;
 import java.util.ArrayList;
-import oht.chess.Actor;
+import oht.chess.unit.Actor;
 
 public class AbilitySet
 {

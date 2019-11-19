@@ -1,5 +1,12 @@
 package oht.chess;
 
+import oht.chess.game.GameState;
+import oht.chess.game.Board;
+import oht.chess.game.Faction;
+import oht.chess.util.Tcoord;
+import oht.chess.unit.Actor;
+import oht.chess.unit.Chesspiece;
+import oht.chess.ability.Role;
 import oht.chess.ability.IAbility;
 import oht.chess.ability.TargetSet;
 import oht.chess.ability.AbilityTargeter;

@@ -1,6 +1,6 @@
 package oht.chess.ui;
 import oht.chess.ability.AbilityTargeter;
-import oht.chess.GameState;
+import oht.chess.game.GameState;
 import oht.chess.ability.IAbility;
 
 public interface IPlayerController

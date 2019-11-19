@@ -1,10 +1,8 @@
 package oht.chess.unit;
 
-import oht.chess.Actor;
-import oht.chess.Chesspiece;
-import oht.chess.Faction;
-import oht.chess.Role;
-import oht.chess.Tcoord;
+import oht.chess.game.Faction;
+import oht.chess.ability.Role;
+import oht.chess.util.Tcoord;
 
 public class UnitFactory
 {

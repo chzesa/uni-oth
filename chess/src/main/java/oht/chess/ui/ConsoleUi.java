@@ -1,8 +1,8 @@
 package oht.chess.ui;
 
-import oht.chess.Actor;
-import oht.chess.GameState;
-import oht.chess.Tcoord;
+import oht.chess.unit.Actor;
+import oht.chess.game.GameState;
+import oht.chess.util.Tcoord;
 
 public class ConsoleUi implements IGui
 {	

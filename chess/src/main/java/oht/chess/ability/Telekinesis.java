@@ -1,10 +1,10 @@
 package oht.chess.ability;
 import java.util.Set;
-import oht.chess.Actor;
-import oht.chess.Board;
+import oht.chess.unit.Actor;
+import oht.chess.game.Board;
 import oht.chess.Effect;
-import oht.chess.GameState;
-import oht.chess.Tcoord;
+import oht.chess.game.GameState;
+import oht.chess.util.Tcoord;
 
 class Telekinesis implements IAbility
 {

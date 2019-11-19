@@ -1,6 +1,6 @@
-package oht.chess;
+package oht.chess.game;
 
-import oht.chess.GameState;
+import oht.chess.game.GameState;
 import oht.chess.ui.IPlayerController;
 
 public class Game

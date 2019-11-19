@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-import oht.chess.Actor;
-import oht.chess.Board;
-import oht.chess.Tcoord;
-import oht.chess.Vector;
+import oht.chess.unit.Actor;
+import oht.chess.game.Board;
+import oht.chess.util.Tcoord;
+import oht.chess.util.Vector;
 
 class AbilityUtil
 {
