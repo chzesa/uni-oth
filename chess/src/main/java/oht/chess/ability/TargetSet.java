@@ -1,14 +1,17 @@
 package oht.chess.ability;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import oht.chess.util.Tcoord;
+import java.util.HashMap;
 
-public class TargetSet {
+class TargetSet {
 	Set<Tcoord> refSet;
 	HashSet<Tcoord> wSet = new HashSet<>();
+	HashMap<Tcoord, Integer> orderMap = new HashMap<>();
+	HashMap<Integer, Tcoord> insertionOrder = new HashMap<>();
 	int min;
 	int max;
-	boolean lock = false;
 
 	TargetSet(Set<Tcoord> targetables, int min, int max) {
 		// if targetables < min || targetables < max throw
@@ -23,42 +26,65 @@ public class TargetSet {
 		this.max = num;
 	}
 
-	public boolean add(Tcoord t) {
+	private boolean add(Tcoord t) {
 		if (this.wSet.size() < this.max && this.refSet.contains(t)) {
-			return this.wSet.add(t);
+			if (this.wSet.add(t)) {
+				int index = orderMap.size();
+				orderMap.put(t, index);
+				insertionOrder.put(index, t);
+				return true;
+			}
 		}
 		return false;
 	}
 
-	public boolean remove(Tcoord t) {
-		return this.wSet.remove(t);
+	private boolean remove(Tcoord t) {
+		boolean result = wSet.remove(t);
+		int index = orderMap.remove(t);
+		insertionOrder.remove(insertionOrder.size() - 1);
+
+		orderMap.forEach((k, v) -> {
+			if (index < v) {
+				v -= 1;
+			}
+
+			insertionOrder.put(v, k);
+		});
+
+		return result;
 	}
 
-	public boolean toggle(Tcoord t) {
+	boolean toggle(Tcoord t) {
 		if (this.wSet.contains(t)) {
-			return remove(t);
+			remove(t);
+			return false;
 		}
+
 		return add(t);
 	}
 
-	public int minTargets() {
+	Tcoord get(int i) {
+		return insertionOrder.get(i);
+	}
+
+	int minSize() {
 		return this.min;
 	}
 
-	public int maxTargets() {
+	int maxSize() {
 		return this.max;
 	}
 
-	public Set<Tcoord> targets() {
+	int size() {
+		return this.wSet.size();
+	}
+
+	Iterable<Tcoord> targeted() {
 		return this.wSet;
 	}
 
-	public Set<Tcoord> targetables() {
+	Iterable<Tcoord> selectable() {
 		return this.refSet;
-	}
-
-	public int numTargets() {
-		return this.wSet.size();
 	}
 
 	boolean isComplete() {

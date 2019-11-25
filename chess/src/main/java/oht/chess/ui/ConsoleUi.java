@@ -1,7 +1,7 @@
 package oht.chess.ui;
 
-import oht.chess.unit.Actor;
-import oht.chess.game.GameState;
+import oht.chess.unit.IActor;
+import oht.chess.game.Game;
 import oht.chess.util.Tcoord;
 
 public class ConsoleUi implements IGui {
@@ -16,11 +16,11 @@ public class ConsoleUi implements IGui {
 		_selected = coords;
 	}
 
-	public boolean draw(GameState state) {
+	public boolean draw(Game game) {
 		System.out.print("\033[H\033[2J");
-		System.out.println("Turn " + state.turn() + ", " + state.activeFaction().toString());
-		int w = state.board().width();
-		int h = state.board().height();
+		System.out.println("Turn " + game.turn() + ", " + game.activeFaction().toString());
+		int w = game.width();
+		int h = game.height();
 
 		String[][] output = new String[w + 3][h + 1];
 		ConsoleUiCell[][] cells = new ConsoleUiCell[w][h];
@@ -28,7 +28,7 @@ public class ConsoleUi implements IGui {
 		for (int x = 0; x < w; x++) {
 			for (int y = 0; y < h; y++) {
 				cells[x][y] = new ConsoleUiCell();
-				Actor a = state.board().get(x, y);
+				IActor a = game.get(x, y);
 				cells[x][y].set(a == null ? ' ' : a.toChar());
 			}
 		}
@@ -52,8 +52,8 @@ public class ConsoleUi implements IGui {
 		for (int x = 0; x < w; x++) {
 			for (int y = h - 1; y > -1; y--) {
 				String repr = " ";
-				Actor a = state.board().get(x,y);
-				output[x + 2][state.board().height() - y - 1] = a == null ? " " : "" + a.toChar();
+				IActor a = game.get(x,y);
+				output[x + 2][game.height() - y - 1] = a == null ? " " : "" + a.toChar();
 			}
 		}
 
@@ -83,9 +83,9 @@ public class ConsoleUi implements IGui {
 		for (int x = 0; x < w; x++) {
 			for (int y = h - 1; y > -1; y--) {
 				String repr = " ";
-				Actor a = state.board().get(x,y);
+				IActor a = game.get(x,y);
 				// output[x + 2][state.board().height() - y - 1] = a == null ? " " : actorStr(a);
-				output[x + 2][state.board().height() - y - 1] = cells[x][y].toString();
+				output[x + 2][game.height() - y - 1] = cells[x][y].toString();
 			}
 		}
 

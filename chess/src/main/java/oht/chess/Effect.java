@@ -1,10 +1,10 @@
 package oht.chess;
 import oht.chess.util.Tcoord;
-import oht.chess.unit.Actor;
-import oht.chess.game.Board;
+import oht.chess.unit.IActor;
+import oht.chess.game.IBoard;
 
 public class Effect {
-	public static void damage(Actor src, Actor dst, int amount, Board b) {
+	public static void damage(IActor src, IActor dst, int amount, IBoard b) {
 		System.out.println(src.toString() + " attacks " + dst.toString() + " for " + amount + " damage!");
 
 		int hp = dst.hp();
@@ -16,16 +16,13 @@ public class Effect {
 			b.remove(dst.pos());
 		}
 
-		
 		// raise event
 	}
 
-	public static void move(Actor a, Tcoord moveTo, Board b) {
+	public static void move(IActor a, Tcoord moveTo, IBoard b) {
 		System.out.println("Moving " + a.toString() + " to " + moveTo.toString());
-
-		b.remove(a.pos());
-		b.emplace(a, moveTo);
-
-		// raise event, movement type enum
+		if (b.move(a.pos(), moveTo)) {
+			// raise event, movement type enum
+		}
 	}
 }

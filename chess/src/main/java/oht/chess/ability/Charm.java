@@ -1,60 +1,51 @@
 package oht.chess.ability;
 import java.util.Set;
-import oht.chess.unit.Actor;
-import oht.chess.game.Board;
+import oht.chess.unit.IActor;
+import oht.chess.game.IBoard;
 import oht.chess.Effect;
-import oht.chess.game.GameState;
 import oht.chess.util.Tcoord;
 
 class Charm implements IAbility {
-	Actor user;
-
-	Charm(Actor user) {
-		this.user = user;
-	}
-
 	@Override
-	public AbilityTargeter beginUse(GameState state) {
+	public AbilityTargeter beginUse(IActor user, IBoard board) {
 		Set<Tcoord> targets =
-						AbilityUtil.filterHostile(this.user.attackVectors(), this.user, state.board());
+						AbilityUtil.filterHostile(user.attackVectors(), user, board);
 
-		TargetSet t = new TargetSet(targets, 1);
-		return new AbilityTargeter(this, this.user, state, t);
+		return new AbilityTargeter(new TargetSet(targets, 1));
 	}
 
 	@Override
-	public boolean endUse(AbilityTargeter t) {
+	public boolean endUse(AbilityTargeter t, IActor user, IBoard board) {
 		// if (!isValid(t)) { return false; }
-		Tcoord attacker = t.sets().get(0).targets().iterator().next();
-		Tcoord target = t.sets().get(1).targets().iterator().next();
-		Board board = t.state().board();
-		Effect.damage(board.get(attacker), board.get(target), board.get(attacker).damage(), t.state().board());
+		Tcoord attacker = t.get(0, 0);
+		Tcoord target = t.get(1, 0);
+		Effect.damage(board.get(attacker), board.get(target), board.get(attacker).damage(), board);
 		return true;
 	}
 
 	@Override
-	public boolean isComplete(AbilityTargeter t) {
-		if (t.set(0).numTargets() == 1) {
-			if (t.set(1) == null) {
-				Actor target = t.state().board().get(t.set(0).targets().iterator().next());
+	public TargeterState isComplete(AbilityTargeter t, IActor user, IBoard board) {
+		if (t.size(0) == 1) {
+			if (t.size() == 1) {
+				IActor target = board.get(t.get(0, 0));
+				if (target == null) {
+					return TargeterState.Error;
+				}
 				Set<Tcoord> targets =
-								AbilityUtil.filterNonempty(target.attackVectors(), target.pos(), t.state().board());
+								AbilityUtil.filterNonempty(target.attackVectors(), target.pos(), board);
 
 				TargetSet n = new TargetSet(targets, 1);
 				t.append(n);
-			} else if (t.set(1).numTargets() == 1) {
-				return true;
+			} else if (t.size(1) == 1) {
+				return TargeterState.Complete;
 			}
 		}
 
-		return false;
+		return TargeterState.Incomplete;
 	}
 
 	@Override
-	public boolean isValid(AbilityTargeter t) {
-		if (!isComplete(t)) {
-			return false;
-		}
+	public boolean isValid(AbilityTargeter t, IActor user, IBoard board) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 

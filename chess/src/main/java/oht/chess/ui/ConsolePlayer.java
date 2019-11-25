@@ -1,19 +1,20 @@
 package oht.chess.ui;
+import oht.chess.util.MoveDescriptor;
 import java.util.Scanner;
 import java.util.regex.*;
 import oht.chess.ability.AbilityTargeter;
-import oht.chess.unit.Actor;
-import oht.chess.game.GameState;
 import oht.chess.ability.IAbility;
+import oht.chess.game.Entity;
+import oht.chess.game.Game;
 import oht.chess.util.Tcoord;
 
 public class ConsolePlayer implements IPlayerController {
 	static Pattern _digits = Pattern.compile("^\\d*$");
-	Actor _selected;
+	Entity _selected;
 	IAbility _ability;
 
 	@Override
-	public MoveDescriptor selectAbility(GameState state) {
+	public MoveDescriptor selectAbility(Game game) {
 		_selected = null;
 		_ability = null;
 		Scanner scan = new Scanner(System.in);
@@ -26,7 +27,7 @@ public class ConsolePlayer implements IPlayerController {
 			} else {
 				System.out.println("Selected: " + _selected.toString());
 				for (int i = 0; i < _selected.numAbilities(); i++) {
-					System.out.println( i + ": " + _selected.ability(i).toString());
+					System.out.println( i + ": " + _selected.getAbility(i).toString());
 				}
 			}
 
@@ -52,7 +53,7 @@ public class ConsolePlayer implements IPlayerController {
 						continue;
 					}
 					int i = Integer.parseInt(s);
-					_ability = _selected.ability(i);
+					_ability = _selected.getAbility(i);
 					if (_ability != null) {
 						return new MoveDescriptor(_selected.pos(), i);
 					}
@@ -60,7 +61,7 @@ public class ConsolePlayer implements IPlayerController {
 				else {
 					Tcoord parsed = ControllerUtil.parseString(s);
 					if (parsed != null) {
-						_selected = state.board().get(parsed);
+						_selected = game.get(parsed);
 					}
 				}
 			}
@@ -68,10 +69,10 @@ public class ConsolePlayer implements IPlayerController {
 	}
 
 	@Override
-	public AbilityTargeter targetAbility(GameState state, IAbility ability, AbilityTargeter t) {
+	public AbilityTargeter targetAbility(Game game, IAbility ability, AbilityTargeter t) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Using " + ability.toString());
-		System.out.println("Select [ " + t.current().minTargets() +" - "+t.current().maxTargets() + " ] targets.");
+		System.out.println("Select [ " + t.minSize() +" - "+ t.maxSize() + " ] targets.");
 		System.out.println("Type \"Cancel\" or \"Quit\" to cancel the ability.");
 		System.out.print("> ");
 		String input = scan.nextLine();
@@ -91,7 +92,7 @@ public class ConsolePlayer implements IPlayerController {
 				Tcoord parsed = ControllerUtil.parseString(s);
 
 				if (parsed != null) {
-					t.current().toggle(parsed);
+					t.toggle(parsed);
 				}
 			}
 		}

@@ -1,48 +1,38 @@
 package oht.chess.ability;
 import java.util.Set;
-import oht.chess.unit.Actor;
+import oht.chess.unit.IActor;
 import oht.chess.Effect;
-import oht.chess.game.GameState;
+import oht.chess.game.IBoard;
 import oht.chess.util.Tcoord;
 
-// todo make non-public
-public class Move implements IAbility {
-	Actor user;
-	public Move(Actor user) {
-		this.user = user;
-	}
-
+class Move implements IAbility {
 	@Override
-	public AbilityTargeter beginUse(GameState state) {
+	public AbilityTargeter beginUse(IActor user, IBoard board) {
 		Set<Tcoord> targets =
-						AbilityUtil.filterEmpty(this.user.movementVectors(), this.user.pos(), state.board());
+						AbilityUtil.filterEmpty(user.movementVectors(), user.pos(), board);
 
-		TargetSet t = new TargetSet(targets, 1);
-		return new AbilityTargeter(this, this.user, state, t);
+		return new AbilityTargeter(new TargetSet(targets, 1));
 	}
 
 	@Override
-	public boolean endUse(AbilityTargeter t) {
+	public boolean endUse(AbilityTargeter t, IActor user, IBoard board) {
 		// if (!isValid(t)) { return false; }
-		Tcoord a = t.sets().get(0).targets().iterator().next();
-		Effect.move(this.user, a, t.state().board());
+		Tcoord dst = t.get(0, 0);
+		Effect.move(user, dst, board);
 		return true;
 	}
 
 	@Override
-	public boolean isComplete(AbilityTargeter t) {
-		if (t.set(0).numTargets() == 1) {
-			return true;
+	public TargeterState isComplete(AbilityTargeter t, IActor user, IBoard board) {
+		if (t.size(0) == 1) {
+			return TargeterState.Complete;
 		}
 
-		return false;
+		return TargeterState.Incomplete;
 	}
 
 	@Override
-	public boolean isValid(AbilityTargeter t) {
-		if (!isComplete(t)) {
-			return false;
-		}
+	public boolean isValid(AbilityTargeter t, IActor user, IBoard board) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 

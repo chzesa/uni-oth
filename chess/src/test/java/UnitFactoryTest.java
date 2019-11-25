@@ -1,5 +1,5 @@
 import oht.chess.ability.Role;
-import oht.chess.game.Faction;
+import oht.chess.unit.Faction;
 import oht.chess.unit.Actor;
 import oht.chess.unit.Chesspiece;
 import oht.chess.unit.UnitFactory;
@@ -19,25 +19,25 @@ public class UnitFactoryTest {
 
 	@Test
 	public void makePawn() {
-		_unit = UnitFactory.make(Chesspiece.Pawn, Role.Base, new Tcoord(0, 0), Faction.White);
+		_unit = UnitFactory.make(Chesspiece.Pawn, Faction.White);
 		assertEquals(Chesspiece.Pawn, _unit.base());
 	}
 
 	@Test
 	public void makeRook() {
-		_unit = UnitFactory.make(Chesspiece.Rook, Role.Base, new Tcoord(0, 0), Faction.White);
+		_unit = UnitFactory.make(Chesspiece.Rook, Faction.White);
 		assertEquals(Chesspiece.Rook, _unit.base());
 	}
 
 	@Test
 	public void makeKnight() {
-		_unit = UnitFactory.make(Chesspiece.Knight, Role.Base, new Tcoord(0, 0), Faction.White);
+		_unit = UnitFactory.make(Chesspiece.Knight, Faction.White);
 		assertEquals(Chesspiece.Knight, _unit.base());
 	}
 
 	@Test
 	public void makeBishop() {
-		_unit = UnitFactory.make(Chesspiece.Bishop, Role.Base, new Tcoord(0, 0), Faction.White);
+		_unit = UnitFactory.make(Chesspiece.Bishop, Faction.White);
 		assertEquals(Chesspiece.Bishop, _unit.base());
 	}
 

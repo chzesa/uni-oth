@@ -1,25 +1,24 @@
 package oht.chess.unit;
-import java.util.ArrayList;
-import oht.chess.game.Faction;
+import java.util.HashSet;
 import oht.chess.ability.Role;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 
 class Pawn extends Actor {
-	Pawn(Role role, Tcoord coord, Faction faction) {
-		super(Chesspiece.Pawn, role, coord, faction);
+	Pawn(Faction faction) {
+		super(Chesspiece.Pawn, faction);
 	}
 
 	@Override
-	public ArrayList<Vector> movementVectors() {
-		ArrayList<Vector> ret = new ArrayList<>();
+	public HashSet<Vector> movementVectors() {
+		HashSet<Vector> ret = new HashSet<>();
 		ret.add(this.forward);
 		return ret;
 	}
 
 	@Override
-	public ArrayList<Vector> attackVectors() {
-		ArrayList<Vector> ret = new ArrayList<>();
+	public HashSet<Vector> attackVectors() {
+		HashSet<Vector> ret = new HashSet<>();
 		Vector left = new Vector(Vector.add(this.forward, new Tcoord(-1, 0)), 1);
 		Vector right = new Vector(Vector.add(this.forward, new Tcoord(1, 0)), 1);
 

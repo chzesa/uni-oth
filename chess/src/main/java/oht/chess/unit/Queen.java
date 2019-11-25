@@ -1,18 +1,15 @@
 package oht.chess.unit;
-import java.util.ArrayList;
-import oht.chess.game.Faction;
-import oht.chess.ability.Role;
-import oht.chess.util.Tcoord;
+import java.util.HashSet;
 import oht.chess.util.Vector;
 
 class Queen extends Actor {
-	Queen(Role role, Tcoord coord, Faction faction) {
-		super(Chesspiece.Queen, role, coord, faction);
+	Queen(Faction faction) {
+		super(Chesspiece.Queen, faction);
 	}
 
 	@Override
-	public ArrayList<Vector> movementVectors() {
-		ArrayList<Vector> ret = new ArrayList<>();
+	public HashSet<Vector> movementVectors() {
+		HashSet<Vector> ret = new HashSet<>();
 		ret.add(new Vector(0, 1, Integer.MAX_VALUE)); // up
 		ret.add(new Vector(1, 1, Integer.MAX_VALUE)); // upright
 
@@ -29,7 +26,7 @@ class Queen extends Actor {
 	}
 
 	@Override
-	public ArrayList<Vector> attackVectors() {
+	public HashSet<Vector> attackVectors() {
 		return movementVectors();
 	}
 

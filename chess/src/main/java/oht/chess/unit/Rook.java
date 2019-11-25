@@ -1,18 +1,15 @@
 package oht.chess.unit;
-import java.util.ArrayList;
-import oht.chess.game.Faction;
-import oht.chess.ability.Role;
-import oht.chess.util.Tcoord;
+import java.util.HashSet;
 import oht.chess.util.Vector;
 
 class Rook extends Actor {
-	Rook(Role role, Tcoord coord, Faction faction) {
-		super(Chesspiece.Rook, role, coord, faction);
+	Rook(Faction faction) {
+		super(Chesspiece.Rook, faction);
 	}
 
 	@Override
-	public ArrayList<Vector> movementVectors() {
-		ArrayList<Vector> ret = new ArrayList<>();
+	public HashSet<Vector> movementVectors() {
+		HashSet<Vector> ret = new HashSet<>();
 		ret.add(new Vector(1, 0, Integer.MAX_VALUE));
 		ret.add(new Vector(-1, 0, Integer.MAX_VALUE));
 
@@ -23,7 +20,7 @@ class Rook extends Actor {
 	}
 
 	@Override
-	public ArrayList<Vector> attackVectors() {
+	public HashSet<Vector> attackVectors() {
 		return movementVectors();
 	}
 

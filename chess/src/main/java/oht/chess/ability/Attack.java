@@ -1,47 +1,38 @@
 package oht.chess.ability;
 import java.util.Set;
-import oht.chess.unit.Actor;
+import oht.chess.unit.IActor;
 import oht.chess.Effect;
-import oht.chess.game.GameState;
+import oht.chess.game.IBoard;
 import oht.chess.util.Tcoord;
 
 class Attack implements IAbility {
-	Actor user;
-
-	Attack(Actor user) {
-		this.user = user;
+	@Override
+	public AbilityTargeter beginUse(IActor user, IBoard board) {
+		Set<Tcoord> targets = AbilityUtil.filterHostile(user.attackVectors(), user, board);
+		return new AbilityTargeter(new TargetSet(targets, 1));
 	}
 
 	@Override
-	public AbilityTargeter beginUse(GameState state) {
-		Set<Tcoord> targets = AbilityUtil.filterHostile(this.user.attackVectors(), this.user, state.board());
-
-		TargetSet t = new TargetSet(targets, 1);
-		return new AbilityTargeter(this, this.user, state, t);
-	}
-
-	@Override
-	public boolean isComplete(AbilityTargeter t) {
-		if (t.set(0).numTargets() == 1) {
-			return true;
+	public TargeterState isComplete(AbilityTargeter t, IActor user, IBoard board) {
+		if (t.size(0) == 1) {
+			return TargeterState.Complete;
 		}
 
-		return false;
+		return TargeterState.Incomplete;
 	}
 
 	@Override
-	public boolean endUse(AbilityTargeter t) {
+	public boolean endUse(AbilityTargeter t, IActor user, IBoard board) {
 		// if (!isValid(t)) { return false; }
-		Tcoord a = t.sets().get(0).targets().iterator().next();
+		Tcoord a = t.get(0, 0);
+		IActor target = board.get(a);
 
-		Actor target = t.state().board().get(a);
-
-		Effect.damage(this.user, target, this.user.damage(), t.state().board());
+		Effect.damage(user, target, user.damage(), board);
 		return true;
 	}
 
 	@Override
-	public boolean isValid(AbilityTargeter t) {
+	public boolean isValid(AbilityTargeter t, IActor user, IBoard board) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 	@Override

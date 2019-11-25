@@ -1,7 +1,5 @@
 package oht.chess.unit;
 
-import oht.chess.unit.Chesspiece;
-
 public class ChesspieceData {
 	public static int maxHp(Chesspiece base) {
 		switch (base) {

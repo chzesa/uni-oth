@@ -1,10 +1,10 @@
 package oht.chess.ability;
 
-import oht.chess.unit.Actor;
+import oht.chess.unit.IActor;
 
-public class FeyRole extends BaseRole {
-	public FeyRole(Actor caster) {
-		super(caster);
-		abilitys.add(new Charm(caster));
+class FeyRole extends BaseRole {
+	FeyRole() {
+		super(Role.Fey);
+		abilitys.add(new Charm());
 	}
 }

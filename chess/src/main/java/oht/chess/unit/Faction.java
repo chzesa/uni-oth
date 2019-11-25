@@ -1,4 +1,4 @@
-package oht.chess.game;
+package oht.chess.unit;
 
 public enum Faction {
 	White,

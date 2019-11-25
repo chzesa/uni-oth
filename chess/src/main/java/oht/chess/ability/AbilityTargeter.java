@@ -1,22 +1,15 @@
 package oht.chess.ability;
 
 import java.util.ArrayList;
-import java.util.List;
-import oht.chess.unit.Actor;
-import oht.chess.game.GameState;
+import oht.chess.unit.IActor;
+import oht.chess.game.IBoard;
+import oht.chess.util.Tcoord;
 
 public class AbilityTargeter {
-	IAbility abty;
-	Actor usr;
-	GameState state;
-
 	ArrayList<TargetSet> sets = new ArrayList<>();
 	TargetSet wSet;
 
-	AbilityTargeter(IAbility ability, Actor user, GameState state, TargetSet initialSet) {
-		this.abty = ability;
-		this.usr = user;
-		this.state = state;
+	AbilityTargeter(TargetSet initialSet) {
 		this.wSet = initialSet;
 		this.sets.add(this.wSet);
 	}
@@ -26,29 +19,67 @@ public class AbilityTargeter {
 		this.sets.add(this.wSet);
 	}
 
-	public TargetSet current() {
-		return this.wSet;
+	boolean isComplete() {
+		boolean ok = true;
+		for (TargetSet set : sets) {
+			if (!set.isComplete()) { 
+				ok = false;
+				break;
+			}
+		}
+
+		return ok;
 	}
-	public boolean isComplete() {
-		return this.wSet.isComplete() && this.abty.isComplete(this);
-	}
+
 	int numSets() {
 		return this.sets.size();
 	}
-	List<TargetSet> sets() {
-		return this.sets;
-	}
-	TargetSet set(int i) {
-		if (i < 0 || i >= this.sets.size()) {
-			return null;
-		}
-		return this.sets.get(i);
+
+	public boolean toggle(Tcoord coord) {
+		return wSet.toggle(coord);
 	}
 
-	Actor user() {
-		return this.usr;
+	Tcoord get(int set, int index) {
+		if (index < 0 || set < 0) {
+			return null;
+		}
+
+		if (sets.size() <= set) {
+			return null;
+		}
+
+		if (sets.get(set).size() <= index) {
+			return null;
+		}
+
+		return sets.get(set).get(index);
 	}
-	GameState state() {
-		return this.state;
+
+	public Iterable<Tcoord> selectable() {
+		return wSet.selectable();
+	}
+
+	public Iterable<Tcoord> targeted() {
+		return wSet.targeted();
+	}
+
+	public int minSize() {
+		return wSet.minSize();
+	}
+
+	public int maxSize() {
+		return wSet.maxSize();
+	}
+
+	public int size() {
+		return sets.size();
+	}
+
+	public int size(int index) {
+		if (index < 0 || index >= sets.size()) {
+			return 0;
+		}
+
+		return sets.get(index).size();
 	}
 }

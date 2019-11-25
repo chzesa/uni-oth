@@ -1,18 +1,15 @@
 package oht.chess.unit;
-import java.util.ArrayList;
-import oht.chess.game.Faction;
-import oht.chess.ability.Role;
-import oht.chess.util.Tcoord;
+import java.util.HashSet;
 import oht.chess.util.Vector;
 
 class Bishop extends Actor {
-	Bishop(Role role, Tcoord coord, Faction faction) {
-		super(Chesspiece.Bishop, role, coord, faction);
+	Bishop(Faction faction) {
+		super(Chesspiece.Bishop, faction);
 	}
 
 	@Override
-	public ArrayList<Vector> movementVectors() {
-		ArrayList<Vector> ret = new ArrayList<>();
+	public HashSet<Vector> movementVectors() {
+		HashSet<Vector> ret = new HashSet<>();
 		ret.add(new Vector(1, 1, Integer.MAX_VALUE));
 		ret.add(new Vector(1, -1, Integer.MAX_VALUE));
 
@@ -23,7 +20,7 @@ class Bishop extends Actor {
 	}
 
 	@Override
-	public ArrayList<Vector> attackVectors() {
+	public HashSet<Vector> attackVectors() {
 		return movementVectors();
 	}
 

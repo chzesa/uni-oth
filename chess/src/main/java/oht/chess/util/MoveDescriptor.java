@@ -1,5 +1,4 @@
-package oht.chess.ui;
-import oht.chess.util.Tcoord;
+package oht.chess.util;
 
 public class MoveDescriptor {
 	Tcoord origin;

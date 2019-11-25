@@ -1,7 +1,6 @@
-import oht.chess.ability.Role;
 import oht.chess.game.Board;
-import oht.chess.game.Faction;
-import oht.chess.unit.Actor;
+import oht.chess.unit.Faction;
+import oht.chess.unit.IActor;
 import oht.chess.unit.Chesspiece;
 import oht.chess.unit.UnitFactory;
 import oht.chess.util.Tcoord;
@@ -11,14 +10,14 @@ import static org.junit.Assert.*;
 
 public class BoardTest {
 	Board _board;
-	Actor _a;
-	Actor _b;
+	IActor _a;
+	IActor _b;
 
 	@Before
 	public void setUp() {
 		_board = new Board(2, 2);
-		_a = UnitFactory.make(Chesspiece.King, Role.Base, new Tcoord(0, 0), Faction.White);
-		_b = UnitFactory.make(Chesspiece.Queen, Role.Base, new Tcoord(0, 0), Faction.White);
+		_a = UnitFactory.make(Chesspiece.King, new Tcoord(0, 0), Faction.White);
+		_b = UnitFactory.make(Chesspiece.Queen, new Tcoord(0, 0), Faction.White);
 	}
 
 	@Test

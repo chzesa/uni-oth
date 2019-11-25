@@ -1,16 +1,15 @@
 package oht.chess.ability;
 import java.util.ArrayList;
-import oht.chess.unit.Actor;
 
-public class AbilitySet {
-	Actor caster;
+class AbilitySet implements IAbilitySet {
+	Role role;
 	ArrayList<IAbility> abilitys = new ArrayList<>();
 
-	AbilitySet(Actor caster) {
-		this.caster = caster;
+	protected AbilitySet(Role role) {
+		this.role = role;
 	}
 
-	public IAbility get(int i) {
+	public IAbility getAbility(int i) {
 		if (i < 0 || i >= this.abilitys.size()) {
 			return null;
 		}
@@ -19,5 +18,10 @@ public class AbilitySet {
 
 	public int numAbilities() {
 		return this.abilitys.size();
+	}
+
+	@Override
+	public Role role() {
+		return role;
 	}
 }

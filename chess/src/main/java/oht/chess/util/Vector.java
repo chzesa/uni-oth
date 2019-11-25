@@ -1,13 +1,11 @@
 package oht.chess.util;
 
-import oht.chess.util.Tcoord;
-
 public class Vector {
 	private int mag;
 	private Tcoord dir;
 
 	public Vector(Tcoord direction, int magnitude) {
-		// assert mag >= 0
+		if (mag <= 0) { throw new IllegalArgumentException() }
 		this.dir = direction;
 		this.mag = magnitude;
 	}
@@ -40,5 +38,26 @@ public class Vector {
 
 	public static Tcoord add(Tcoord t, Vector v) {
 		return add(v, t);
+	}
+
+	@Override
+	public boolean equals(Object rhs) {
+		if (this == rhs) {
+			return true;
+		}
+		if (rhs == null) {
+			return false;
+		}
+		if (getClass() != rhs.getClass()) {
+			return false;
+		}
+
+		Vector other = (Vector) rhs;
+		return x() == other.x() && y() == other.y() && mag() == other.mag();
+	}
+
+	@Override
+	public int hashCode() {
+		return dir.hashCode();
 	}
 }

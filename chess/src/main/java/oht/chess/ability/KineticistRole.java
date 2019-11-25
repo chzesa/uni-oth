@@ -1,10 +1,10 @@
 package oht.chess.ability;
 
-import oht.chess.unit.Actor;
+import oht.chess.unit.IActor;
 
-public class KineticistRole extends BaseRole {
-	public KineticistRole(Actor caster) {
-		super(caster);
-		abilitys.add(new Telekinesis(caster));
+class KineticistRole extends BaseRole {
+	KineticistRole() {
+		super(Role.Kineticist);
+		abilitys.add(new Telekinesis());
 	}
 }

@@ -1,15 +1,14 @@
 package oht.chess.ability;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-import oht.chess.unit.Actor;
-import oht.chess.game.Board;
+import oht.chess.unit.IActor;
+import oht.chess.game.IBoard;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 
 class AbilityUtil {
-	static Set<Tcoord> filterHostile(ArrayList<Vector> vec, Actor comp, Board b) {
+	static Set<Tcoord> filterHostile(Set<Vector> vec, IActor comp, IBoard b) {
 		Set<Tcoord> set = filterNonempty(vec, comp.pos(), b);
 
 		return set.stream()
@@ -17,7 +16,7 @@ class AbilityUtil {
 			.collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterFriendly(ArrayList<Vector> vec, Actor comp, Board b) {
+	static Set<Tcoord> filterFriendly(Set<Vector> vec, IActor comp, IBoard b) {
 		Set<Tcoord> set = filterNonempty(vec, comp.pos(), b);
 
 		return set.stream()
@@ -25,17 +24,17 @@ class AbilityUtil {
 			.collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterEmpty(ArrayList<Vector> vec, Tcoord origin, Board b) {
+	static Set<Tcoord> filterEmpty(Set<Vector> vec, Tcoord origin, IBoard b) {
 		return filterValid(vec, origin, b).stream()
 			.filter(c -> b.get(c) == null).collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterNonempty(ArrayList<Vector> vec, Tcoord origin, Board b) {
+	static Set<Tcoord> filterNonempty(Set<Vector> vec, Tcoord origin, IBoard b) {
 		return filterValid(vec, origin, b).stream()
 			.filter(c -> b.get(c) != null).collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterValid(ArrayList<Vector> vec, Tcoord origin, Board b) {
+	static Set<Tcoord> filterValid(Set<Vector> vec, Tcoord origin, IBoard b) {
 		HashSet<Tcoord> ret = new HashSet<>();
 
 		for (Vector v : vec) {
