@@ -5,23 +5,24 @@ import oht.chess.Effect;
 import oht.chess.game.GameState;
 import oht.chess.util.Tcoord;
 
-class Attack implements IAbility
-{
-	Actor _usr;
-	Attack(Actor user) { _usr = user; }
+class Attack implements IAbility {
+	Actor user;
+
+	Attack(Actor user) {
+		this.user = user;
+	}
 
 	@Override
 	public AbilityTargeter beginUse(GameState state) {
-		Set<Tcoord> targets = AbilityUtil.filterHostile(_usr.attackVectors(), _usr, state.board());
+		Set<Tcoord> targets = AbilityUtil.filterHostile(this.user.attackVectors(), this.user, state.board());
 
 		TargetSet t = new TargetSet(targets, 1);
-		return new AbilityTargeter(this, _usr, state, t);
+		return new AbilityTargeter(this, this.user, state, t);
 	}
 
 	@Override
 	public boolean isComplete(AbilityTargeter t) {
-		if (t.set(0).numTargets() == 1)
-		{
+		if (t.set(0).numTargets() == 1) {
 			return true;
 		}
 
@@ -35,7 +36,7 @@ class Attack implements IAbility
 
 		Actor target = t.state().board().get(a);
 
-		Effect.damage( _usr, target, _usr.damage(), t.state().board() );
+		Effect.damage(this.user, target, this.user.damage(), t.state().board());
 		return true;
 	}
 
@@ -44,10 +45,17 @@ class Attack implements IAbility
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 	@Override
-	public String name() { return "Attack"; }
+	public String name() {
+		return "Attack";
+	}
 
 	@Override
-	public String description() { return "Attack target unit inflicting damage."; }
+	public String description() {
+		return "Attack target unit inflicting damage.";
+	}
 	
-	@Override public String toString( ) { return name() + ": " + description(); }
+	@Override
+	public String toString() {
+		return name() + ": " + description();
+	}
 }

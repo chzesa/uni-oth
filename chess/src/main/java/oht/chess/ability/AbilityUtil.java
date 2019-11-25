@@ -8,51 +8,47 @@ import oht.chess.game.Board;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 
-class AbilityUtil
-{
-	static Set<Tcoord> filterHostile(ArrayList<Vector> vec, Actor comp, Board b)
-	{
+class AbilityUtil {
+	static Set<Tcoord> filterHostile(ArrayList<Vector> vec, Actor comp, Board b) {
 		Set<Tcoord> set = filterNonempty(vec, comp.pos(), b);
 
 		return set.stream()
-			.filter(e -> b.get(e).faction() != comp.faction() )
+			.filter(e -> b.get(e).faction() != comp.faction())
 			.collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterFriendly(ArrayList<Vector> vec, Actor comp, Board b)
-	{
+	static Set<Tcoord> filterFriendly(ArrayList<Vector> vec, Actor comp, Board b) {
 		Set<Tcoord> set = filterNonempty(vec, comp.pos(), b);
 
 		return set.stream()
-			.filter(e -> b.get(e).faction() == comp.faction() )
+			.filter(e -> b.get(e).faction() == comp.faction())
 			.collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterEmpty(ArrayList<Vector> vec, Tcoord origin, Board b)
-	{
+	static Set<Tcoord> filterEmpty(ArrayList<Vector> vec, Tcoord origin, Board b) {
 		return filterValid(vec, origin, b).stream()
 			.filter(c -> b.get(c) == null).collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterNonempty(ArrayList<Vector> vec, Tcoord origin, Board b)
-	{
+	static Set<Tcoord> filterNonempty(ArrayList<Vector> vec, Tcoord origin, Board b) {
 		return filterValid(vec, origin, b).stream()
 			.filter(c -> b.get(c) != null).collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterValid(ArrayList<Vector> vec, Tcoord origin, Board b)
-	{
+	static Set<Tcoord> filterValid(ArrayList<Vector> vec, Tcoord origin, Board b) {
 		HashSet<Tcoord> ret = new HashSet<>();
 
-		for (Vector v : vec)
-		{
-			for (int i = 1; i <= v.mag(); i++)
-			{
+		for (Vector v : vec) {
+			for (int i = 1; i <= v.mag(); i++) {
 				Vector d = new Vector(v.dir(), i);
 				Tcoord coord = Vector.add(origin, d);
-				if (b.isOob(coord)) { break; }
+				if (b.isOob(coord)) {
+					break;
+				}
 				ret.add(coord);
-				if (b.get(coord) != null) { break; }
+				if (b.get(coord) != null) {
+					break;
+				}
 			}
 		}
 

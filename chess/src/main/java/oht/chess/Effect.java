@@ -3,33 +3,25 @@ import oht.chess.util.Tcoord;
 import oht.chess.unit.Actor;
 import oht.chess.game.Board;
 
-public class Effect
-{
-	public static void damage(Actor src, Actor dst, int amount, Board b)
-	{
+public class Effect {
+	public static void damage(Actor src, Actor dst, int amount, Board b) {
 		System.out.println(src.toString() + " attacks " + dst.toString() + " for " + amount + " damage!");
 
 		int hp = dst.hp();
-		dst.setHp( dst.hp() - amount );
+		dst.setHp(dst.hp() - amount);
 
-		if (amount >= hp)
-		{
+		if (amount >= hp) {
 			// death
 			System.out.println(dst.toString() + " dies!");
 			b.remove(dst.pos());
-		}
-		else
-		{
-
 		}
 
 		
 		// raise event
 	}
 
-	public static void move(Actor a, Tcoord moveTo, Board b)
-	{
-		System.out.println("Moving " + a.toString() + " to " + moveTo.toString() );
+	public static void move(Actor a, Tcoord moveTo, Board b) {
+		System.out.println("Moving " + a.toString() + " to " + moveTo.toString());
 
 		b.remove(a.pos());
 		b.emplace(a, moveTo);

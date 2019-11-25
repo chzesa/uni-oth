@@ -6,8 +6,7 @@ import oht.chess.game.GameState;
 import oht.chess.util.Tcoord;
 import oht.chess.ability.AbilityTargeter;
 
-public interface IAbility
-{
+public interface IAbility {
 	AbilityTargeter beginUse(GameState state);
 	boolean isComplete(AbilityTargeter t);
 	boolean endUse(AbilityTargeter t);

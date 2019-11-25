@@ -1,7 +1,6 @@
 package oht.chess.ui;
 
-enum BackgroundColor
-{
+enum BackgroundColor {
 	Default("\u001B[0m"),
 	Black("\u001B[40m"),
 	Red("\u001B[41m"),
@@ -12,9 +11,13 @@ enum BackgroundColor
 	Cyan("\u001B[46m"),
 	White("\u001B[47m");
 
-	private final String _color;
-	BackgroundColor(String color) { this._color = color; }
+	private final String color;
+	BackgroundColor(String color) {
+		this.color = color;
+	}
 
 	@Override
-	public String toString() { return _color; }
+	public String toString() {
+		return this.color;
+	}
 }

@@ -5,16 +5,13 @@ import oht.chess.ability.Role;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 
-class King extends Actor
-{
-	King(Role role, Tcoord coord, Faction faction)
-	{
+class King extends Actor {
+	King(Role role, Tcoord coord, Faction faction) {
 		super(Chesspiece.King, role, coord, faction);
 	}
 
 	@Override
-	public ArrayList<Vector> movementVectors()
-	{
+	public ArrayList<Vector> movementVectors() {
 		ArrayList<Vector> ret = new ArrayList<>();
 		ret.add(new Vector(0, 1, 1)); // up
 		ret.add(new Vector(1, 1, 1)); // upright
@@ -32,8 +29,12 @@ class King extends Actor
 	}
 
 	@Override
-	public ArrayList<Vector> attackVectors() { return this.movementVectors(); }
+	public ArrayList<Vector> attackVectors() {
+		return this.movementVectors();
+	}
 
 	@Override
-	public char toChar() { return _faction == Faction.White ? '♔' : '♚'; }
+	public char toChar() {
+		return this.faction == Faction.White ? '♔' : '♚';
+	}
 }

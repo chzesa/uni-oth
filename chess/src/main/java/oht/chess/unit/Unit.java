@@ -2,17 +2,20 @@ package oht.chess.unit;
 import oht.chess.unit.Chesspiece;
 import oht.chess.ability.Role;
 
-public class Unit
-{
-	Chesspiece _base;
-	Role _role;
+public class Unit {
+	Chesspiece base;
+	Role role;
 
-	public Unit(Chesspiece base, Role role)
-	{
-		_base = base;
-		_role = role;
+	public Unit(Chesspiece base, Role role) {
+		this.base = base;
+		this.role = role;
 	}
 
-	public Chesspiece base() { return _base; }
-	public Role role() { return _role; }
+	public Chesspiece base() {
+		return this.base;
+	}
+
+	public Role role() {
+		return this.role;
+	}
 }

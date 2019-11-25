@@ -2,12 +2,9 @@ package oht.chess.unit;
 
 import oht.chess.unit.Chesspiece;
 
-public class ChesspieceData
-{
-	public static int maxHp(Chesspiece base)
-	{
-		switch(base)
-		{
+public class ChesspieceData {
+	public static int maxHp(Chesspiece base) {
+		switch (base) {
 			case Bishop: return 3;
 			case King: return 4;
 			case Knight: return 5;
@@ -18,10 +15,8 @@ public class ChesspieceData
 		}
 	}
 
-	public static int damage(Chesspiece base)
-	{
-		switch(base)
-		{
+	public static int damage(Chesspiece base) {
+		switch (base) {
 			case Bishop: return 3;
 			case King: return 4;
 			case Knight: return 2;
@@ -32,10 +27,8 @@ public class ChesspieceData
 		}
 	}
 
-	public static float costMulti(Chesspiece base)
-	{
-		switch(base)
-		{
+	public static float costMulti(Chesspiece base) {
+		switch (base) {
 			case Bishop: return 3;
 			case King: return 4;
 			case Knight: return 2;

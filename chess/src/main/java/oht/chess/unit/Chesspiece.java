@@ -1,7 +1,6 @@
 package oht.chess.unit;
 
-public enum Chesspiece
-{
+public enum Chesspiece {
 	Bishop,
 	King,
 	Knight,

@@ -2,12 +2,10 @@ package oht.chess.ability;
 
 import oht.chess.unit.Actor;
 
-public class BaseRole extends AbilitySet
-{
-	public BaseRole(Actor caster)
-	{
+public class BaseRole extends AbilitySet {
+	public BaseRole(Actor caster) {
 		super(caster);
-		_abts.add(new Move(caster));
-		_abts.add(new Attack(caster));
+		abilitys.add(new Move(caster));
+		abilitys.add(new Attack(caster));
 	}
 }

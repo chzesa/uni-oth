@@ -5,40 +5,50 @@ import java.util.List;
 import oht.chess.unit.Actor;
 import oht.chess.game.GameState;
 
-public class AbilityTargeter
-{
-	IAbility _abty;
-	Actor _usr;
-	GameState _state;
+public class AbilityTargeter {
+	IAbility abty;
+	Actor usr;
+	GameState state;
 
-	ArrayList<TargetSet> _sets = new ArrayList<>();
-	TargetSet _wSet;
+	ArrayList<TargetSet> sets = new ArrayList<>();
+	TargetSet wSet;
 
-	AbilityTargeter(IAbility ability, Actor user, GameState state, TargetSet initialSet)
-	{
-		_abty = ability;
-		_usr = user;
-		_state = state;
-		_wSet = initialSet;
-		_sets.add(_wSet);
+	AbilityTargeter(IAbility ability, Actor user, GameState state, TargetSet initialSet) {
+		this.abty = ability;
+		this.usr = user;
+		this.state = state;
+		this.wSet = initialSet;
+		this.sets.add(this.wSet);
 	}
 
-	void append(TargetSet nextSet)
-	{
-		_wSet = nextSet;
-		_sets.add(_wSet);
+	void append(TargetSet nextSet) {
+		this.wSet = nextSet;
+		this.sets.add(this.wSet);
 	}
 
-	public TargetSet current() { return _wSet; }
-	public boolean isComplete() { return _wSet.isComplete() && _abty.isComplete(this); }
-	int numSets() { return _sets.size(); }
-	List<TargetSet> sets() { return _sets; }
-	TargetSet set(int i)
-	{
-		if (i < 0 || i >= _sets.size()) { return null; }
-		return _sets.get(i);
+	public TargetSet current() {
+		return this.wSet;
+	}
+	public boolean isComplete() {
+		return this.wSet.isComplete() && this.abty.isComplete(this);
+	}
+	int numSets() {
+		return this.sets.size();
+	}
+	List<TargetSet> sets() {
+		return this.sets;
+	}
+	TargetSet set(int i) {
+		if (i < 0 || i >= this.sets.size()) {
+			return null;
+		}
+		return this.sets.get(i);
 	}
 
-	Actor user() { return _usr; }
-	GameState state() { return _state; }
+	Actor user() {
+		return this.usr;
+	}
+	GameState state() {
+		return this.state;
+	}
 }

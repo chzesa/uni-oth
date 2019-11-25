@@ -1,7 +1,6 @@
 package oht.chess.ability;
 
-public enum Role
-{
+public enum Role {
 	Base,
 	Kineticist,
 	Fey

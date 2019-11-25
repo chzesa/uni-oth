@@ -13,56 +13,48 @@ public class UnitFactoryTest {
 	Actor _unit;
 	Random _rand;
 	@Before
-	public void setUp()
-	{
+	public void setUp() {
 		_rand = new Random(5239);
 	}
 
 	@Test
-	public void makePawn()
-	{
+	public void makePawn() {
 		_unit = UnitFactory.make(Chesspiece.Pawn, Role.Base, new Tcoord(0, 0), Faction.White);
 		assertEquals(Chesspiece.Pawn, _unit.base());
 	}
 
 	@Test
-	public void makeRook()
-	{
+	public void makeRook() {
 		_unit = UnitFactory.make(Chesspiece.Rook, Role.Base, new Tcoord(0, 0), Faction.White);
 		assertEquals(Chesspiece.Rook, _unit.base());
 	}
 
 	@Test
-	public void makeKnight()
-	{
+	public void makeKnight() {
 		_unit = UnitFactory.make(Chesspiece.Knight, Role.Base, new Tcoord(0, 0), Faction.White);
 		assertEquals(Chesspiece.Knight, _unit.base());
 	}
 
 	@Test
-	public void makeBishop()
-	{
+	public void makeBishop() {
 		_unit = UnitFactory.make(Chesspiece.Bishop, Role.Base, new Tcoord(0, 0), Faction.White);
 		assertEquals(Chesspiece.Bishop, _unit.base());
 	}
 
 	@Test
-	public void makeKing()
-	{
+	public void makeKing() {
 		_unit = UnitFactory.make(Chesspiece.King, Role.Base, new Tcoord(0, 0), Faction.White);
 		assertEquals(Chesspiece.King, _unit.base());
 	}
 
 	@Test
-	public void makeQueen()
-	{
+	public void makeQueen() {
 		_unit = UnitFactory.make(Chesspiece.Queen, Role.Base, new Tcoord(0, 0), Faction.White);
 		assertEquals(Chesspiece.Queen, _unit.base());
 	}
 
 	@Test
-	public void setCoordinate()
-	{
+	public void setCoordinate() {
 		for (int i = 0; i < 1000; i++)
 		{
 			int x = _rand.nextInt();
@@ -74,8 +66,7 @@ public class UnitFactoryTest {
 	}
 
 	@Test
-	public void setFaction()
-	{
+	public void setFaction() {
 		_unit = UnitFactory.make(Chesspiece.Pawn, Role.Base, new Tcoord(0, 0), Faction.White);
 		assertEquals(Faction.White, _unit.faction());
 

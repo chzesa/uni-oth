@@ -14,82 +14,100 @@ import oht.chess.game.Faction;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 
-public class Actor extends Unit
-{
-	protected Tcoord _pos;
-	protected Faction _faction;
-	protected int _hp;
-	protected int _maxHp;
-	protected int _damage;
-	protected Vector _fwd;
-	protected AbilitySet _abilities;
+public class Actor extends Unit {
+	protected Tcoord pos;
+	protected Faction faction;
+	protected int hp;
+	protected int maxHp;
+	protected int damage;
+	protected Vector forward;
+	protected AbilitySet abilitys;
 
-	protected void initAbilities(Role role)
-	{
-		switch(role)
-		{
-			case Base: _abilities = new BaseRole(this);
+	protected void initAbilities(Role role) {
+		switch (role) {
+			case Base: this.abilitys = new BaseRole(this);
 				break;
-			case Kineticist: _abilities = new KineticistRole(this);
+			case Kineticist: this.abilitys = new KineticistRole(this);
 				break;
-			case Fey: _abilities = new FeyRole(this);
+			case Fey: this.abilitys = new FeyRole(this);
 				break;
 			default: throw new UnsupportedOperationException();
 		}
 	}
 
-	protected Actor(Chesspiece base, Role role, Tcoord coord, Faction faction)
-	{
+	protected Actor(Chesspiece base, Role role, Tcoord coord, Faction faction) {
 		super(base, role);
-		_pos = coord;
-		_faction = faction;
+		this.pos = coord;
+		this.faction = faction;
 
-		if (_faction == Faction.Black)
-		{
-			_fwd = new Vector(0, -1, 1);
+		if (this.faction == Faction.Black) {
+			this.forward = new Vector(0, -1, 1);
 		} else {
-			_fwd = new Vector(0, 1, 1);
+			this.forward = new Vector(0, 1, 1);
 		}
 
-		_maxHp = ChesspieceData.maxHp(_base);
-		_hp = _maxHp;
-		_damage = ChesspieceData.damage(_base);
+		this.maxHp = ChesspieceData.maxHp(this.base);
+		this.hp = this.maxHp;
+		this.damage = ChesspieceData.damage(this.base);
 		initAbilities(role);
 	}
 
-	public Tcoord pos() { return _pos; }
-
-	public void setPos(Tcoord coord) { _pos = coord; }
-	public Faction faction() { return _faction; }
-
-	public int hp() { return _hp; }
-	public int setHp(int hp)
-	{
-		_hp = Math.min(0, Math.max(_maxHp, hp));
-		return _hp;
+	public Tcoord pos() {
+		return this.pos;
 	}
 
-	public int damage() { return _damage; }
+	public void setPos(Tcoord coord) {
+		this.pos = coord;
+	}
 
-	public ArrayList<Vector> movementVectors() { throw new UnsupportedOperationException(); }
-	public ArrayList<Vector> attackVectors() { throw new UnsupportedOperationException(); }
-	Vector forward() { return _fwd; }
+	public Faction faction() {
+		return this.faction;
+	}
 
-	public IAbility ability(int index)
-	{
-		IAbility a = _abilities.get(index);
-		if (a == null) { return new Move(this); } // todo
+	public int hp() {
+		return this.hp;
+	}
+
+	public int setHp(int hp) {
+		this.hp = Math.min(0, Math.max(this.maxHp, hp));
+		return this.hp;
+	}
+
+	public int damage() {
+		return this.damage;
+	}
+
+	public ArrayList<Vector> movementVectors() {
+		throw new UnsupportedOperationException();
+	}
+
+	public ArrayList<Vector> attackVectors() {
+		throw new UnsupportedOperationException();
+	}
+
+	Vector forward() {
+		return this.forward;
+	}
+
+	public IAbility ability(int index) {
+		IAbility a = this.abilitys.get(index);
+		if (a == null) {
+			return new Move(this);
+		} // todo
 		return a;
 	}
 
-	public int numAbilities() { return _abilities.numAbilities(); }
-
-	@Override
-	public String toString()
-	{
-		return _faction.toString() + " "+ _role.toString() +" " + _base.toString() 
-			+ "; pos " + _pos.toString() + "; hp " + _hp + "/" + _maxHp + "; dmg " + _damage;
+	public int numAbilities() {
+		return this.abilitys.numAbilities();
 	}
 
-	public char toChar() { return '?'; }
+	@Override
+	public String toString() {
+		return this.faction.toString() + " " + this.role.toString() + " " + this.base.toString() 
+			+ "; pos " + this.pos.toString() + "; hp " + this.hp + "/" + this.maxHp + "; dmg " + this.damage;
+	}
+
+	public char toChar() {
+		return '?';
+	}
 }

@@ -1,7 +1,6 @@
 package oht.chess.game;
 
-public enum Faction
-{
+public enum Faction {
 	White,
 	Black
 }

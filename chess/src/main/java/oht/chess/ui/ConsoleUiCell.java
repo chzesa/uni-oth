@@ -1,19 +1,23 @@
 package oht.chess.ui;
 
-class ConsoleUiCell
-{
-	char _c = ' ';
-	ForegroundColor _fg = ForegroundColor.Default;
-	BackgroundColor _bg = BackgroundColor.Default;
+class ConsoleUiCell {
+	char c = ' ';
+	ForegroundColor fg = ForegroundColor.Default;
+	BackgroundColor bg = BackgroundColor.Default;
 
-	void set(char c) { _c = c; }
-	void set(ForegroundColor color) { _fg = color; }
-	void set(BackgroundColor color) { _bg = color; }
+	void set(char c) {
+		this.c = c;
+	}
+	void set(ForegroundColor color) {
+		this.fg = color;
+	}
+	void set(BackgroundColor color) {
+		this.bg = color;
+	}
 
 	@Override
-	public String toString()
-	{
-		return _bg.toString() + _fg.toString() + _c
+	public String toString() {
+		return this.bg.toString() + this.fg.toString() + this.c
 			+ ForegroundColor.Default.toString()
 			+ BackgroundColor.Default.toString();
 	}
