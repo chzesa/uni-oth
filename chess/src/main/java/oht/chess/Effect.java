@@ -8,7 +8,7 @@ public class Effect {
 		System.out.println(src.toString() + " attacks " + dst.toString() + " for " + amount + " damage!");
 
 		int hp = dst.hp();
-		dst.setHp(dst.hp() - amount);
+		dst.setHp(hp - amount);
 
 		if (amount >= hp) {
 			// death

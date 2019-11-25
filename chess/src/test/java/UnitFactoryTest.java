@@ -1,21 +1,14 @@
-import oht.chess.ability.Role;
 import oht.chess.unit.Faction;
-import oht.chess.unit.Actor;
 import oht.chess.unit.Chesspiece;
 import oht.chess.unit.UnitFactory;
-import oht.chess.util.Tcoord;
 import java.util.Random;
+import oht.chess.unit.IActor;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
 
 public class UnitFactoryTest {
-	Actor _unit;
-	Random _rand;
-	@Before
-	public void setUp() {
-		_rand = new Random(5239);
-	}
+	IActor _unit;
 
 	@Test
 	public void makePawn() {
@@ -43,34 +36,22 @@ public class UnitFactoryTest {
 
 	@Test
 	public void makeKing() {
-		_unit = UnitFactory.make(Chesspiece.King, Role.Base, new Tcoord(0, 0), Faction.White);
+		_unit = UnitFactory.make(Chesspiece.King, Faction.White);
 		assertEquals(Chesspiece.King, _unit.base());
 	}
 
 	@Test
 	public void makeQueen() {
-		_unit = UnitFactory.make(Chesspiece.Queen, Role.Base, new Tcoord(0, 0), Faction.White);
+		_unit = UnitFactory.make(Chesspiece.Queen, Faction.White);
 		assertEquals(Chesspiece.Queen, _unit.base());
 	}
 
 	@Test
-	public void setCoordinate() {
-		for (int i = 0; i < 1000; i++)
-		{
-			int x = _rand.nextInt();
-			int y = _rand.nextInt();
-			_unit = UnitFactory.make(Chesspiece.Pawn, Role.Base, new Tcoord(x, y), Faction.White);
-			assertEquals(x, _unit.pos().x());
-			assertEquals(y, _unit.pos().y());
-		}
-	}
-
-	@Test
-	public void setFaction() {
-		_unit = UnitFactory.make(Chesspiece.Pawn, Role.Base, new Tcoord(0, 0), Faction.White);
+	public void correctFaction() {
+		_unit = UnitFactory.make(Chesspiece.Pawn, Faction.White);
 		assertEquals(Faction.White, _unit.faction());
 
-		_unit = UnitFactory.make(Chesspiece.Pawn, Role.Base, new Tcoord(0, 0), Faction.Black);
+		_unit = UnitFactory.make(Chesspiece.Pawn, Faction.Black);
 		assertEquals(Faction.Black, _unit.faction());
 	}
 }

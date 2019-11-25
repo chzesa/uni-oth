@@ -16,15 +16,17 @@ public class Entity implements IActor, IAbilitySet
 {
 	IActor actor;
 	IAbilitySet abilities;
+	Role role;
 
 	Entity(Chesspiece base, Role role, Faction faction) {
 		actor = UnitFactory.make(base, faction);
 		abilities = RoleFactory.make(role);
+		this.role = role;
 	}
 
 	@Override
 	public Role role() {
-		return actor.role();
+		return role;
 	}
 
 	@Override
@@ -91,5 +93,9 @@ public class Entity implements IActor, IAbilitySet
 	public IAbility getAbility(int i) {
 		return abilities.getAbility(i);
 	}
-	
+
+	@Override
+	public String toString() {
+		return actor.toString();
+	}
 }

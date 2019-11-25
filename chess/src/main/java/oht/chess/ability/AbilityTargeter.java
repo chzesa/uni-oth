@@ -1,8 +1,6 @@
 package oht.chess.ability;
 
 import java.util.ArrayList;
-import oht.chess.unit.IActor;
-import oht.chess.game.IBoard;
 import oht.chess.util.Tcoord;
 
 public class AbilityTargeter {

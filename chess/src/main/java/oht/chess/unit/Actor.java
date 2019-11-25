@@ -46,7 +46,7 @@ class Actor extends Unit implements IActor {
 	}
 
 	public int setHp(int hp) {
-		this.hp = Math.min(0, Math.max(this.maxHp, hp));
+		this.hp = Math.max(0, Math.min(this.maxHp, hp));
 		return this.hp;
 	}
 

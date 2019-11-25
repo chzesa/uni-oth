@@ -1,5 +1,4 @@
 package oht.chess.ability;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import oht.chess.util.Tcoord;
@@ -14,16 +13,16 @@ class TargetSet {
 	int max;
 
 	TargetSet(Set<Tcoord> targetables, int min, int max) {
-		// if targetables < min || targetables < max throw
+		if (targetables.size() < min || max < min || min < 0 || max < 0) {
+			throw new IllegalArgumentException();
+		}
 		this.refSet = targetables;
 		this.min = min;
 		this.max = max;
 	}
 
 	TargetSet(Set<Tcoord> targetables, int num) {
-		this.refSet = targetables;
-		this.min = num;
-		this.max = num;
+		this(targetables, num, num);
 	}
 
 	private boolean add(Tcoord t) {

@@ -7,10 +7,14 @@ public class Game extends Board {
 	int turnCount;
 	Board board;
 
-	public Game(IPlayerController p1, IPlayerController p2, int w, int h) {
+	public Game(int w, int h) {
 		super(w, h);
 		this.turnCount = 0;
 		this.board = new Board(w, h);
+	}
+
+	public Game(IPlayerController p1, IPlayerController p2, int w, int h) {
+		this(w, h);
 	}
 
 	public Faction activeFaction() {

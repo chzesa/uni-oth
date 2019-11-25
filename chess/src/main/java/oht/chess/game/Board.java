@@ -43,6 +43,10 @@ class Board implements IBoard {
 	}
 
 	public Entity get(int x, int y) {
+		if (isOob(x, y)) {
+			return null;
+		}
+
 		return this.cells[x][y];
 	}
 
@@ -86,8 +90,8 @@ class Board implements IBoard {
 		if (isOob(x, y) || get(x, y) != null) {
 			return false;
 		}
+
 		Entity ent = new Entity(base, role, faction);
-		emplace(ent, new Tcoord(x, y));
-		return true;
+		return emplace(ent, new Tcoord(x, y));
 	}
 }
