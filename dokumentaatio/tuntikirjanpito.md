@@ -6,3 +6,4 @@
 * 16.11.	1h
 * 19.11.	3h	Refactoring, tests
 * 25.11.	1h	Implement checkstyle, fix checkstyle errors
+		4h	Refactoring, design to avoid circular dependencies
