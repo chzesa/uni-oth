@@ -15,6 +15,8 @@ import java.util.Iterator;
 import java.util.Random;
 import oht.chess.ability.TargeterState;
 import oht.chess.game.Entity;
+import oht.chess.game.GameSerializer;
+import oht.chess.io.FileHandler;
 
 public class Chess {
 	static Role[] roles = Role.values();
@@ -30,13 +32,11 @@ public class Chess {
 	public Chess(String[] args) {
 		ui = new ConsoleUi();
 		p = new ConsolePlayer();
-		String loadFile;
 
 		if (args.length > 0) {
-			loadFile = args[1];
+			game = GameSerializer.deserialize(FileHandler.readToString(args[0]));
 		}
 
-		// load File
 		if (game != null) {
 			return;
 		}

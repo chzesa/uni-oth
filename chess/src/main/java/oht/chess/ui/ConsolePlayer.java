@@ -6,6 +6,8 @@ import oht.chess.ability.AbilityTargeter;
 import oht.chess.ability.IAbility;
 import oht.chess.game.Entity;
 import oht.chess.game.Game;
+import oht.chess.game.GameSerializer;
+import oht.chess.io.FileHandler;
 import oht.chess.util.Tcoord;
 
 public class ConsolePlayer implements IPlayerController {
@@ -36,23 +38,34 @@ public class ConsolePlayer implements IPlayerController {
 			String input = scan.nextLine();
 			String[] splinput = input.split("\\s");
 
-			for (String s : splinput) {
+			for (int i = 0; i < splinput.length; i++) {
+				String s = splinput[i];
 				s = s.trim().toLowerCase();
 
 				if (s.equals("help") || s.equals("?")) {
 					continue;
 				} else if (s.equals("quit") || s.equals("q")) {
 					System.out.println("Enter \"forfeit\" to exit the game.");
+				} else if (s.equals("save")) {
+					String p = "";
+					for (int j = i + 1; j < splinput.length; j++) {
+						p += splinput[j] + " ";
+					}
+					p = p.trim();
+					if (FileHandler.write(GameSerializer.serialize(game), p)) {
+						System.out.println("Saved game to " + p);
+					}
+					continue read;
 				} else if (s.equals("forfeit")) {
 					return null;
 				} else if (digits.matcher(s).matches()) {
 					if (selected == null) {
 						continue;
 					}
-					int i = Integer.parseInt(s);
-					ability = selected.getAbility(i);
+					int index = Integer.parseInt(s);
+					ability = selected.getAbility(index);
 					if (ability != null) {
-						return new MoveDescriptor(selected.pos(), i);
+						return new MoveDescriptor(selected.pos(), index);
 					}
 				} else {
 					Tcoord parsed = ControllerUtil.parseString(s);
