@@ -25,7 +25,7 @@ Joukkuekokoonpanon voi tallentaa ja ladata levyltä.
 
 ## Kehitys
 * [x] Ydintoiminnallisuus
-* [ ] Pelin lataus, tallennus
+* [x] Pelin lataus, tallennus
 * [ ] Pelin päättymistilanne, pattitilanteen havaitseminen
 * [ ] Joukkueen kasaus
 * [ ] Joukkueen lataus, tallennus

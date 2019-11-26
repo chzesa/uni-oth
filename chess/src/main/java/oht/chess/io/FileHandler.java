@@ -10,10 +10,10 @@ public class FileHandler {
 		try {
 			Path p = Paths.get(path);
 			bytes = Files.readAllBytes(p);
-		} catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println(e);
 			return "";
-		} catch(SecurityException e) {
+		} catch (SecurityException e) {
 			return "";
 		}
 
@@ -29,9 +29,9 @@ public class FileHandler {
 			Path p = Paths.get(path);
 			byte[] bytes = content.getBytes();
 			Files.write(p, bytes);
-		} catch(IOException e) {
+		} catch (IOException e) {
 			return false;
-		} catch(SecurityException e) {
+		} catch (SecurityException e) {
 			return false;
 		}
 

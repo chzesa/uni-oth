@@ -34,6 +34,7 @@ public class ConsolePlayer implements IPlayerController {
 			}
 
 			System.out.println("Type \"forfeit\" to quit the game.");
+			System.out.println("Type \"save\" followed by filename to save the current game.");
 			System.out.print("> ");
 			String input = scan.nextLine();
 			String[] splinput = input.split("\\s");
