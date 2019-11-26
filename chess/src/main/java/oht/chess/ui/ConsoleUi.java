@@ -5,15 +5,15 @@ import oht.chess.game.Game;
 import oht.chess.util.Tcoord;
 
 public class ConsoleUi implements IGui {
-	Iterable<Tcoord> _highlighted;
-	Iterable<Tcoord> _selected;
+	Iterable<Tcoord> highlighted;
+	Iterable<Tcoord> selected;
 
 	public void setSelected(Iterable<Tcoord> coords) {
-		_highlighted = coords;
+		highlighted = coords;
 	}
 
 	public void setSelectables(Iterable<Tcoord> coords) {
-		_selected = coords;
+		selected = coords;
 	}
 
 	public boolean draw(Game game) {
@@ -33,26 +33,28 @@ public class ConsoleUi implements IGui {
 			}
 		}
 
-		if (_highlighted != null)
-		for (Tcoord c : _highlighted) {
-			cells[c.x()][c.y()].set(ForegroundColor.Purple);
-			if (cells[c.x()][c.y()].c == ' ') {
-				cells[c.x()][c.y()].set('●');
+		if (highlighted != null) {
+			for (Tcoord c : highlighted) {
+				cells[c.x()][c.y()].set(ForegroundColor.Purple);
+				if (cells[c.x()][c.y()].c == ' ') {
+					cells[c.x()][c.y()].set('●');
+				}
 			}
 		}
 
-		if (_selected != null)
-		for (Tcoord c : _selected) {
-			cells[c.x()][c.y()].set(ForegroundColor.Cyan);
-			if (cells[c.x()][c.y()].c == ' ') {
-				cells[c.x()][c.y()].set('●');
+		if (selected != null) {
+			for (Tcoord c : selected) {
+				cells[c.x()][c.y()].set(ForegroundColor.Cyan);
+				if (cells[c.x()][c.y()].c == ' ') {
+					cells[c.x()][c.y()].set('●');
+				}
 			}
 		}
 
 		for (int x = 0; x < w; x++) {
 			for (int y = h - 1; y > -1; y--) {
 				String repr = " ";
-				IActor a = game.get(x,y);
+				IActor a = game.get(x, y);
 				output[x + 2][game.height() - y - 1] = a == null ? " " : "" + a.toChar();
 			}
 		}
@@ -66,7 +68,7 @@ public class ConsoleUi implements IGui {
 
 		// Column labels
 		for (int x = 0; x < w; x++) {
-			output[x + 2][h] = "" +(char)(65 + x);
+			output[x + 2][h] = "" + (char) (65 + x);
 		}
 
 		// Newlines
@@ -83,8 +85,7 @@ public class ConsoleUi implements IGui {
 		for (int x = 0; x < w; x++) {
 			for (int y = h - 1; y > -1; y--) {
 				String repr = " ";
-				IActor a = game.get(x,y);
-				// output[x + 2][state.board().height() - y - 1] = a == null ? " " : actorStr(a);
+				IActor a = game.get(x, y);
 				output[x + 2][game.height() - y - 1] = cells[x][y].toString();
 			}
 		}

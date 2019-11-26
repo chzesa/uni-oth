@@ -8,17 +8,17 @@ import oht.chess.unit.Faction;
 import oht.chess.unit.IActor;
 
 public class GameSerializer {
-	final static String widthKey = "width";
-	final static String heightKey = "height";
-	final static String turnKey = "turn";
-	final static String unitKey = "unit";
-	final static String leaderKey = "leader";
+	final static String WIDTH_KEY = "width";
+	final static String HEIGHT_KEY = "height";
+	final static String TURN_KEY = "turn";
+	final static String UNIT_KEY = "unit";
+	final static String LEADER_KEY = "leader";
 
-	static Pattern rTurn = Pattern.compile("^" + turnKey + "\\s*(\\d*)$");
-	static Pattern rWidth = Pattern.compile("^" + widthKey + "\\s*(\\d*)$");
-	static Pattern rHeight = Pattern.compile("^" + heightKey + "\\s*(\\d*)$");
-	static Pattern rUnit = Pattern.compile("^" + unitKey + " (\\S*) (\\S*) (\\S*) (\\d*) (\\d*) hp (\\d*)$");
-	static Pattern rLeader = Pattern.compile("^" + leaderKey + " (\\d*) (\\d*)$");
+	static Pattern rTurn = Pattern.compile("^" + TURN_KEY + "\\s*(\\d*)$");
+	static Pattern rWidth = Pattern.compile("^" + WIDTH_KEY + "\\s*(\\d*)$");
+	static Pattern rHeight = Pattern.compile("^" + HEIGHT_KEY + "\\s*(\\d*)$");
+	static Pattern rUnit = Pattern.compile("^" + UNIT_KEY + " (\\S*) (\\S*) (\\S*) (\\d*) (\\d*) hp (\\d*)$");
+	static Pattern rLeader = Pattern.compile("^" + LEADER_KEY + " (\\d*) (\\d*)$");
 
 	HashMap<Tcoord, Entity> units = new HashMap<>();
 
@@ -121,7 +121,7 @@ public class GameSerializer {
 			x = Integer.parseInt(m.group(4));
 			y = Integer.parseInt(m.group(5));
 			hp = Integer.parseInt(m.group(6));
-		} catch(NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return;
 		}
 		
@@ -132,7 +132,7 @@ public class GameSerializer {
 			f = Faction.valueOf(faction);
 			r = Role.valueOf(role);
 			b = Chesspiece.valueOf(base);
-		} catch(IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			return;
 		}
 
@@ -145,9 +145,9 @@ public class GameSerializer {
 
 	public static String serialize(Game game) {
 		StringBuilder ret = new StringBuilder();
-		ret.append(turnKey + " " + game.turn() + '\n');
-		ret.append(widthKey + " " + game.width() + '\n');
-		ret.append(heightKey + " " + game.height() + '\n');
+		ret.append(TURN_KEY + " " + game.turn() + '\n');
+		ret.append(WIDTH_KEY + " " + game.width() + '\n');
+		ret.append(HEIGHT_KEY + " " + game.height() + '\n');
 
 		for (int x = 0; x < game.width(); x++) {
 			for (int y = 0; y < game.height(); y++) {
@@ -156,7 +156,7 @@ public class GameSerializer {
 					continue;
 				}
 				String s = "unit " + a.faction() + " " + a.role() + " " + a.base() + " "
-				+ a.pos().x() + " " + a.pos().y() + " hp " + a.hp() + '\n';
+								+ a.pos().x() + " " + a.pos().y() + " hp " + a.hp() + '\n';
 				ret.append(s);
 			}
 		}

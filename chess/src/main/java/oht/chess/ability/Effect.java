@@ -11,18 +11,13 @@ public class Effect {
 		dst.setHp(hp - amount);
 
 		if (amount >= hp) {
-			// death
 			System.out.println(dst.toString() + " dies!");
 			b.remove(dst.pos());
 		}
-
-		// raise event
 	}
 
 	public static void move(IActor a, Tcoord moveTo, IBoard b) {
 		System.out.println("Moving " + a.toString() + " to " + moveTo.toString());
-		if (b.move(a.pos(), moveTo)) {
-			// raise event, movement type enum
-		}
+		b.move(a.pos(), moveTo);
 	}
 }

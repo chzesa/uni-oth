@@ -48,8 +48,8 @@ public class Game extends Board {
 		Game other = (Game) rhs;
 
 		if (turnCount != other.turnCount
-			|| w != other.w
-			|| h != other.h) {
+						|| w != other.w
+						|| h != other.h) {
 			return false;
 		}
 

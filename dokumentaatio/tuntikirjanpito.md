@@ -11,4 +11,4 @@
 * 26.11.	2h	Writing unit tests, bugfixing
 		1h	Add game serializer
 		1h	Debugging serializer
-		30m	Update documentation
+		1h	Update documentation, fix checkstyle errors

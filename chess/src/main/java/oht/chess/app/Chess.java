@@ -108,7 +108,7 @@ public class Chess {
 			}
 
 			System.out.println("Using " + a.toString());
-			if(a.endUse(t, tar, game)) {
+			if (a.endUse(t, tar, game)) {
 				game.nextTurn();
 			}
 		}

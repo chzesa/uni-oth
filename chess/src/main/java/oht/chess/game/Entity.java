@@ -12,8 +12,7 @@ import oht.chess.util.Vector;
 import oht.chess.unit.UnitFactory;
 import oht.chess.ability.RoleFactory;
 
-public class Entity implements IActor, IAbilitySet
-{
+public class Entity implements IActor, IAbilitySet {
 	IActor actor;
 	IAbilitySet abilities;
 	Role role;
