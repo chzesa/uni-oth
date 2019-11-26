@@ -8,3 +8,7 @@
 * 25.11.	1h	Implement checkstyle, fix checkstyle errors
 		4h	Refactoring, design to avoid circular dependencies
 		1h30m	Writing unit tests
+* 26.11.	2h	Writing unit tests, bugfixing
+		1h	Add game serializer
+		1h	Debugging serializer
+		30m	Update documentation

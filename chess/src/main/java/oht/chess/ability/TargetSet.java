@@ -4,7 +4,7 @@ import java.util.Set;
 import oht.chess.util.Tcoord;
 import java.util.HashMap;
 
-class TargetSet {
+public class TargetSet {
 	Set<Tcoord> refSet;
 	HashSet<Tcoord> wSet = new HashSet<>();
 	HashMap<Tcoord, Integer> orderMap = new HashMap<>();
@@ -12,8 +12,8 @@ class TargetSet {
 	int min;
 	int max;
 
-	TargetSet(Set<Tcoord> targetables, int min, int max) {
-		if (targetables.size() < min || max < min || min < 0 || max < 0) {
+	public TargetSet(Set<Tcoord> targetables, int min, int max) {
+		if (targetables == null || max < min || min < 0 || max < 0) {
 			throw new IllegalArgumentException();
 		}
 		this.refSet = targetables;
@@ -21,7 +21,7 @@ class TargetSet {
 		this.max = max;
 	}
 
-	TargetSet(Set<Tcoord> targetables, int num) {
+	public TargetSet(Set<Tcoord> targetables, int num) {
 		this(targetables, num, num);
 	}
 
@@ -39,21 +39,24 @@ class TargetSet {
 
 	private boolean remove(Tcoord t) {
 		boolean result = wSet.remove(t);
+		if (!result) {
+			return false;
+		}
 		int index = orderMap.remove(t);
 		insertionOrder.remove(insertionOrder.size() - 1);
 
-		orderMap.forEach((k, v) -> {
-			if (index < v) {
-				v -= 1;
+		orderMap.entrySet().forEach(pair -> {
+			if (index < pair.getValue()) {
+				pair.setValue(pair.getValue() - 1);
 			}
 
-			insertionOrder.put(v, k);
+			insertionOrder.put(pair.getValue(), pair.getKey());
 		});
 
 		return result;
 	}
 
-	boolean toggle(Tcoord t) {
+	public boolean toggle(Tcoord t) {
 		if (this.wSet.contains(t)) {
 			remove(t);
 			return false;
@@ -62,31 +65,31 @@ class TargetSet {
 		return add(t);
 	}
 
-	Tcoord get(int i) {
+	public Tcoord get(int i) {
 		return insertionOrder.get(i);
 	}
 
-	int minSize() {
+	public int minSize() {
 		return this.min;
 	}
 
-	int maxSize() {
+	public int maxSize() {
 		return this.max;
 	}
 
-	int size() {
+	public int size() {
 		return this.wSet.size();
 	}
 
-	Iterable<Tcoord> targeted() {
+	public Iterable<Tcoord> targeted() {
 		return this.wSet;
 	}
 
-	Iterable<Tcoord> selectable() {
+	public Iterable<Tcoord> selectable() {
 		return this.refSet;
 	}
 
-	boolean isComplete() {
+	public boolean isComplete() {
 		return this.min <= this.wSet.size() && this.wSet.size() <= this.max;
 	}
 

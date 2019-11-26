@@ -23,3 +23,9 @@ Joukkueessa voi olla maksimissaan 16 yksikköä joista yksi korotetaan johtajaks
 
 Joukkuekokoonpanon voi tallentaa ja ladata levyltä.
 
+## Kehitys
+* [x] Ydintoiminnallisuus
+* [ ] Pelin lataus, tallennus
+* [ ] Pelin päättymistilanne, pattitilanteen havaitseminen
+* [ ] Joukkueen kasaus
+* [ ] Joukkueen lataus, tallennus

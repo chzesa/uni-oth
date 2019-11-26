@@ -6,16 +6,14 @@ import java.util.Set;
 
 class Actor extends Unit implements IActor {
 	protected Tcoord pos;
-	protected Faction faction;
 	protected int hp;
 	protected int maxHp;
 	protected int damage;
 	protected Vector forward;
 
 	protected Actor(Chesspiece base, Faction faction) {
-		super(base, Role.Base);
+		super(base, Role.Base, faction);
 		this.pos = new Tcoord(0, 0);
-		this.faction = faction;
 
 		if (this.faction == Faction.Black) {
 			this.forward = new Vector(0, -1, 1);
@@ -74,5 +72,12 @@ class Actor extends Unit implements IActor {
 
 	public char toChar() {
 		return '?';
+	}
+
+	public boolean equals(IActor other) {
+		return this.hp == other.hp()
+			&& this.base == other.base()
+			&& this.faction == other.faction()
+			&& this.pos.equals(other.pos());
 	}
 }

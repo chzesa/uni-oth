@@ -1,4 +1,4 @@
-package oht.chess;
+package oht.chess.ability;
 import oht.chess.util.Tcoord;
 import oht.chess.unit.IActor;
 import oht.chess.game.IBoard;

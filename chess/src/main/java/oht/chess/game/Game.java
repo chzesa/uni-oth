@@ -32,4 +32,43 @@ public class Game extends Board {
 		this.turnCount++;
 		return activeFaction();
 	}
+
+	@Override
+	public boolean equals(Object rhs) {
+		if (this == rhs) {
+			return true;
+		}
+		if (rhs == null) {
+			return false;
+		}
+		if (getClass() != rhs.getClass()) {
+			return false;
+		}
+
+		Game other = (Game) rhs;
+
+		if (turnCount != other.turnCount
+			|| w != other.w
+			|| h != other.h) {
+			return false;
+		}
+
+		for (int x = 0; x < w; x++) {
+			for (int y = 0; y < h; y++) {
+				Entity a = cells[x][y];
+				Entity b = other.cells[x][y];
+				if (a == null && b == null) {
+					continue;
+				}
+
+				if (a != null && b != null && a.equals(b)) {
+					continue;
+				} else {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
 }

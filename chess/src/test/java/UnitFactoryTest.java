@@ -1,10 +1,8 @@
 import oht.chess.unit.Faction;
 import oht.chess.unit.Chesspiece;
 import oht.chess.unit.UnitFactory;
-import java.util.Random;
 import oht.chess.unit.IActor;
 import org.junit.Test;
-import org.junit.Before;
 import static org.junit.Assert.*;
 
 public class UnitFactoryTest {

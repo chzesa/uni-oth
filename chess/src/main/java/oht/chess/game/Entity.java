@@ -98,4 +98,8 @@ public class Entity implements IActor, IAbilitySet
 	public String toString() {
 		return actor.toString();
 	}
+        
+	public boolean equals(IActor other) {
+		return actor.equals(other) && this.role == other.role();
+	}
 }

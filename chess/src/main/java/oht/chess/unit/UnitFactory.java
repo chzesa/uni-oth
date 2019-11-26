@@ -1,7 +1,7 @@
 package oht.chess.unit;
 
 public class UnitFactory {
-	public static Actor make(Chesspiece base, Faction faction) {
+	public static IActor make(Chesspiece base, Faction faction) {
 		switch (base) {
 			case Pawn: return new Pawn(faction);
 			case Rook: return new Rook(faction);

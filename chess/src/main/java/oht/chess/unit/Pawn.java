@@ -1,6 +1,5 @@
 package oht.chess.unit;
 import java.util.HashSet;
-import oht.chess.ability.Role;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 

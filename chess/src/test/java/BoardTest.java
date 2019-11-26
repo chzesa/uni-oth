@@ -5,7 +5,6 @@ import oht.chess.game.Game;
 import oht.chess.unit.Faction;
 import oht.chess.unit.IActor;
 import oht.chess.unit.Chesspiece;
-import oht.chess.unit.UnitFactory;
 import oht.chess.util.Tcoord;
 import org.junit.Test;
 import org.junit.Before;

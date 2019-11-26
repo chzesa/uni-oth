@@ -7,8 +7,8 @@ import oht.chess.game.IBoard;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 
-class AbilityUtil {
-	static Set<Tcoord> filterHostile(Set<Vector> vec, IActor comp, IBoard b) {
+public class AbilityUtil {
+	public static Set<Tcoord> filterHostile(Set<Vector> vec, IActor comp, IBoard b) {
 		Set<Tcoord> set = filterNonempty(vec, comp.pos(), b);
 
 		return set.stream()
@@ -16,7 +16,7 @@ class AbilityUtil {
 			.collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterFriendly(Set<Vector> vec, IActor comp, IBoard b) {
+	public static Set<Tcoord> filterFriendly(Set<Vector> vec, IActor comp, IBoard b) {
 		Set<Tcoord> set = filterNonempty(vec, comp.pos(), b);
 
 		return set.stream()
@@ -24,17 +24,17 @@ class AbilityUtil {
 			.collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterEmpty(Set<Vector> vec, Tcoord origin, IBoard b) {
+	public static Set<Tcoord> filterEmpty(Set<Vector> vec, Tcoord origin, IBoard b) {
 		return filterValid(vec, origin, b).stream()
 			.filter(c -> b.get(c) == null).collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterNonempty(Set<Vector> vec, Tcoord origin, IBoard b) {
+	public static Set<Tcoord> filterNonempty(Set<Vector> vec, Tcoord origin, IBoard b) {
 		return filterValid(vec, origin, b).stream()
 			.filter(c -> b.get(c) != null).collect(Collectors.toSet());
 	}
 
-	static Set<Tcoord> filterValid(Set<Vector> vec, Tcoord origin, IBoard b) {
+	public static Set<Tcoord> filterValid(Set<Vector> vec, Tcoord origin, IBoard b) {
 		HashSet<Tcoord> ret = new HashSet<>();
 
 		for (Vector v : vec) {

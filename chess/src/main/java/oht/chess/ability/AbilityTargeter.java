@@ -7,17 +7,17 @@ public class AbilityTargeter {
 	ArrayList<TargetSet> sets = new ArrayList<>();
 	TargetSet wSet;
 
-	AbilityTargeter(TargetSet initialSet) {
+	public AbilityTargeter(TargetSet initialSet) {
 		this.wSet = initialSet;
 		this.sets.add(this.wSet);
 	}
 
-	void append(TargetSet nextSet) {
+	public void append(TargetSet nextSet) {
 		this.wSet = nextSet;
 		this.sets.add(this.wSet);
 	}
 
-	boolean isComplete() {
+	public boolean isComplete() {
 		boolean ok = true;
 		for (TargetSet set : sets) {
 			if (!set.isComplete()) { 
@@ -29,7 +29,7 @@ public class AbilityTargeter {
 		return ok;
 	}
 
-	int numSets() {
+	public int numSets() {
 		return this.sets.size();
 	}
 
@@ -37,7 +37,7 @@ public class AbilityTargeter {
 		return wSet.toggle(coord);
 	}
 
-	Tcoord get(int set, int index) {
+	public Tcoord get(int set, int index) {
 		if (index < 0 || set < 0) {
 			return null;
 		}

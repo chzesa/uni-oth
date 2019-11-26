@@ -22,5 +22,5 @@ mvn test jacoco:report
 
 ### Suorittaminen
 ```sh
-mvn compile exec:java -Dexec.mainClass=oht.chess.Chess
+mvn compile exec:java -Dexec.mainClass=oht.chess.Main
 ```

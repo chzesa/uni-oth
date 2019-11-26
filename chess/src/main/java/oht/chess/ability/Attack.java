@@ -1,7 +1,6 @@
 package oht.chess.ability;
 import java.util.Set;
 import oht.chess.unit.IActor;
-import oht.chess.Effect;
 import oht.chess.game.IBoard;
 import oht.chess.util.Tcoord;
 

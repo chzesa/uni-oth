@@ -2,7 +2,6 @@ package oht.chess.ability;
 import java.util.Set;
 import oht.chess.unit.IActor;
 import oht.chess.game.IBoard;
-import oht.chess.Effect;
 import oht.chess.util.Tcoord;
 
 class Telekinesis implements IAbility {
@@ -10,7 +9,7 @@ class Telekinesis implements IAbility {
 	public AbilityTargeter beginUse(IActor user, IBoard board) {
 		Set<Tcoord> targets =
 						AbilityUtil.filterNonempty(user.attackVectors(), user.pos(), board);
-
+	
 		return new AbilityTargeter(new TargetSet(targets, 1));
 	}
 

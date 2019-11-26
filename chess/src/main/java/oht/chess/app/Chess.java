@@ -1,4 +1,4 @@
-package oht.chess;
+package oht.chess.app;
 
 import oht.chess.game.Game;
 import oht.chess.unit.Faction;
@@ -11,6 +11,7 @@ import oht.chess.util.MoveDescriptor;
 import oht.chess.ui.ConsoleUi;
 import oht.chess.ui.ConsolePlayer;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import oht.chess.ability.TargeterState;
 import oht.chess.game.Entity;
@@ -22,10 +23,25 @@ public class Chess {
 		return roles[rand.nextInt(roles.length)];
 	}
 
-	public static void main(String[] args) {
-		ConsoleUi ui = new ConsoleUi();
-		ConsolePlayer p = new ConsolePlayer();
-		Game game = new Game(p, p, 8, 8);
+	Game game;
+	ConsoleUi ui;
+	ConsolePlayer p;
+
+	public Chess(String[] args) {
+		ui = new ConsoleUi();
+		p = new ConsolePlayer();
+		String loadFile;
+
+		if (args.length > 0) {
+			loadFile = args[1];
+		}
+
+		// load File
+		if (game != null) {
+			return;
+		}
+
+		game = new Game(p, p, 8, 8);
 
 		for (int i = 0; i < 8; i++) {
 			Tcoord pos = new Tcoord(i, 6);
@@ -50,7 +66,9 @@ public class Chess {
 		game.spawn(Chesspiece.Bishop, randRole(), Faction.Black, 5, 7);
 		game.spawn(Chesspiece.Knight, randRole(), Faction.Black, 6, 7);
 		game.spawn(Chesspiece.Rook, randRole(), Faction.Black, 7, 7);
+	}
 
+	public void run() {
 		turn: while (true) {
 			ui.setSelected(new ArrayList<>());
 			ui.setSelectables(new ArrayList<>());

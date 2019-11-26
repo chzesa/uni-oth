@@ -22,4 +22,5 @@ public interface IActor {
 	public Vector forward();
 
 	public char toChar();
+	public boolean equals(IActor other);
 }

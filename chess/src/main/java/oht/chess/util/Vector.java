@@ -5,7 +5,7 @@ public class Vector {
 	private Tcoord dir;
 
 	public Vector(Tcoord direction, int magnitude) {
-		if (mag <= 0) {
+		if (magnitude <= 0) {
 			throw new IllegalArgumentException();
 		}
 		this.dir = direction;
@@ -13,8 +13,7 @@ public class Vector {
 	}
 
 	public Vector(int x, int y, int magnitude) {
-		this.dir = new Tcoord(x, y);
-		this.mag = magnitude;
+		this(new Tcoord(x, y), magnitude);
 	}
 
 	public int mag() {
