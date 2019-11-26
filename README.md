@@ -8,6 +8,8 @@ Peli on shakkivariantti jossa shakkinappuloilla on hahmoluokat.
 
 [Tuntikirjanpito](https://github.com/chzesa/uni-oth/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[Arkkitehtuurikuvaus](https://github.com/chzesa/uni-oth/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 ## Komennot
 ### Testaus
 Testien suorittaminen:
