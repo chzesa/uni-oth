@@ -65,6 +65,10 @@ public class TargetSet {
 		return add(t);
 	}
 
+	public boolean contains(Tcoord coord) {
+		return this.wSet.contains(coord);
+	}
+
 	public Tcoord get(int i) {
 		return insertionOrder.get(i);
 	}
@@ -91,6 +95,10 @@ public class TargetSet {
 
 	public boolean isComplete() {
 		return this.min <= this.wSet.size() && this.wSet.size() <= this.max;
+	}
+
+	public int numTargets() {
+		return refSet.size();
 	}
 
 	@Override

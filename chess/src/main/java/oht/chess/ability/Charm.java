@@ -15,7 +15,10 @@ class Charm implements IAbility {
 
 	@Override
 	public boolean endUse(AbilityTargeter t, IActor user, IBoard board) {
-		// if (!isValid(t)) { return false; }
+		if (!isValid(t, user, board)) {
+			return false;
+		}
+
 		Tcoord attacker = t.get(0, 0);
 		Tcoord target = t.get(1, 0);
 		Effect.damage(board.get(attacker), board.get(target), board.get(attacker).damage(), board);
@@ -34,7 +37,7 @@ class Charm implements IAbility {
 								AbilityUtil.filterNonempty(target.attackVectors(), target.pos(), board);
 
 				TargetSet n = new TargetSet(targets, 1);
-				t.append(n);
+				t.push(n);
 			} else if (t.size(1) == 1) {
 				return TargeterState.Complete;
 			}
@@ -45,7 +48,31 @@ class Charm implements IAbility {
 
 	@Override
 	public boolean isValid(AbilityTargeter t, IActor user, IBoard board) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		if (isComplete(t, user, board) != TargeterState.Complete) {
+			return false;
+		}
+
+		Tcoord primaryTargetSq = t.get(0, 0);
+		Tcoord secondaryTargetSq = t.get(1, 0);
+		if (!AbilityUtil.unitCanAttack(user, primaryTargetSq, board)) {
+			return false;
+		}
+
+		IActor primaryTarget = board.get(primaryTargetSq);
+		if (primaryTarget == null) {
+			return false;
+		}
+
+		if (!AbilityUtil.unitCanAttack(primaryTarget, secondaryTargetSq, board)) {
+			return false;
+		}
+
+		IActor secondaryTarget = board.get(secondaryTargetSq);
+		if (secondaryTarget == null) {
+			return false;
+		}
+
+		return user.faction() != primaryTarget.faction();
 	}
 
 	@Override

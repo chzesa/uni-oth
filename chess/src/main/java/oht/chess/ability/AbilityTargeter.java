@@ -12,9 +12,19 @@ public class AbilityTargeter {
 		this.sets.add(this.wSet);
 	}
 
-	public void append(TargetSet nextSet) {
+	public void push(TargetSet nextSet) {
 		this.wSet = nextSet;
 		this.sets.add(this.wSet);
+	}
+
+	public TargetSet pop() {
+		if (this.sets.size() <= 1) {
+			return null;
+		}
+		TargetSet ret = this.sets.remove(this.sets.size() - 1);
+		this.wSet = this.sets.get(this.sets.size() -1);
+
+		return ret;
 	}
 
 	public boolean isComplete() {
@@ -35,6 +45,10 @@ public class AbilityTargeter {
 
 	public boolean toggle(Tcoord coord) {
 		return wSet.toggle(coord);
+	}
+
+	public boolean contains(Tcoord coord) {
+		return wSet.contains(coord);
 	}
 
 	public Tcoord get(int set, int index) {
@@ -71,6 +85,10 @@ public class AbilityTargeter {
 
 	public int size() {
 		return sets.size();
+	}
+
+	public int numTargets() {
+		return wSet.numTargets();
 	}
 
 	public int size(int index) {

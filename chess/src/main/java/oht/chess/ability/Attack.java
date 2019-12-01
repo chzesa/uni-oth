@@ -22,7 +22,10 @@ class Attack implements IAbility {
 
 	@Override
 	public boolean endUse(AbilityTargeter t, IActor user, IBoard board) {
-		// if (!isValid(t)) { return false; }
+		if (!isValid(t, user, board)) {
+			return false;
+		}
+
 		Tcoord a = t.get(0, 0);
 		IActor target = board.get(a);
 
@@ -32,8 +35,23 @@ class Attack implements IAbility {
 
 	@Override
 	public boolean isValid(AbilityTargeter t, IActor user, IBoard board) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		if (isComplete(t, user, board) != TargeterState.Complete) {
+			return false;
+		}
+
+		Tcoord target = t.get(0, 0);
+		if (!AbilityUtil.unitCanAttack(user, target, board)) {
+			return false;
+		}
+
+		IActor actor = board.get(target);
+		if (actor == null) {
+			return false;
+		}
+
+		return user.faction() != actor.faction();
 	}
+
 	@Override
 	public String name() {
 		return "Attack";

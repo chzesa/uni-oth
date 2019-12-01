@@ -59,6 +59,9 @@ class Board implements IBoard {
 	}
 
 	public boolean isOob(Tcoord coord) {
+		if (coord == null) {
+			return true;
+		}
 		return isOob(coord.x(), coord.y());
 	}
 

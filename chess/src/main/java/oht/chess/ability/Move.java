@@ -15,7 +15,10 @@ class Move implements IAbility {
 
 	@Override
 	public boolean endUse(AbilityTargeter t, IActor user, IBoard board) {
-		// if (!isValid(t)) { return false; }
+		if (!isValid(t, user, board)) {
+			return false;
+		}
+
 		Tcoord dst = t.get(0, 0);
 		Effect.move(user, dst, board);
 		return true;
@@ -32,7 +35,20 @@ class Move implements IAbility {
 
 	@Override
 	public boolean isValid(AbilityTargeter t, IActor user, IBoard board) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		if (isComplete(t, user, board) != TargeterState.Complete) {
+			return false;
+		}
+
+		Tcoord target = t.get(0, 0);
+		if (!AbilityUtil.unitCanMove(user, target, board)) {
+			return false;
+		}
+
+		if (board.isOob(target)) {
+			return false;
+		}
+
+		return board.get(target) == null;
 	}
 
 	@Override

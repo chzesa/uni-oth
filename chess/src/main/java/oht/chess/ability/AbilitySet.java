@@ -16,6 +16,18 @@ class AbilitySet implements IAbilitySet {
 		return this.abilitys.get(i);
 	}
 
+	@Override
+	public IAbility getAbility(String s) {
+		s = s.trim();
+		for (IAbility ability : abilitys) {
+			if (ability.name().compareToIgnoreCase(s) == 0) {
+				return ability;
+			}
+		}
+
+		return null;
+	}
+
 	public int numAbilities() {
 		return this.abilitys.size();
 	}
@@ -24,4 +36,6 @@ class AbilitySet implements IAbilitySet {
 	public Role role() {
 		return role;
 	}
+
+
 }

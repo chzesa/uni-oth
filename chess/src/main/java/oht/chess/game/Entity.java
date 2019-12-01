@@ -101,4 +101,9 @@ public class Entity implements IActor, IAbilitySet {
 	public boolean equals(IActor other) {
 		return actor.equals(other) && this.role == other.role();
 	}
+
+	@Override
+	public IAbility getAbility(String s) {
+		return abilities.getAbility(s);
+	}
 }

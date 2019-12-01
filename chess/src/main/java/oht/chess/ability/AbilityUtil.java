@@ -53,4 +53,16 @@ public class AbilityUtil {
 
 		return ret;
 	}
+
+	public static boolean isValidTarget(Set<Vector> vec, Tcoord origin, Tcoord target, IBoard b) {
+		return filterValid(vec, origin, b).contains(target);
+	}
+
+	public static boolean unitCanMove(IActor actor, Tcoord target, IBoard b) {
+		return isValidTarget(actor.movementVectors(), actor.pos(), target, b);
+	}
+
+	public static boolean unitCanAttack(IActor actor, Tcoord target, IBoard b) {
+		return isValidTarget(actor.attackVectors(), actor.pos(), target, b);
+	}
 }
