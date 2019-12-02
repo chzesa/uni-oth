@@ -22,7 +22,7 @@ public class AbilityTargeter {
 			return null;
 		}
 		TargetSet ret = this.sets.remove(this.sets.size() - 1);
-		this.wSet = this.sets.get(this.sets.size() -1);
+		this.wSet = this.sets.get(this.sets.size() - 1);
 
 		return ret;
 	}

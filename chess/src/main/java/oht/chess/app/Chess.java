@@ -11,7 +11,6 @@ import oht.chess.util.MoveDescriptor;
 import oht.chess.ui.ConsoleUi;
 import oht.chess.ui.ConsolePlayer;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 import oht.chess.ability.TargeterState;
 import oht.chess.game.Entity;
