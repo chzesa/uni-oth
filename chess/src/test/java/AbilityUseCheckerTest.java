@@ -212,12 +212,12 @@ public class AbilityUseCheckerTest {
 	public void testCharmCanUseFriendlySecondary() {
 		// ###
 		// #H#
-		// X#F
+		// #XF
 
-		game.spawn(Chesspiece.Pawn, Role.Fey, Faction.White, 0, 0);
+		game.spawn(Chesspiece.Rook, Role.Fey, Faction.White, 1, 0);
 		game.spawn(Chesspiece.Pawn, Role.Fey, Faction.Black, 1, 1);
 		game.spawn(Chesspiece.Pawn, Role.Fey, Faction.White, 2, 0);
-		Entity e = game.get(0, 0);
+		Entity e = game.get(1, 0);
 		AbilityUseChecker test = new AbilityUseChecker(e.getAbility("charm"), e, game);
 		assertTrue(test.result());
 	}
@@ -226,12 +226,12 @@ public class AbilityUseCheckerTest {
 	public void testCharmCanUseHostileSecondary() {
 		// ###
 		// #H#
-		// X#H
+		// #XH
 
-		game.spawn(Chesspiece.Pawn, Role.Fey, Faction.White, 0, 0);
+		game.spawn(Chesspiece.Rook, Role.Fey, Faction.White, 1, 0);
 		game.spawn(Chesspiece.Pawn, Role.Fey, Faction.Black, 1, 1);
 		game.spawn(Chesspiece.Pawn, Role.Fey, Faction.Black, 2, 0);
-		Entity e = game.get(0, 0);
+		Entity e = game.get(1, 0);
 		AbilityUseChecker test = new AbilityUseChecker(e.getAbility("charm"), e, game);
 		assertTrue(test.result());
 	}
