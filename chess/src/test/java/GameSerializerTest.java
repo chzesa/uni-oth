@@ -1,3 +1,5 @@
+package oht.chess.game;
+
 import java.util.Random;
 import oht.chess.ability.Role;
 import oht.chess.game.Entity;
@@ -33,12 +35,58 @@ public class GameSerializerTest {
 	}
 
 	@Test
+	public void testSerializeLeaderP1() {
+		g.spawn(Chesspiece.King, Role.Base, Faction.White, 0, 0);
+		g.p1Leader = g.get(0, 0);
+
+		Game result = GameSerializer.deserialize(GameSerializer.serialize(g));
+		assertEquals(g, result);
+	}
+
+	@Test
+	public void testSerializeLeaderP1NonMatching() {
+		g.spawn(Chesspiece.King, Role.Base, Faction.White, 0, 0);
+		g.p1Leader = g.get(0, 0);
+
+		Game result = GameSerializer.deserialize(GameSerializer.serialize(g));
+		g.p1Leader = null;
+		assertNotEquals(g, result);
+	}
+
+	@Test
+	public void testSerializeLeaderP2() {
+		g.spawn(Chesspiece.King, Role.Base, Faction.Black, 0, 0);
+		g.p2Leader = g.get(0, 0);
+
+		Game result = GameSerializer.deserialize(GameSerializer.serialize(g));
+		assertEquals(g, result);
+	}
+
+	@Test
+	public void testSerializeLeaderP2NonMatching() {
+		g.spawn(Chesspiece.King, Role.Base, Faction.Black, 0, 0);
+		g.p2Leader = g.get(0, 0);
+
+		Game result = GameSerializer.deserialize(GameSerializer.serialize(g));
+		g.p2Leader = null;
+		assertNotEquals(g, result);
+	}
+
+	@Test
 	public void testSerialize() {
 		for (int i = 0; i < 10000; i++) {
 			g = new Game(8, 8);
 			int num = rand.nextInt(64);
 			for (int n = 0; n < num; n++) {
 				spawnRandom(8, 8);
+			}
+
+			if (rand.nextInt(2) == 1) {
+
+			}
+
+			if (rand.nextInt(2) == 1) {
+
 			}
 
 			String str = GameSerializer.serialize(g);

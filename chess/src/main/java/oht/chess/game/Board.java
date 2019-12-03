@@ -39,6 +39,10 @@ class Board implements IBoard {
 	}
 
 	public Entity get(Tcoord coord) {
+		if (coord == null || isOob(coord)) {
+			return null;
+		}
+
 		return get(coord.x(), coord.y());
 	}
 

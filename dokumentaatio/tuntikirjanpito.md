@@ -15,5 +15,8 @@
 ||1h|Update documentation, fix checkstyle errors
 ||30m|File saving/loading
 |1.12.|3h|Add tool to determine if unit can use an ability; ability targeter validations; related tests; update docs
+|2.12.|1h30m|Design new user interface flow, change game control flow
+|3.12.|2h30m|Change program structure so `Game` drives the game, implement game end detection
+||30m|Update docs, fix checkstyle errors, finalize for evaluation
 
-Total: 27h
+Total: 31h30m

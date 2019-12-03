@@ -1,3 +1,5 @@
+package oht.chess.game;
+
 import java.util.Random;
 import oht.chess.game.Game;
 import oht.chess.unit.Faction;

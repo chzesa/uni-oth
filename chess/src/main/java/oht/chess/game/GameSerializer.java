@@ -12,18 +12,18 @@ public class GameSerializer {
 	final static String HEIGHT_KEY = "height";
 	final static String TURN_KEY = "turn";
 	final static String UNIT_KEY = "unit";
-	final static String LEADER_KEY = "leader";
+	final static String LEADER_KEY = "lead";
 
 	static Pattern rTurn = Pattern.compile("^" + TURN_KEY + "\\s*(\\d*)$");
 	static Pattern rWidth = Pattern.compile("^" + WIDTH_KEY + "\\s*(\\d*)$");
 	static Pattern rHeight = Pattern.compile("^" + HEIGHT_KEY + "\\s*(\\d*)$");
 	static Pattern rUnit = Pattern.compile("^" + UNIT_KEY + " (\\S*) (\\S*) (\\S*) (\\d*) (\\d*) hp (\\d*)$");
-	static Pattern rLeader = Pattern.compile("^" + LEADER_KEY + " (\\d*) (\\d*)$");
+	static Pattern rLeader = Pattern.compile("^" + LEADER_KEY + " (\\S*) (\\d*) (\\d*)$");
 
 	HashMap<Tcoord, Entity> units = new HashMap<>();
 
-	Tcoord leaderBlack = null;
-	Tcoord leaderWhite = null;
+	Tcoord p2Lead = null;
+	Tcoord p1Lead = null;
 
 	int height = -1;
 	int turn = -1;
@@ -50,6 +50,9 @@ public class GameSerializer {
 			Entity spawned = g.get(unit.pos());
 			spawned.setHp(unit.hp());
 		}
+
+		g.p1Leader = g.get(p1Lead);
+		g.p2Leader = g.get(p2Lead);
 
 		return g;
 	}
@@ -108,31 +111,44 @@ public class GameSerializer {
 	}
 
 	void parseLeader(Matcher m) {
+		int x, y;
+		Faction f;
 
-	}
-
-	void parseUnit(Matcher m) {
-		String faction = m.group(1);
-		String role = m.group(2);
-		String base = m.group(3);
-
-		int x, y, hp;
 		try {
-			x = Integer.parseInt(m.group(4));
-			y = Integer.parseInt(m.group(5));
-			hp = Integer.parseInt(m.group(6));
+			f = Faction.valueOf(m.group(1));
+		} catch (IllegalArgumentException e) {
+			return;
+		}
+
+		try {
+			x = Integer.parseInt(m.group(2));
+			y = Integer.parseInt(m.group(3));
 		} catch (NumberFormatException e) {
 			return;
 		}
-		
+
+		if (f == Faction.Black) {
+			p2Lead = new Tcoord(x, y);
+		} else {
+			p1Lead = new Tcoord(x, y);
+		}
+	}
+
+	void parseUnit(Matcher m) {
 		Faction f;
 		Role r;
 		Chesspiece b;
+		int x, y, hp;
+
 		try {
-			f = Faction.valueOf(faction);
-			r = Role.valueOf(role);
-			b = Chesspiece.valueOf(base);
-		} catch (IllegalArgumentException e) {
+			f = Faction.valueOf(m.group(1));
+			r = Role.valueOf(m.group(2));
+			b = Chesspiece.valueOf(m.group(3));
+
+			x = Integer.parseInt(m.group(4));
+			y = Integer.parseInt(m.group(5));
+			hp = Integer.parseInt(m.group(6));
+		} catch (Exception e) {
 			return;
 		}
 
@@ -148,6 +164,15 @@ public class GameSerializer {
 		ret.append(TURN_KEY + " " + game.turn() + '\n');
 		ret.append(WIDTH_KEY + " " + game.width() + '\n');
 		ret.append(HEIGHT_KEY + " " + game.height() + '\n');
+		if (game.p1Leader != null) {
+			ret.append(LEADER_KEY + " " + Faction.White + " " + game.p1Leader.pos().x()
+							+ " " + game.p1Leader.pos().y() + '\n');
+		}
+
+		if (game.p2Leader != null) {
+			ret.append(LEADER_KEY + " " + Faction.Black + " " + game.p2Leader.pos().x()
+							+ " " + game.p2Leader.pos().y() + '\n');
+		}
 
 		for (int x = 0; x < game.width(); x++) {
 			for (int y = 0; y < game.height(); y++) {

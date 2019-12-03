@@ -20,22 +20,22 @@ public class AbilityUseChecker {
 		return elem;
 	}
 
-	boolean recurse(AbilityTargeter t, int targets) {
-		if (targets < 0) {
-			// start recursion for all target counts in the set
-			if (t.maxSize() == 0) {
-				return true;
-			}
-
-			for (int i = 1; i < t.maxSize() + 1; i++) {
-				if (recurse(t, i)) {
-					return true;
-				}
-			}
-
-			return false;
+	boolean beginRecursion(AbilityTargeter t) {
+		// start recursion for all target counts in the set
+		if (t.maxSize() == 0) {
+			return true;
 		}
 
+		for (int i = 1; i < t.maxSize() + 1; i++) {
+			if (recurse(t, i)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	boolean recurse(AbilityTargeter t, int targets) {
 		int targetableCount = t.numTargets();
 		for (int i = 0; i < targetableCount; i++) {
 			Tcoord coord = nth(t.selectable().iterator(), i);
@@ -57,7 +57,7 @@ public class AbilityUseChecker {
 
 				if (t.numSets() > setCount) {
 					// new set was added to targeter, restart recursion
-					if (recurse(t, -1)) {
+					if (beginRecursion(t)) {
 						return true;
 					}
 
@@ -79,7 +79,7 @@ public class AbilityUseChecker {
 		this.ability = ability;
 		this.user = user;
 		this.board = board;
-		result = recurse(ability.beginUse(user, board), -1);
+		result = beginRecursion(ability.beginUse(user, board));
 	}
 
 	public boolean result() {

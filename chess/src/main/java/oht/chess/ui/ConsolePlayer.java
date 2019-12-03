@@ -1,4 +1,5 @@
 package oht.chess.ui;
+import oht.chess.game.IPlayerController;
 import oht.chess.util.MoveDescriptor;
 import java.util.Scanner;
 import java.util.regex.*;
@@ -8,6 +9,7 @@ import oht.chess.game.Entity;
 import oht.chess.game.Game;
 import oht.chess.game.GameSerializer;
 import oht.chess.io.FileHandler;
+import oht.chess.unit.Faction;
 import oht.chess.util.Tcoord;
 
 public class ConsolePlayer implements IPlayerController {
@@ -105,5 +107,29 @@ public class ConsolePlayer implements IPlayerController {
 		}
 
 		return t;
+	}
+
+	@Override
+	public Tcoord nominateLeader(Game game, Faction f) {
+		while (true) {
+			System.out.println("Nominate one " + f.toString() + " unit as leader");
+			System.out.println("Type \"Quit\" to exit.");
+			System.out.print("> ");
+			Scanner scan = new Scanner(System.in);
+			String input = scan.nextLine();
+			String[] splinput = input.split("\\s");
+
+
+			for (String s : splinput) {
+				s = s.trim().toLowerCase();
+				if (s.equals("quit")) {
+					return null;
+				}
+				Tcoord parsed = ControllerUtil.parseString(s);
+				if (parsed != null) {
+					return parsed;
+				}
+			}
+		}
 	}
 }

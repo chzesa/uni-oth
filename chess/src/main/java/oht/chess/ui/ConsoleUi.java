@@ -2,6 +2,7 @@ package oht.chess.ui;
 
 import oht.chess.unit.IActor;
 import oht.chess.game.Game;
+import oht.chess.game.GameResult;
 import oht.chess.util.Tcoord;
 
 public class ConsoleUi implements IGui {
@@ -100,5 +101,25 @@ public class ConsoleUi implements IGui {
 		}
 
 		return false;
+	}
+
+	@Override
+	public void gameOver(GameResult result, Game game) {
+		draw(game);
+
+		switch (result) {
+			case Draw:
+				System.out.println("Draw.");
+				break;
+			case BlackWin:
+				System.out.println("Black wins.");
+				break;
+			case WhiteWin:
+				System.out.println("White wins.");
+				break;
+			case None:
+				System.out.println("No result.");
+				break;
+		}
 	}
 }

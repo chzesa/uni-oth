@@ -1,0 +1,30 @@
+app->*playerController: new PlayerController()
+
+app->*+game: new Game()
+game->*+entity: new Entity()
+entity->*iAbility: new iAbility()
+deactivate entity
+deactivate game
+app->+game: play(playerController)
+loop
+game->+playerController: selectAbility(game)
+playerController-->game: {coord, index}
+deactivate playerController
+
+game->game: get(coord)
+game->+entity: getAbility(index)
+entity-->game : iAbility
+deactivate entity
+game->+iAbility: beginUse(game, entity)
+iAbility-->game: targeter
+deactivate iAbility
+game->+playerController: targetAbility(game, iAbility, targeter)
+playerController-->game: targeter
+deactivate playerController
+game->+iAbility: endUse(game, entity, targeter)
+iAbility->game: apply effects
+iAbility->entity: apply effects
+deactivate iAbility
+end loop
+game-->app: result
+deactivate game

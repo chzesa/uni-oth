@@ -59,16 +59,10 @@ class Charm implements IAbility {
 		}
 
 		IActor primaryTarget = board.get(primaryTargetSq);
-		if (primaryTarget == null) {
-			return false;
-		}
-
-		if (!AbilityUtil.unitCanAttack(primaryTarget, secondaryTargetSq, board)) {
-			return false;
-		}
-
 		IActor secondaryTarget = board.get(secondaryTargetSq);
-		if (secondaryTarget == null) {
+
+		if (primaryTarget == null || secondaryTarget == null
+						|| !AbilityUtil.unitCanAttack(primaryTarget, secondaryTargetSq, board)) {
 			return false;
 		}
 
@@ -85,7 +79,8 @@ class Charm implements IAbility {
 		return "Charm target enemy unit and have it attack another unit.";
 	}
 
-	@Override public String toString() {
+	@Override
+	public String toString() {
 		return name() + ": " + description();
 	}
 }

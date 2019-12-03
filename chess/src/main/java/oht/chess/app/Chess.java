@@ -5,17 +5,10 @@ import oht.chess.unit.Faction;
 import oht.chess.util.Tcoord;
 import oht.chess.unit.Chesspiece;
 import oht.chess.ability.Role;
-import oht.chess.ability.IAbility;
-import oht.chess.ability.AbilityTargeter;
-import oht.chess.util.MoveDescriptor;
-import oht.chess.ui.ConsoleUi;
-import oht.chess.ui.ConsolePlayer;
-import java.util.ArrayList;
 import java.util.Random;
-import oht.chess.ability.TargeterState;
-import oht.chess.game.Entity;
 import oht.chess.game.GameSerializer;
 import oht.chess.io.FileHandler;
+import oht.chess.ui.CliClient;
 
 public class Chess {
 	static Role[] roles = Role.values();
@@ -25,12 +18,10 @@ public class Chess {
 	}
 
 	Game game;
-	ConsoleUi ui;
-	ConsolePlayer p;
+	CliClient client;
 
 	public Chess(String[] args) {
-		ui = new ConsoleUi();
-		p = new ConsolePlayer();
+		client = new CliClient();
 
 		if (args.length > 0) {
 			game = GameSerializer.deserialize(FileHandler.readToString(args[0]));
@@ -40,7 +31,7 @@ public class Chess {
 			return;
 		}
 
-		game = new Game(p, p, 8, 8);
+		game = new Game(8, 8);
 
 		for (int i = 0; i < 8; i++) {
 			Tcoord pos = new Tcoord(i, 6);
@@ -68,49 +59,6 @@ public class Chess {
 	}
 
 	public void run() {
-		turn: while (true) {
-			ui.setSelected(new ArrayList<>());
-			ui.setSelectables(new ArrayList<>());
-			ui.draw(game);
-			MoveDescriptor desc = p.selectAbility(game);
-
-			if (desc == null) {
-				break;
-			}
-
-			System.out.println("User picked: \n\t"
-							+ game.get(desc.origin()).toString()
-							+ "\n\t" + game.get(desc.origin()).getAbility(desc.key()));
-
-			Entity tar = game.get(desc.origin());
-
-			if (tar == null) {
-				continue;
-			}
-
-			IAbility a = tar.getAbility(desc.key());
-			if (a == null) {
-				continue;
-			}
-
-			AbilityTargeter t = a.beginUse(tar, game);
-			while (a.isComplete(t, tar, game) == TargeterState.Incomplete) {
-				ui.setSelectables(t.selectable());
-				ui.setSelected(t.targeted());
-
-				ui.draw(game);
-
-				t = p.targetAbility(game, a, t);
-				if (t == null) {
-					continue turn;
-				}
-			}
-
-			System.out.println("Using " + a.toString());
-			if (a.endUse(t, tar, game)) {
-				game.nextTurn();
-			}
-		}
-		System.out.println("Exiting...");
+		client.gameOver(game.play(client, client), game);
 	}
 }
