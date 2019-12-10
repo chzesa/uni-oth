@@ -2,6 +2,11 @@ package oht.chess.shared;
 
 import java.util.Random;
 
+/**
+ * Lista pelin hahmoluokista.
+ * Muuttaessa listaa tulee päivittää ability paketin RoleFactory.
+ */
+
 public enum Role {
 	Base,
 	Kineticist,

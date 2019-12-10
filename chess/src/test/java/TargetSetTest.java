@@ -130,9 +130,10 @@ public class TargetSetTest {
 	}
 
 	@Test
-	public void toggleReturnsStatus() {
+	public void toggleReturnsChange() {
 		assertTrue(set.toggle(coords.get(0)));
-		assertFalse(set.toggle(coords.get(0)));
+		assertTrue(set.toggle(coords.get(0)));
+		assertFalse(set.toggle(new Tcoord(0, 1)));
 	}
 
 	@Test
@@ -157,7 +158,7 @@ public class TargetSetTest {
 				assertTrue(set.toggle(coord));
 				reference.add(coord);
 			} else {
-				assertFalse(set.toggle(coord));
+				assertTrue(set.toggle(coord));
 				reference.remove(index);
 			}
 

@@ -8,6 +8,9 @@ import oht.chess.shared.IBoard;
 import oht.chess.shared.IActor;
 import oht.chess.util.Tcoord;
 
+/**
+ * Pattitilanteen selvittämiseen käytettävä luokka. Käy kaikki kyvyn mahdolliset Targeter variaatiot läpi.
+ */
 public class AbilityUseChecker {
 	IAbility ability;
 	IActor user;
@@ -78,6 +81,12 @@ public class AbilityUseChecker {
 		return false;
 	}
 
+	/**
+	 * Luo uuden tarkastajan ja käy kaikki kyvyn mahdolliset variaatiot läpi.
+	 * @param	ability	Tarkistettava kyky
+	 * @param	user	Kykyä käyttävä yksikkö
+	 * @param	board	nykyinen pelilauta
+	 */
 	public AbilityUseChecker(IAbility ability, IActor user, IBoard board) {
 		this.ability = ability;
 		this.user = user;
@@ -85,6 +94,10 @@ public class AbilityUseChecker {
 		result = beginRecursion(ability.beginUse(user, board));
 	}
 
+	/**
+	 * Lukee tarkastajan tuloksen.
+	 * @return	true, jos hahmo pystyy käyttämään kykyä nykyisellä lautakonfiguraatiolla, false muuten.
+	 */
 	public boolean result() {
 		return this.result;
 	}

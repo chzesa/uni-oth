@@ -3,6 +3,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.HashMap;
 
+/**
+ * Edustaa valittavaa osajoukkoa jostakin koordinaattijoukosta. Pitää muistissa koordinaattien valitsemisjärjestyksen.
+ */
 public class TargetSet {
 	Set<Tcoord> refSet;
 	HashSet<Tcoord> wSet = new HashSet<>();
@@ -11,6 +14,11 @@ public class TargetSet {
 	int min;
 	int max;
 
+	/**
+	 * @param	targetables	Joukko koordinaatteja, joista valinta tulee suorittaa
+	 * @param	min	Minimiraja jotta valittu joukko hyväksyttäisiin. Ei-negatiivinen.
+	 * @param	max	Valitun joukon maksimikoko. Ei-negatiivinen.
+	 */
 	public TargetSet(Set<Tcoord> targetables, int min, int max) {
 		if (targetables == null || max < min || min < 0 || max < 0) {
 			throw new IllegalArgumentException();
@@ -20,6 +28,10 @@ public class TargetSet {
 		this.max = max;
 	}
 
+	/**
+	 * @param	targetables	Joukko koordinaatteja, joista valinta tulee suorittaa
+	 * @param	num	Valitun joukun täsmällinen koko. Ei-negatiivinen.
+	 */
 	public TargetSet(Set<Tcoord> targetables, int num) {
 		this(targetables, num, num);
 	}
@@ -55,19 +67,29 @@ public class TargetSet {
 		return result;
 	}
 
+	/**
+	 * Jos parametrin koordinaatti on jo valittu, poistaa koordinaatin valinnasta. Muuten yrittää lisätä koordinaatin valintaan.
+	 * Jos koordinaatti ei kuulu konstruktorissa annettuun referenssijoukkoon tai valittu joukko on maksimikoossa, ei tee mitään.
+	 @return	true, jos valintaan tehtiin muutos, false muuten.
+	 */
 	public boolean toggle(Tcoord t) {
 		if (this.wSet.contains(t)) {
-			remove(t);
-			return false;
+			return remove(t);
 		}
 
 		return add(t);
 	}
 
+	/**
+	 * @return True, jos valinta sisältää koordinaatin, false muuten.
+	 */
 	public boolean contains(Tcoord coord) {
 		return this.wSet.contains(coord);
 	}
 
+	/**
+	 * Palauttaa i:nä lisätyn koordinaatin.
+	 */
 	public Tcoord get(int i) {
 		return insertionOrder.get(i);
 	}
@@ -80,22 +102,37 @@ public class TargetSet {
 		return this.max;
 	}
 
+	/**
+	 * Palauttaa nykyisen valinnan koon.
+	 */
 	public int size() {
 		return this.wSet.size();
 	}
 
+	/**
+	 * @return	Iteraattori valinnan koordinaateista.
+	 */
 	public Iterable<Tcoord> targeted() {
 		return this.wSet;
 	}
 
+	/**
+	 * @return	Iteraattori valittavissa olevista koordinaateista.
+	 */
 	public Iterable<Tcoord> selectable() {
 		return this.refSet;
 	}
 
+	/**
+	 * @return	true, jos valinta on joukon minimi ja maksimikoon rajoissa, false muuten.
+	 */
 	public boolean isComplete() {
 		return this.min <= this.wSet.size() && this.wSet.size() <= this.max;
 	}
 
+	/**
+	 * @return	Mahdollisten valittavien koordinaattien lukumäärä.
+	 */
 	public int numTargets() {
 		return refSet.size();
 	}

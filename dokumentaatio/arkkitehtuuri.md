@@ -8,6 +8,7 @@ Pakkausten `game`, `ability`, ja `unit` välillä on lisäksi rajapinta- ja enum
 
 ## Käyttöliittymä
 Ohjelman käyttöliittymä jakautuu valikoihin, joissa navigoidaan pääasiallisesti syöttämällä numeroita.
+Jokainen valikko on oma olionsa ja ohjelman suoritus jatkuu kunnes käyttöliittymä ei palauta uutta valikkoa.
 Pelitilanteessa tominnot suoritetaan pääasiallisesti syöttämällä laudan koordinaatteja tai numeroita.
 Käyttöliittymän rajapintaa ei ole toistaiseksi rajoitettu mutta se ei ole vastuussa pelitapahtumien suorittamisesta ja ohjelmisto on kehitetty siten, että käyttöliittymä on helppo eriyttää tulevaisuudessa.
 

@@ -20,5 +20,6 @@
 ||30m|Update docs, fix checkstyle errors, finalize for evaluation
 |10.12.|1h|Add menu system
 ||1h|Refactoring, fix checkstyle errors, update docs
+||30m|Javadoc, manual
 
-Total: 33h30m
+Total: 34h

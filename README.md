@@ -10,6 +10,8 @@ Peli on shakkivariantti jossa shakkinappuloilla on hahmoluokat.
 
 [Arkkitehtuurikuvaus](https://github.com/chzesa/uni-oth/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Käyttöohje](https://github.com/chzesa/uni-oth/blob/master/dokumentaatio/manual.md)
+
 ## Releaset
 
 [Viikko 5](https://github.com/chzesa/uni-oht/releases/tag/week5)
@@ -26,6 +28,16 @@ Testikattavuusraportin generointi:
 mvn test jacoco:report
 ```
 
+### Checkstyle
+```sh
+mvn jxr:jxr checkstyle:checkstyle
+```
+
+### Javadoc
+```sh
+mvn javadoc:javadoc
+```
+
 ### Suorittaminen
 ```sh
 mvn compile exec:java -Dexec.mainClass=oht.chess.Main
@@ -34,9 +46,4 @@ mvn compile exec:java -Dexec.mainClass=oht.chess.Main
 ### Jarin generointi
 ```sh
 mvn package
-```
-
-### Checkstyle
-```sh
-mvn jxr:jxr checkstyle:checkstyle
 ```

@@ -3,8 +3,14 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+/**
+ * Tiedostojen lukemiseen ja kirjoittamiseen liittyvä apuluokka.
+ */
 public class FileHandler {
+	/**
+	 * Yrittää lukea polussa sijaitsevan tiedoston.
+	 * @return	Merkkijono joka sisältää luetun tiedoston, tai tyhjä merkkijono jos lukeminen epäonnistui.
+	 */
 	public static String readToString(String path) {
 		byte[] bytes;
 		try {
@@ -19,6 +25,15 @@ public class FileHandler {
 		return new String(bytes);
 	}
 
+	/**
+	 * Yrittää kirjoittaa merkkijonon polussa sijaitsevaan
+	 * tiedostoon. Onnistuessaan luo uuden tiedoston
+	 * tai päällekirjoitaa edellisen tiedoston.
+	 * @param	content	tiedostoon kirjoitettava merkkijono
+	 * @param	path	tiedostopolku
+
+	 * @return	true, jos operaatio onnistue, false muuten.
+	 */
 	public static boolean write(String content, String path) {
 		if (content == null || path == null) {
 			return false;

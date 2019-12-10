@@ -2,7 +2,9 @@ package oht.chess.shared;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 import java.util.Set;
-
+/**
+ * Interface pelilaudalla liikkuvalle yksikölle.
+ */
 public interface IActor {
 	public Role role();
 	public Chesspiece base();
