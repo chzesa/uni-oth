@@ -3,7 +3,9 @@ package oht.chess.game;
 import oht.chess.ability.AbilityTargeter;
 import oht.chess.ability.AbilityUseChecker;
 import oht.chess.ability.IAbility;
+import oht.chess.ability.Role;
 import oht.chess.ability.TargeterState;
+import oht.chess.unit.Chesspiece;
 import oht.chess.unit.Faction;
 import oht.chess.util.MoveDescriptor;
 import oht.chess.util.Tcoord;
@@ -201,5 +203,35 @@ public class Game extends Board {
 		}
 
 		return true;
+	}
+
+	public static Game rand() {
+		Game game = new Game(8, 8);
+
+		for (int i = 0; i < 8; i++) {
+			Tcoord pos = new Tcoord(i, 6);
+			game.spawn(Chesspiece.Pawn, Role.rand(), Faction.Black, i, 6);
+			game.spawn(Chesspiece.Pawn, Role.rand(), Faction.White, i, 1);
+		}
+
+		game.spawn(Chesspiece.Rook, Role.rand(), Faction.White, 0, 0);
+		game.spawn(Chesspiece.Knight, Role.rand(), Faction.White, 1, 0);
+		game.spawn(Chesspiece.Bishop, Role.rand(), Faction.White, 2, 0);
+		game.spawn(Chesspiece.Queen, Role.rand(), Faction.White, 3, 0);
+		game.spawn(Chesspiece.King, Role.rand(), Faction.White, 4, 0);
+		game.spawn(Chesspiece.Bishop, Role.rand(), Faction.White, 5, 0);
+		game.spawn(Chesspiece.Knight, Role.rand(), Faction.White, 6, 0);
+		game.spawn(Chesspiece.Rook, Role.rand(), Faction.White, 7, 0);
+
+		game.spawn(Chesspiece.Rook, Role.rand(), Faction.Black, 0, 7);
+		game.spawn(Chesspiece.Knight, Role.rand(), Faction.Black, 1, 7);
+		game.spawn(Chesspiece.Bishop, Role.rand(), Faction.Black, 2, 7);
+		game.spawn(Chesspiece.Queen, Role.rand(), Faction.Black, 3, 7);
+		game.spawn(Chesspiece.King, Role.rand(), Faction.Black, 4, 7);
+		game.spawn(Chesspiece.Bishop, Role.rand(), Faction.Black, 5, 7);
+		game.spawn(Chesspiece.Knight, Role.rand(), Faction.Black, 6, 7);
+		game.spawn(Chesspiece.Rook, Role.rand(), Faction.Black, 7, 7);
+
+		return game;
 	}
 }

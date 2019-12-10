@@ -11,7 +11,6 @@ public class FileHandler {
 			Path p = Paths.get(path);
 			bytes = Files.readAllBytes(p);
 		} catch (IOException e) {
-			System.out.println(e);
 			return "";
 		} catch (SecurityException e) {
 			return "";
