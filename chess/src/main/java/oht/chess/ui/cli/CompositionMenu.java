@@ -27,7 +27,7 @@ public class CompositionMenu extends Cli implements ICli {
 				case 1: return new MainMenu(scan);
 			}
 		}
-                
-                return this;
+
+		return this;
 	}
 }

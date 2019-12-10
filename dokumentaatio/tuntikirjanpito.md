@@ -18,5 +18,7 @@
 |2.12.|1h30m|Design new user interface flow, change game control flow
 |3.12.|2h30m|Change program structure so `Game` drives the game, implement game end detection
 ||30m|Update docs, fix checkstyle errors, finalize for evaluation
+|10.12.|1h|Add menu system
+||30m|Fix checkstyle errors, update docs
 
-Total: 31h30m
+Total: 32h30m

@@ -8,9 +8,9 @@ public enum Role {
 	Fey
 	;
 
-	private static final Role[] roles = Role.values();
+	private static final Role[] ROLES = Role.values();
 
 	public static Role rand() {
-		return roles[new Random().nextInt(roles.length)];
+		return ROLES[new Random().nextInt(ROLES.length)];
 	}
 }

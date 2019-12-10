@@ -31,12 +31,6 @@ mvn test jacoco:report
 mvn compile exec:java -Dexec.mainClass=oht.chess.Main
 ```
 
-Aikaisemmin tallennetun pelin voi ladata syöttämällä tiedoston polun ensimmäisenä parametrina
-
-```sh
-mvn compile exec:java -Dexec.mainClass=oht.chess.Main -Dexec.args="/path/to/file"
-```
-
 ### Jarin generointi
 ```sh
 mvn package

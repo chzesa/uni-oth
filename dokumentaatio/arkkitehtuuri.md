@@ -7,7 +7,8 @@ Korkealla tasolla ohjelman pakkausrakenne on seuraavanlainen:
 Pakkausten `game`, `ability`, ja `unit` välillä on lisäksi rajapinta- ja enum-riippuvuuksia ja jokainen paketti hyödyntää muista paketeista riippumattoman `util` paketin tarjoamia yleisluokkia.
 
 ## Käyttöliittymä
-Ohjelmassa on vain yksi näkymä, jossa pelataan varsinaista peliä. Käyttöliittymä on tekstipohjainen ja kaikki tominnot suoritetaan syöttämällä laudan koordinaatteja.
+Ohjelman käyttöliittymä jakautuu valikoihin, joissa navigoidaan pääasiallisesti syöttämällä numeroita.
+Pelitilanteessa tominnot suoritetaan pääasiallisesti syöttämällä laudan koordinaatteja tai numeroita.
 Käyttöliittymän rajapintaa ei ole toistaiseksi rajoitettu mutta se ei ole vastuussa pelitapahtumien suorittamisesta ja ohjelmisto on kehitetty siten, että käyttöliittymä on helppo eriyttää tulevaisuudessa.
 
 ## Sovelluslogiikka
@@ -22,7 +23,7 @@ Itse sovelluslogiikka jakautuu neljän paketin kesken:
 
 Ruutupohjaisena pelinä itse ruutujen koordinaatit tarjoavat työkalun riippuvuusten vähentämiseen ja sovellus on suunniteltu tämän ympärille.
 
-Alla on kuvattu sovelluksen kontrolli:
+Alla on kuvattu pelitilanteen kontrolli:
 
 <img src="https://raw.githubusercontent.com/chzesa/uni-oht/master/dokumentaatio/img/mainsequence.png">
 

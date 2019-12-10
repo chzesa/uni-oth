@@ -158,38 +158,21 @@ public class Game extends Board {
 		return activeFaction();
 	}
 
-	@Override
-	public boolean equals(Object rhs) {
-		if (this == rhs) {
-			return true;
-		}
-		if (rhs == null) {
-			return false;
-		}
-		if (getClass() != rhs.getClass()) {
-			return false;
-		}
+	// Checkstyle finagling
+	boolean setupNotEquals(Game rhs) {
+		return turnCount != rhs.turnCount || w != rhs.w || h != rhs.h
+			|| p1Leader != null && !p1Leader.equals(rhs.p1Leader)
+			|| p1Leader == null && rhs.p1Leader != null
+			|| p2Leader != null && !p2Leader.equals(rhs.p2Leader)
+			|| p2Leader == null && rhs.p2Leader != null;
+	}
 
-		Game other = (Game) rhs;
-
-		if (turnCount != other.turnCount || w != other.w || h != other.h) {
-			return false;
-		}
-
-		if (p1Leader != null && !p1Leader.equals(other.p1Leader)
-						|| p1Leader == null && other.p1Leader != null) {
-			return false;
-		}
-
-		if (p2Leader != null && !p2Leader.equals(other.p2Leader)
-						|| p2Leader == null && other.p2Leader != null) {
-			return false;
-		}
-
+	// Checkstyle finagling
+	boolean contentsEquals(Game rhs) {
 		for (int x = 0; x < w; x++) {
 			for (int y = 0; y < h; y++) {
 				Entity a = cells[x][y];
-				Entity b = other.cells[x][y];
+				Entity b = rhs.cells[x][y];
 				if (a == null && b == null) {
 					continue;
 				}
@@ -205,33 +188,59 @@ public class Game extends Board {
 		return true;
 	}
 
-	public static Game rand() {
-		Game game = new Game(8, 8);
-
-		for (int i = 0; i < 8; i++) {
-			Tcoord pos = new Tcoord(i, 6);
-			game.spawn(Chesspiece.Pawn, Role.rand(), Faction.Black, i, 6);
-			game.spawn(Chesspiece.Pawn, Role.rand(), Faction.White, i, 1);
+	@Override
+	public boolean equals(Object rhs) {
+		if (this == rhs) {
+			return true;
+		}
+		if (rhs == null) {
+			return false;
 		}
 
-		game.spawn(Chesspiece.Rook, Role.rand(), Faction.White, 0, 0);
-		game.spawn(Chesspiece.Knight, Role.rand(), Faction.White, 1, 0);
-		game.spawn(Chesspiece.Bishop, Role.rand(), Faction.White, 2, 0);
-		game.spawn(Chesspiece.Queen, Role.rand(), Faction.White, 3, 0);
-		game.spawn(Chesspiece.King, Role.rand(), Faction.White, 4, 0);
-		game.spawn(Chesspiece.Bishop, Role.rand(), Faction.White, 5, 0);
-		game.spawn(Chesspiece.Knight, Role.rand(), Faction.White, 6, 0);
-		game.spawn(Chesspiece.Rook, Role.rand(), Faction.White, 7, 0);
+		if (getClass() != rhs.getClass()) {
+			return false;
+		}
 
-		game.spawn(Chesspiece.Rook, Role.rand(), Faction.Black, 0, 7);
-		game.spawn(Chesspiece.Knight, Role.rand(), Faction.Black, 1, 7);
-		game.spawn(Chesspiece.Bishop, Role.rand(), Faction.Black, 2, 7);
-		game.spawn(Chesspiece.Queen, Role.rand(), Faction.Black, 3, 7);
-		game.spawn(Chesspiece.King, Role.rand(), Faction.Black, 4, 7);
-		game.spawn(Chesspiece.Bishop, Role.rand(), Faction.Black, 5, 7);
-		game.spawn(Chesspiece.Knight, Role.rand(), Faction.Black, 6, 7);
-		game.spawn(Chesspiece.Rook, Role.rand(), Faction.Black, 7, 7);
+		Game other = (Game) rhs;
+		return !setupNotEquals(other) && contentsEquals(other);
+	}
 
+	// Checkstyle finagling
+	private void spawnBlack() {
+		for (int i = 0; i < 8; i++) {
+			spawn(Chesspiece.Pawn, Role.rand(), Faction.Black, i, 6);
+		}
+
+		spawn(Chesspiece.Rook, Role.rand(), Faction.Black, 0, 7);
+		spawn(Chesspiece.Knight, Role.rand(), Faction.Black, 1, 7);
+		spawn(Chesspiece.Bishop, Role.rand(), Faction.Black, 2, 7);
+		spawn(Chesspiece.Queen, Role.rand(), Faction.Black, 3, 7);
+		spawn(Chesspiece.King, Role.rand(), Faction.Black, 4, 7);
+		spawn(Chesspiece.Bishop, Role.rand(), Faction.Black, 5, 7);
+		spawn(Chesspiece.Knight, Role.rand(), Faction.Black, 6, 7);
+		spawn(Chesspiece.Rook, Role.rand(), Faction.Black, 7, 7);
+	}
+
+	// Checkstyle finagling
+	private void spawnWhite() {
+		for (int i = 0; i < 8; i++) {
+			spawn(Chesspiece.Pawn, Role.rand(), Faction.White, i, 1);
+		}
+
+		spawn(Chesspiece.Rook, Role.rand(), Faction.White, 0, 0);
+		spawn(Chesspiece.Knight, Role.rand(), Faction.White, 1, 0);
+		spawn(Chesspiece.Bishop, Role.rand(), Faction.White, 2, 0);
+		spawn(Chesspiece.Queen, Role.rand(), Faction.White, 3, 0);
+		spawn(Chesspiece.King, Role.rand(), Faction.White, 4, 0);
+		spawn(Chesspiece.Bishop, Role.rand(), Faction.White, 5, 0);
+		spawn(Chesspiece.Knight, Role.rand(), Faction.White, 6, 0);
+		spawn(Chesspiece.Rook, Role.rand(), Faction.White, 7, 0);
+	}
+
+	public static Game rand() {
+		Game game = new Game(8, 8);
+		game.spawnBlack();
+		game.spawnWhite();
 		return game;
 	}
 }
