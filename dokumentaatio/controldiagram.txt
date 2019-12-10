@@ -1,11 +1,11 @@
-app->*playerController: new PlayerController()
+ui->*playerController: new PlayerController()
 
-app->*+game: new Game()
+ui->*+game: new Game()
 game->*+entity: new Entity()
 entity->*iAbility: new iAbility()
 deactivate entity
 deactivate game
-app->+game: play(playerController)
+ui->+game: play(playerController)
 loop
 game->+playerController: selectAbility(game)
 playerController-->game: {coord, index}
@@ -26,5 +26,5 @@ iAbility->game: apply effects
 iAbility->entity: apply effects
 deactivate iAbility
 end loop
-game-->app: result
+game-->ui: result
 deactivate game

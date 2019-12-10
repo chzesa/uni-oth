@@ -1,13 +1,13 @@
 package oht.chess.ui;
 
 import java.util.ArrayList;
-import oht.chess.util.Targeter;
-import oht.chess.shared.IAbility;
 import oht.chess.game.Game;
 import oht.chess.game.GameResult;
 import oht.chess.game.IPlayerController;
 import oht.chess.shared.Faction;
+import oht.chess.shared.IAbility;
 import oht.chess.util.MoveDescriptor;
+import oht.chess.util.Targeter;
 import oht.chess.util.Tcoord;
 
 public class CliClient implements IGui, IPlayerController {

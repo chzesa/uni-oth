@@ -1,15 +1,15 @@
 package oht.chess.ui;
-import oht.chess.game.IPlayerController;
-import oht.chess.util.MoveDescriptor;
 import java.util.Scanner;
 import java.util.regex.*;
-import oht.chess.util.Targeter;
-import oht.chess.shared.IAbility;
 import oht.chess.game.Entity;
 import oht.chess.game.Game;
 import oht.chess.game.GameSerializer;
+import oht.chess.game.IPlayerController;
 import oht.chess.io.FileHandler;
 import oht.chess.shared.Faction;
+import oht.chess.shared.IAbility;
+import oht.chess.util.MoveDescriptor;
+import oht.chess.util.Targeter;
 import oht.chess.util.Tcoord;
 
 public class ConsolePlayer implements IPlayerController {
