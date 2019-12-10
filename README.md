@@ -15,6 +15,7 @@ Peli on shakkivariantti jossa shakkinappuloilla on hahmoluokat.
 ## Releaset
 
 [Viikko 5](https://github.com/chzesa/uni-oht/releases/tag/week5)
+
 [Viikko 6](https://github.com/chzesa/uni-oht/releases/tag/week6)
 
 ## Komennot
