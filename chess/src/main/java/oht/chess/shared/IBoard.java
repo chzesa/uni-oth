@@ -1,8 +1,4 @@
-package oht.chess.game;
-import oht.chess.ability.Role;
-import oht.chess.unit.Chesspiece;
-import oht.chess.unit.Faction;
-import oht.chess.unit.IActor;
+package oht.chess.shared;
 import oht.chess.util.Tcoord;
 
 public interface IBoard {

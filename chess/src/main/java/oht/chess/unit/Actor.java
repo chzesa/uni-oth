@@ -1,5 +1,9 @@
 package oht.chess.unit;
-import oht.chess.ability.Role;
+import oht.chess.shared.Faction;
+import oht.chess.shared.Chesspiece;
+import oht.chess.shared.IActor;
+import oht.chess.shared.ChesspieceData;
+import oht.chess.shared.Role;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 import java.util.Set;

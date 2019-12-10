@@ -1,7 +1,6 @@
-package oht.chess.ability;
+package oht.chess.util;
 import java.util.HashSet;
 import java.util.Set;
-import oht.chess.util.Tcoord;
 import java.util.HashMap;
 
 public class TargetSet {

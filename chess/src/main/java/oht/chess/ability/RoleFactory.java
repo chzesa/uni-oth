@@ -1,5 +1,8 @@
 package oht.chess.ability;
 
+import oht.chess.shared.IAbilitySet;
+import oht.chess.shared.Role;
+
 public class RoleFactory {
 	public static IAbilitySet make(Role role) {
 		switch (role) {

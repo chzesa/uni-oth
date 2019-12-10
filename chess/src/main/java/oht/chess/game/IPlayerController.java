@@ -1,12 +1,12 @@
 package oht.chess.game;
+import oht.chess.shared.Faction;
+import oht.chess.shared.IAbility;
 import oht.chess.util.MoveDescriptor;
-import oht.chess.ability.AbilityTargeter;
-import oht.chess.ability.IAbility;
-import oht.chess.unit.Faction;
+import oht.chess.util.Targeter;
 import oht.chess.util.Tcoord;
 
 public interface IPlayerController {
 	public MoveDescriptor selectAbility(Game game);
-	public AbilityTargeter targetAbility(Game game, IAbility ability, AbilityTargeter t);
+	public Targeter targetAbility(Game game, IAbility ability, Targeter t);
 	public Tcoord nominateLeader(Game game, Faction f);
 }

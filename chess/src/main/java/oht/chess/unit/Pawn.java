@@ -1,4 +1,6 @@
 package oht.chess.unit;
+import oht.chess.shared.Faction;
+import oht.chess.shared.Chesspiece;
 import java.util.HashSet;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;

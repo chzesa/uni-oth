@@ -1,12 +1,12 @@
 package oht.chess.ui;
 
 import java.util.ArrayList;
-import oht.chess.ability.AbilityTargeter;
-import oht.chess.ability.IAbility;
+import oht.chess.util.Targeter;
+import oht.chess.shared.IAbility;
 import oht.chess.game.Game;
 import oht.chess.game.GameResult;
 import oht.chess.game.IPlayerController;
-import oht.chess.unit.Faction;
+import oht.chess.shared.Faction;
 import oht.chess.util.MoveDescriptor;
 import oht.chess.util.Tcoord;
 
@@ -38,7 +38,7 @@ public class CliClient implements IGui, IPlayerController {
 	}
 
 	@Override
-	public AbilityTargeter targetAbility(Game game, IAbility ability, AbilityTargeter t) {
+	public Targeter targetAbility(Game game, IAbility ability, Targeter t) {
 		ui.setSelectables(t.selectable());
 		ui.setSelected(t.targeted());
 		ui.draw(game);

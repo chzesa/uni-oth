@@ -3,13 +3,13 @@ import oht.chess.game.IPlayerController;
 import oht.chess.util.MoveDescriptor;
 import java.util.Scanner;
 import java.util.regex.*;
-import oht.chess.ability.AbilityTargeter;
-import oht.chess.ability.IAbility;
+import oht.chess.util.Targeter;
+import oht.chess.shared.IAbility;
 import oht.chess.game.Entity;
 import oht.chess.game.Game;
 import oht.chess.game.GameSerializer;
 import oht.chess.io.FileHandler;
-import oht.chess.unit.Faction;
+import oht.chess.shared.Faction;
 import oht.chess.util.Tcoord;
 
 public class ConsolePlayer implements IPlayerController {
@@ -81,7 +81,7 @@ public class ConsolePlayer implements IPlayerController {
 	}
 
 	@Override
-	public AbilityTargeter targetAbility(Game game, IAbility ability, AbilityTargeter t) {
+	public Targeter targetAbility(Game game, IAbility ability, Targeter t) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Using " + ability.toString());
 		System.out.println("Select [ " + t.minSize() + " - " + t.maxSize() + " ] targets.");

@@ -1,16 +1,16 @@
 package oht.chess.game;
 
 import java.util.Set;
-import oht.chess.ability.IAbility;
-import oht.chess.unit.IActor;
-import oht.chess.ability.IAbilitySet;
-import oht.chess.ability.Role;
-import oht.chess.unit.Chesspiece;
-import oht.chess.unit.Faction;
+import oht.chess.ability.RoleFactory;
+import oht.chess.shared.Chesspiece;
+import oht.chess.shared.Faction;
+import oht.chess.shared.IAbility;
+import oht.chess.shared.IAbilitySet;
+import oht.chess.shared.IActor;
+import oht.chess.shared.Role;
+import oht.chess.unit.UnitFactory;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
-import oht.chess.unit.UnitFactory;
-import oht.chess.ability.RoleFactory;
 
 public class Entity implements IActor, IAbilitySet {
 	IActor actor;

@@ -1,13 +1,13 @@
 package oht.chess.game;
 
 import java.util.Random;
-import oht.chess.ability.Role;
+import oht.chess.shared.Role;
 import oht.chess.game.Entity;
 import oht.chess.game.Game;
 import oht.chess.game.GameSerializer;
-import oht.chess.unit.Faction;
-import oht.chess.unit.IActor;
-import oht.chess.unit.Chesspiece;
+import oht.chess.shared.Faction;
+import oht.chess.shared.IActor;
+import oht.chess.shared.Chesspiece;
 import oht.chess.util.Tcoord;
 import org.junit.Test;
 import org.junit.Before;

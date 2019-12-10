@@ -1,5 +1,7 @@
 package oht.chess.unit;
-import oht.chess.ability.Role;
+import oht.chess.shared.Faction;
+import oht.chess.shared.Chesspiece;
+import oht.chess.shared.Role;
 
 public class Unit {
 	Chesspiece base;

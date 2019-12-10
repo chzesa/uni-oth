@@ -2,7 +2,7 @@ package oht.chess.game;
 
 import java.util.Random;
 import oht.chess.game.Game;
-import oht.chess.unit.Faction;
+import oht.chess.shared.Faction;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;

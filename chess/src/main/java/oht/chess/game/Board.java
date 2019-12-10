@@ -1,7 +1,8 @@
 package oht.chess.game;
-import oht.chess.ability.Role;
-import oht.chess.unit.Chesspiece;
-import oht.chess.unit.Faction;
+import oht.chess.shared.Chesspiece;
+import oht.chess.shared.Faction;
+import oht.chess.shared.IBoard;
+import oht.chess.shared.Role;
 import oht.chess.util.Tcoord;
 
 class Board implements IBoard {

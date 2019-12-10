@@ -1,20 +1,24 @@
 package oht.chess.ability;
+import oht.chess.shared.IAbility;
+import oht.chess.util.Targeter;
+import oht.chess.util.TargetSet;
+import oht.chess.util.TargeterState;
 import java.util.Set;
-import oht.chess.unit.IActor;
-import oht.chess.game.IBoard;
+import oht.chess.shared.IActor;
+import oht.chess.shared.IBoard;
 import oht.chess.util.Tcoord;
 
 class Charm implements IAbility {
 	@Override
-	public AbilityTargeter beginUse(IActor user, IBoard board) {
+	public Targeter beginUse(IActor user, IBoard board) {
 		Set<Tcoord> targets =
 						AbilityUtil.filterHostile(user.attackVectors(), user, board);
 
-		return new AbilityTargeter(new TargetSet(targets, 1));
+		return new Targeter(new TargetSet(targets, 1));
 	}
 
 	@Override
-	public boolean endUse(AbilityTargeter t, IActor user, IBoard board) {
+	public boolean endUse(Targeter t, IActor user, IBoard board) {
 		if (!isValid(t, user, board)) {
 			return false;
 		}
@@ -26,7 +30,7 @@ class Charm implements IAbility {
 	}
 
 	@Override
-	public TargeterState isComplete(AbilityTargeter t, IActor user, IBoard board) {
+	public TargeterState isComplete(Targeter t, IActor user, IBoard board) {
 		if (t.size(0) == 1) {
 			if (t.size() == 1) {
 				IActor target = board.get(t.get(0, 0));
@@ -47,7 +51,7 @@ class Charm implements IAbility {
 	}
 
 	@Override
-	public boolean isValid(AbilityTargeter t, IActor user, IBoard board) {
+	public boolean isValid(Targeter t, IActor user, IBoard board) {
 		if (isComplete(t, user, board) != TargeterState.Complete) {
 			return false;
 		}

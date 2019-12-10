@@ -1,4 +1,7 @@
 package oht.chess.ability;
+import oht.chess.shared.IAbilitySet;
+import oht.chess.shared.IAbility;
+import oht.chess.shared.Role;
 import java.util.ArrayList;
 
 class AbilitySet implements IAbilitySet {

@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import java.util.Set;
 import java.util.HashSet;
 
-import oht.chess.ability.TargetSet;
+import oht.chess.util.TargetSet;
 import oht.chess.util.Tcoord;
 
 public class TargetSetTest {

@@ -1,8 +1,11 @@
 package oht.chess.ability;
 
+import oht.chess.shared.IAbility;
+import oht.chess.util.Targeter;
+import oht.chess.util.TargeterState;
 import java.util.Iterator;
-import oht.chess.game.IBoard;
-import oht.chess.unit.IActor;
+import oht.chess.shared.IBoard;
+import oht.chess.shared.IActor;
 import oht.chess.util.Tcoord;
 
 public class AbilityUseChecker {
@@ -20,7 +23,7 @@ public class AbilityUseChecker {
 		return elem;
 	}
 
-	boolean beginRecursion(AbilityTargeter t) {
+	boolean beginRecursion(Targeter t) {
 		// start recursion for all target counts in the set
 		if (t.maxSize() == 0) {
 			return true;
@@ -35,7 +38,7 @@ public class AbilityUseChecker {
 		return false;
 	}
 
-	boolean recurse(AbilityTargeter t, int targets) {
+	boolean recurse(Targeter t, int targets) {
 		int targetableCount = t.numTargets();
 		for (int i = 0; i < targetableCount; i++) {
 			Tcoord coord = nth(t.selectable().iterator(), i);

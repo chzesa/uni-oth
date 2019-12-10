@@ -1,10 +1,10 @@
 import java.util.Set;
 import oht.chess.ability.AbilityUtil;
-import oht.chess.ability.Role;
+import oht.chess.shared.Role;
 import oht.chess.game.Game;
-import oht.chess.unit.Chesspiece;
-import oht.chess.unit.Faction;
-import oht.chess.unit.IActor;
+import oht.chess.shared.Chesspiece;
+import oht.chess.shared.Faction;
+import oht.chess.shared.IActor;
 import oht.chess.util.*;
 import static org.junit.Assert.*;
 import org.junit.Before;

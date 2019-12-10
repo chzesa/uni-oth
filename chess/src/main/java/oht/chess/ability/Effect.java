@@ -1,7 +1,7 @@
 package oht.chess.ability;
 import oht.chess.util.Tcoord;
-import oht.chess.unit.IActor;
-import oht.chess.game.IBoard;
+import oht.chess.shared.IActor;
+import oht.chess.shared.IBoard;
 
 public class Effect {
 	public static void damage(IActor src, IActor dst, int amount, IBoard b) {

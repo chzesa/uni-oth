@@ -1,6 +1,6 @@
 package oht.chess.ui;
 
-import oht.chess.unit.IActor;
+import oht.chess.shared.IActor;
 import oht.chess.game.Game;
 import oht.chess.game.GameResult;
 import oht.chess.util.Tcoord;

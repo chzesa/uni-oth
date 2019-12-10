@@ -1,11 +1,11 @@
 package oht.chess.game;
 import java.util.HashMap;
-import oht.chess.util.Tcoord;
 import java.util.regex.*;
-import oht.chess.ability.Role;
-import oht.chess.unit.Chesspiece;
-import oht.chess.unit.Faction;
-import oht.chess.unit.IActor;
+import oht.chess.shared.Chesspiece;
+import oht.chess.shared.Faction;
+import oht.chess.shared.IActor;
+import oht.chess.shared.Role;
+import oht.chess.util.Tcoord;
 
 public class GameSerializer {
 	final static String WIDTH_KEY = "width";

@@ -1,4 +1,4 @@
-package oht.chess.ability;
+package oht.chess.shared;
 
 import java.util.Random;
 

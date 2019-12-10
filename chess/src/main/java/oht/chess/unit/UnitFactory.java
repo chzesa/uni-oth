@@ -1,5 +1,9 @@
 package oht.chess.unit;
 
+import oht.chess.shared.Faction;
+import oht.chess.shared.Chesspiece;
+import oht.chess.shared.IActor;
+
 public class UnitFactory {
 	public static IActor make(Chesspiece base, Faction faction) {
 		switch (base) {

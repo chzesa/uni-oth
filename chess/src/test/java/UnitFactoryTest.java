@@ -1,7 +1,7 @@
-import oht.chess.unit.Faction;
-import oht.chess.unit.Chesspiece;
+import oht.chess.shared.Faction;
+import oht.chess.shared.Chesspiece;
 import oht.chess.unit.UnitFactory;
-import oht.chess.unit.IActor;
+import oht.chess.shared.IActor;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -2,8 +2,8 @@ package oht.chess.ability;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-import oht.chess.unit.IActor;
-import oht.chess.game.IBoard;
+import oht.chess.shared.IActor;
+import oht.chess.shared.IBoard;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 

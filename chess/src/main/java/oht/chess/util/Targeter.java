@@ -1,13 +1,12 @@
-package oht.chess.ability;
+package oht.chess.util;
 
 import java.util.ArrayList;
-import oht.chess.util.Tcoord;
 
-public class AbilityTargeter {
+public class Targeter {
 	ArrayList<TargetSet> sets = new ArrayList<>();
 	TargetSet wSet;
 
-	public AbilityTargeter(TargetSet initialSet) {
+	public Targeter(TargetSet initialSet) {
 		this.wSet = initialSet;
 		this.sets.add(this.wSet);
 	}

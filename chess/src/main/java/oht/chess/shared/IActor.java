@@ -1,7 +1,6 @@
-package oht.chess.unit;
+package oht.chess.shared;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
-import oht.chess.ability.Role;
 import java.util.Set;
 
 public interface IActor {

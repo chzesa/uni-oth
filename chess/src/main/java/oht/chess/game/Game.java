@@ -1,13 +1,13 @@
 package oht.chess.game;
 
-import oht.chess.ability.AbilityTargeter;
 import oht.chess.ability.AbilityUseChecker;
-import oht.chess.ability.IAbility;
-import oht.chess.ability.Role;
-import oht.chess.ability.TargeterState;
-import oht.chess.unit.Chesspiece;
-import oht.chess.unit.Faction;
+import oht.chess.shared.Chesspiece;
+import oht.chess.shared.Faction;
+import oht.chess.shared.IAbility;
+import oht.chess.shared.Role;
 import oht.chess.util.MoveDescriptor;
+import oht.chess.util.Targeter;
+import oht.chess.util.TargeterState;
 import oht.chess.util.Tcoord;
 
 public class Game extends Board {
@@ -95,7 +95,7 @@ public class Game extends Board {
 
 			Entity origin = get(desc.origin());
 			IAbility a = origin.getAbility(desc.key());
-			AbilityTargeter t = a.beginUse(origin, this);
+			Targeter t = a.beginUse(origin, this);
 
 			do {
 				t = (activeFaction() == Faction.White ? p1 : p2).targetAbility(this, a, t);

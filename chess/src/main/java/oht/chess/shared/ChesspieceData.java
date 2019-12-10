@@ -1,4 +1,4 @@
-package oht.chess.unit;
+package oht.chess.shared;
 
 public class ChesspieceData {
 	public static int maxHp(Chesspiece base) {
