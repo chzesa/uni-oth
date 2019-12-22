@@ -20,6 +20,8 @@ Peli on shakkivariantti jossa shakkinappuloilla on hahmoluokat.
 
 [Viikko 6](https://github.com/chzesa/uni-oht/releases/tag/week6)
 
+[Loppupalautus](https://github.com/chzesa/uni-oht/releases/tag/loppupalautus)
+
 ## Komennot
 ### Testaus
 Testien suorittaminen:
