@@ -8,6 +8,9 @@ import oht.chess.shared.IActor;
 import oht.chess.shared.IBoard;
 import oht.chess.util.Tcoord;
 
+/**
+ * Yksiköiden liikuttamisen suorittava kyky.
+ */
 class Move implements IAbility {
 	@Override
 	public Targeter beginUse(IActor user, IBoard board) {
@@ -30,6 +33,10 @@ class Move implements IAbility {
 
 	@Override
 	public TargeterState isComplete(Targeter t, IActor user, IBoard board) {
+		if (t == null) {
+			return TargeterState.Error;
+		}
+
 		if (t.size(0) == 1) {
 			return TargeterState.Complete;
 		}

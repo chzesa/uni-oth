@@ -1,3 +1,4 @@
+package oht.chess.ability;
 import oht.chess.shared.Role;
 import oht.chess.game.Entity;
 import oht.chess.game.Game;
@@ -6,7 +7,6 @@ import oht.chess.shared.Faction;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import oht.chess.ability.AbilityUseChecker;
 
 public class AbilityUseCheckerTest {
 	Game game;
@@ -122,13 +122,18 @@ public class AbilityUseCheckerTest {
 
 	@Test
 	public void testCanNotMoveDstOob() {
-		// X##
+		// W##
 		// ###
-		// ###
+		// B##
 
 		game.spawn(Chesspiece.Pawn, Role.Base, Faction.White, 0, 2);
 		Entity e = game.get(0, 2);
 		AbilityUseChecker test = new AbilityUseChecker(e.getAbility("move"), e, game);
+		assertFalse(test.result());
+
+		game.spawn(Chesspiece.Pawn, Role.Base, Faction.Black, 0, 0);
+		e = game.get(0, 0);
+		test = new AbilityUseChecker(e.getAbility("move"), e, game);
 		assertFalse(test.result());
 	}
 

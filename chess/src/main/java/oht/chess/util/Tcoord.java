@@ -1,8 +1,11 @@
 package oht.chess.util;
 
+/**
+ * Taxicab-geometriaa kuvaava koordinaatti
+ */
 public class Tcoord {
-	int y;
-	int x;
+	private int y;
+	private int x;
 
 	public Tcoord(int x, int y) {
 		this.x = x;
@@ -15,14 +18,6 @@ public class Tcoord {
 	
 	public int y() {
 		return this.y;
-	}
-
-	public int distance(Tcoord other) {
-		return distance(this, other);
-	}
-	public static int distance(Tcoord first, Tcoord second) {
-		return Math.abs(first.y - second.y)
-			+ Math.abs(first.x - second.x);
 	}
 
 	@Override

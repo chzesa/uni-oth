@@ -1,5 +1,6 @@
+package oht.chess.ability;
+
 import java.util.Set;
-import oht.chess.ability.AbilityUtil;
 import oht.chess.shared.Role;
 import oht.chess.game.Game;
 import oht.chess.shared.Chesspiece;
@@ -9,7 +10,6 @@ import oht.chess.util.*;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-
 
 public class AbilityUtilRelationTest {
 	IActor actor;

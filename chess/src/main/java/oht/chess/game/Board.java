@@ -5,17 +5,20 @@ import oht.chess.shared.IBoard;
 import oht.chess.shared.Role;
 import oht.chess.util.Tcoord;
 
+/**
+ * Referenssitoteutus IBoard rajapinnalle.
+ */
 class Board implements IBoard {
-	Entity[][] cells;
-	int w, h;
+	protected Entity[][] cells;
+	protected int w, h;
 
-	Board(int width, int height) {
+	protected Board(int width, int height) {
 		this.w = width;
 		this.h = height;
 		this.cells = new Entity[this.w][this.h];
 	}
 
-	boolean emplace(Entity actor, Tcoord coord) {
+	protected boolean emplace(Entity actor, Tcoord coord) {
 		if (isOob(coord) || actor == null) {
 			return false;
 		}
@@ -40,7 +43,7 @@ class Board implements IBoard {
 	}
 
 	public Entity get(Tcoord coord) {
-		if (coord == null || isOob(coord)) {
+		if (isOob(coord)) {
 			return null;
 		}
 
@@ -70,7 +73,7 @@ class Board implements IBoard {
 		return isOob(coord.x(), coord.y());
 	}
 
-	boolean isOob(int x, int y) {
+	protected boolean isOob(int x, int y) {
 		return x < 0 || y < 0 || x >= this.w || y >= this.h;
 	}
 

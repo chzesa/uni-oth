@@ -71,7 +71,7 @@ public class ConsolePlayer implements IPlayerController {
 						return new MoveDescriptor(selected.pos(), index);
 					}
 				} else {
-					Tcoord parsed = ControllerUtil.parseString(s);
+					Tcoord parsed = CliUtil.parseString(s);
 					if (parsed != null) {
 						selected = game.get(parsed);
 					}
@@ -98,7 +98,7 @@ public class ConsolePlayer implements IPlayerController {
 			} else if (s.equals("cancel") || s.equals("c") || s.equals("quit") || s.equals("q")) {
 				return null;
 			} else {
-				Tcoord parsed = ControllerUtil.parseString(s);
+				Tcoord parsed = CliUtil.parseString(s);
 
 				if (parsed != null) {
 					t.toggle(parsed);
@@ -125,7 +125,7 @@ public class ConsolePlayer implements IPlayerController {
 				if (s.equals("quit")) {
 					return null;
 				}
-				Tcoord parsed = ControllerUtil.parseString(s);
+				Tcoord parsed = CliUtil.parseString(s);
 				if (parsed != null) {
 					return parsed;
 				}

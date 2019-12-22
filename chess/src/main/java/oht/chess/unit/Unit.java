@@ -3,7 +3,7 @@ import oht.chess.shared.Faction;
 import oht.chess.shared.Chesspiece;
 import oht.chess.shared.Role;
 
-public class Unit {
+class Unit {
 	Chesspiece base;
 	Role role;
 	Faction faction;

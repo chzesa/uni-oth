@@ -10,7 +10,7 @@ import oht.chess.util.Vector;
 /**
  * Apuluokka joka tarjoaa metodeja erilaisten koordinaattisettien generoimiselle.
  */
-public class AbilityUtil {
+class AbilityUtil {
 	/**
 	 * Palauttaa joukon koordinaatteja, jotka ovat laudan sisällä, ja joihin pääsee vektoreiden
 	 * kuvaamilla liikkeillä. Palautettu joukko sisältää ensimmäiset epätyhjät koordinaatit
@@ -19,9 +19,11 @@ public class AbilityUtil {
 	 @param	origin	Lähtöpiste
 	 @param b	Nykyinen lautatilanne.
 	 */
-	public static Set<Tcoord> filterValid(Set<Vector> vec, Tcoord origin, IBoard b) {
+	static Set<Tcoord> filterValid(Set<Vector> vec, Tcoord origin, IBoard b) {
 		HashSet<Tcoord> ret = new HashSet<>();
-
+		if (vec == null || origin == null || b == null) {
+			return ret;
+		}
 		for (Vector v : vec) {
 			for (int i = 1; i <= v.mag(); i++) {
 				Vector d = new Vector(v.dir(), i);
@@ -40,9 +42,9 @@ public class AbilityUtil {
 	}
 
 	/**
-	 * Suodattaa edelleen filterValid funktion syötteestä ne ruudut, joissa on verratavalle yksikölle vihamielinen yksikkö.
+	 * Suodattaa edelleen filterNonempty funktion palautusarvosta ne ruudut, joissa on verratavalle yksikölle vihamielinen yksikkö.
 	 */
-	public static Set<Tcoord> filterHostile(Set<Vector> vec, IActor comp, IBoard b) {
+	static Set<Tcoord> filterHostile(Set<Vector> vec, IActor comp, IBoard b) {
 		Set<Tcoord> set = filterNonempty(vec, comp.pos(), b);
 
 		return set.stream()
@@ -51,9 +53,9 @@ public class AbilityUtil {
 	}
 
 	/**
-	 * Suodattaa edelleen filterValid funktion syötteestä ne ruudut, joissa on samaan Factioniin kuuluva yksikkö kuin verrattava yksikkö.
+	 * Suodattaa edelleen filterNonempty funktion palautusarvosta ne ruudut, joissa on samaan Factioniin kuuluva yksikkö kuin verrattava yksikkö.
 	 */
-	public static Set<Tcoord> filterFriendly(Set<Vector> vec, IActor comp, IBoard b) {
+	static Set<Tcoord> filterFriendly(Set<Vector> vec, IActor comp, IBoard b) {
 		Set<Tcoord> set = filterNonempty(vec, comp.pos(), b);
 
 		return set.stream()
@@ -64,7 +66,7 @@ public class AbilityUtil {
 	/**
 	 * Suodattaa edelleen filterValid funktion syötteestä ne ruudut, joissa ei ole yksikköä.
 	 */
-	public static Set<Tcoord> filterEmpty(Set<Vector> vec, Tcoord origin, IBoard b) {
+	static Set<Tcoord> filterEmpty(Set<Vector> vec, Tcoord origin, IBoard b) {
 		return filterValid(vec, origin, b).stream()
 			.filter(c -> b.get(c) == null).collect(Collectors.toSet());
 	}
@@ -72,7 +74,7 @@ public class AbilityUtil {
 	/**
 	 * Suodattaa edelleen filterValid funktion syötteestä ne ruudut, on yksikkö.
 	 */
-	public static Set<Tcoord> filterNonempty(Set<Vector> vec, Tcoord origin, IBoard b) {
+	static Set<Tcoord> filterNonempty(Set<Vector> vec, Tcoord origin, IBoard b) {
 		return filterValid(vec, origin, b).stream()
 			.filter(c -> b.get(c) != null).collect(Collectors.toSet());
 	}
@@ -85,21 +87,27 @@ public class AbilityUtil {
 	 @param b	Nykyinen lautatilanne
 	 @return true, jos lähtöpisteestä pääsee kohteeseen jollakin liikevektorilla.
 	 */
-	public static boolean isValidTarget(Set<Vector> vec, Tcoord origin, Tcoord target, IBoard b) {
+	static boolean isValidTarget(Set<Vector> vec, Tcoord origin, Tcoord target, IBoard b) {
 		return filterValid(vec, origin, b).contains(target);
 	}
 
 	/**
 	 * Apufunktio joka tarkastaa pääseekö yksikön liikevektoreilla yksikön sijainnista kohderuutuun.
 	 */
-	public static boolean unitCanMove(IActor actor, Tcoord target, IBoard b) {
+	static boolean unitCanMove(IActor actor, Tcoord target, IBoard b) {
+		if (actor == null) {
+			return false;
+		}
 		return isValidTarget(actor.movementVectors(), actor.pos(), target, b);
 	}
 
 	/**
 	 * Apufunktio joka tarkastaa pääseekö yksikön hyökkäysvektoreilla yksikön sijainnista kohderuutuun.
 	 */
-	public static boolean unitCanAttack(IActor actor, Tcoord target, IBoard b) {
+	static boolean unitCanAttack(IActor actor, Tcoord target, IBoard b) {
+		if (actor == null) {
+			return false;
+		}
 		return isValidTarget(actor.attackVectors(), actor.pos(), target, b);
 	}
 }

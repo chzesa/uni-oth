@@ -4,9 +4,12 @@ import oht.chess.shared.IAbility;
 import oht.chess.shared.Role;
 import java.util.ArrayList;
 
+/**
+ * Referenssitoteutus IAbilitySet rajapinnalle
+ */
 class AbilitySet implements IAbilitySet {
-	Role role;
-	ArrayList<IAbility> abilitys = new ArrayList<>();
+	protected Role role;
+	protected ArrayList<IAbility> abilitys = new ArrayList<>();
 
 	protected AbilitySet(Role role) {
 		this.role = role;
@@ -21,6 +24,10 @@ class AbilitySet implements IAbilitySet {
 
 	@Override
 	public IAbility getAbility(String s) {
+		if (s == null) {
+			return null;
+		}
+
 		s = s.trim();
 		for (IAbility ability : abilitys) {
 			if (ability.name().compareToIgnoreCase(s) == 0) {
@@ -39,6 +46,4 @@ class AbilitySet implements IAbilitySet {
 	public Role role() {
 		return role;
 	}
-
-
 }

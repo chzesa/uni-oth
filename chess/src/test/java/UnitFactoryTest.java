@@ -1,6 +1,7 @@
+package oht.chess.unit;
+
 import oht.chess.shared.Faction;
 import oht.chess.shared.Chesspiece;
-import oht.chess.unit.UnitFactory;
 import oht.chess.shared.IActor;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -51,5 +52,12 @@ public class UnitFactoryTest {
 
 		_unit = UnitFactory.make(Chesspiece.Pawn, Faction.Black);
 		assertEquals(Faction.Black, _unit.faction());
+	}
+
+	@Test
+	public void everyUnitCanBeMade() {
+		for (Chesspiece value : Chesspiece.values()) {
+			UnitFactory.make(value, Faction.White);
+		}
 	}
 }

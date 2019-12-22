@@ -12,12 +12,12 @@ import oht.chess.util.Tcoord;
  * Pattitilanteen selvittämiseen käytettävä luokka. Käy kaikki kyvyn mahdolliset Targeter variaatiot läpi.
  */
 public class AbilityUseChecker {
-	IAbility ability;
-	IActor user;
-	IBoard board;
-	boolean result;
+	private IAbility ability;
+	private IActor user;
+	private IBoard board;
+	private boolean result;
 
-	Tcoord nth(Iterator<Tcoord> t, int index) {
+	private Tcoord nth(Iterator<Tcoord> t, int index) {
 		Tcoord elem = null;
 		for (int i = 0; i < index + 1; i++) {
 			elem = t.next();
@@ -26,7 +26,7 @@ public class AbilityUseChecker {
 		return elem;
 	}
 
-	boolean beginRecursion(Targeter t) {
+	private boolean beginRecursion(Targeter t) {
 		// start recursion for all target counts in the set
 		if (t.maxSize() == 0) {
 			return true;
@@ -41,7 +41,7 @@ public class AbilityUseChecker {
 		return false;
 	}
 
-	boolean recurse(Targeter t, int targets) {
+	private boolean recurse(Targeter t, int targets) {
 		int targetableCount = t.numTargets();
 		for (int i = 0; i < targetableCount; i++) {
 			Tcoord coord = nth(t.selectable().iterator(), i);
@@ -77,7 +77,7 @@ public class AbilityUseChecker {
 			// remove the added coordinate from target set
 			t.toggle(coord);
 		}
-	
+
 		return false;
 	}
 
@@ -91,7 +91,11 @@ public class AbilityUseChecker {
 		this.ability = ability;
 		this.user = user;
 		this.board = board;
-		result = beginRecursion(ability.beginUse(user, board));
+		if (ability == null || user == null || board == null) {
+			result = false;
+		} else {
+			result = beginRecursion(ability.beginUse(user, board));
+		}
 	}
 
 	/**

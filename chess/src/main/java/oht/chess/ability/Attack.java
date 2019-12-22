@@ -7,7 +7,9 @@ import java.util.Set;
 import oht.chess.shared.IActor;
 import oht.chess.shared.IBoard;
 import oht.chess.util.Tcoord;
-
+/**
+ * Kyky, joka tekee yhteen vastustajaan käyttäjän damage-arvon verran vahinkoa.
+ */
 class Attack implements IAbility {
 	@Override
 	public Targeter beginUse(IActor user, IBoard board) {
@@ -17,6 +19,9 @@ class Attack implements IAbility {
 
 	@Override
 	public TargeterState isComplete(Targeter t, IActor user, IBoard board) {
+		if (t == null) {
+			return TargeterState.Error;
+		}
 		if (t.size(0) == 1) {
 			return TargeterState.Complete;
 		}
@@ -33,7 +38,7 @@ class Attack implements IAbility {
 		Tcoord a = t.get(0, 0);
 		IActor target = board.get(a);
 
-		Effect.damage(user, target, user.damage(), board);
+		Effect.damage(target, user.damage(), board);
 		return true;
 	}
 

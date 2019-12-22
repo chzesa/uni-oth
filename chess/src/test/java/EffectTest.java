@@ -1,5 +1,6 @@
+package oht.chess.ability;
+
 import java.util.Random;
-import oht.chess.ability.Effect;
 import oht.chess.shared.Role;
 import oht.chess.game.Entity;
 import oht.chess.game.Game;
@@ -39,18 +40,18 @@ public class EffectTest {
 	public void testDamage() {
 		int baseHp = srcEntity.hp();
 
-		Effect.damage(srcEntity, srcEntity, 1, game);
+		Effect.damage(srcEntity, 1, game);
 		assertEquals(baseHp - 1, srcEntity.hp());
 
 
-		Effect.damage(srcEntity, srcEntity, 2, game);
+		Effect.damage(srcEntity, 2, game);
 		assertEquals(baseHp - 3, srcEntity.hp());
 	}
 
 	@Test
 	public void testOverkill() {
 		int baseHp = srcEntity.hp();
-		Effect.damage(srcEntity, srcEntity, Integer.MAX_VALUE, game);
+		Effect.damage(srcEntity, Integer.MAX_VALUE, game);
 
 		assertEquals(0, srcEntity.hp());
 		assertNull(game.get(srcPos));

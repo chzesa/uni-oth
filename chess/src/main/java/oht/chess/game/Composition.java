@@ -1,70 +1,72 @@
 package oht.chess.game;
 
-import java.util.ArrayList;
-import oht.chess.shared.Chesspiece;
-import oht.chess.shared.Faction;
-import oht.chess.shared.Role;
-import oht.chess.unit.Unit;
+import java.util.HashSet;
+import java.util.Set;
+import oht.chess.shared.IBoard;
+import oht.chess.shared.RoleData;
+import oht.chess.util.Tcoord;
 
-public class Composition {
-	String name;
-	ArrayList<Unit> units;
-	int value;
+/**
+ * Pelaajan yksikkökokoonpanoa kuvaava luokka
+ */
+public class Composition extends Board implements IBoard {
+	protected String name;
+	protected int value;
+
+	static HashSet<Composition> compositions = new HashSet<>();
+	public static Set<Composition> manager() {
+		return compositions;
+	}
 
 	public Composition() {
-		units = new ArrayList<>();
+		super(8, 2);
 		value = 0;
+		name = "Unnamed Composition";
 	}
 
-	public Composition(ArrayList<Unit> units) {
-		this.units = units;
-		value = 0; // todo
+	public String name() {
+		return this.name;
 	}
 
-	public boolean addUnit(Chesspiece base, Role role) {
-		// price check
-		units.add(new Unit(base, role, Faction.Black));
-		return true;
-	}
-
-	public boolean removeUnit(Chesspiece base, Role role) {
-		Unit unit = new Unit(base, role, Faction.Black);
-		units.remove(unit);
-		// contains ?
-		return true;
-	}
-
-	public boolean removeUnit(int index) {
-		if (index < 0 || index >= units.size()) {
+	public boolean setName(String name) {
+		if (name == null || name.equals("")) {
 			return false;
 		}
 
-		units.remove(index);
+		this.name = name;
 		return true;
 	}
 
+	/**
+	 * Palauttaa kokoonpanon kokonaispistearvon.
+	 */
 	public int value() {
 		return this.value;
 	}
 
-	public int size() {
-		return units.size();
+	@Override
+	protected boolean emplace(Entity actor, Tcoord coord) {
+		boolean result = super.emplace(actor, coord);
+
+		if (result) {
+			value += RoleData.totalCost(actor.base(), actor.role());
+		}
+		
+		return result;
 	}
 
-	public static Composition defaultComp() {
-		Composition comp = new Composition();
-		for (int i = 0; i < 8; i++) {
-			comp.addUnit(Chesspiece.Pawn, Role.Base);
+	@Override
+	public Entity remove(Tcoord coord) {
+		Entity e = super.remove(coord);
+		if (e != null) {
+			value -= RoleData.totalCost(e.base(), e.role());
 		}
 
-		for (int i = 0; i < 2; i++) {
-			comp.addUnit(Chesspiece.Rook, Role.Base);
-			comp.addUnit(Chesspiece.Knight, Role.Base);
-			comp.addUnit(Chesspiece.Bishop, Role.Base);
-		}
+		return e;
+	}
 
-		comp.addUnit(Chesspiece.King, Role.Base);
-		comp.addUnit(Chesspiece.Queen, Role.Base);
-		return comp;
+	@Override
+	public String toString() {
+		return name + " [" + value +"pts]";
 	}
 }

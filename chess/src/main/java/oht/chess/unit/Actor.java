@@ -8,6 +8,9 @@ import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 import java.util.Set;
 
+/**
+ * Referenssitoteutus Actor rajapinnalle
+ */
 class Actor extends Unit implements IActor {
 	protected Tcoord pos;
 	protected int hp;
@@ -28,7 +31,6 @@ class Actor extends Unit implements IActor {
 		this.maxHp = ChesspieceData.maxHp(this.base);
 		this.hp = this.maxHp;
 		this.damage = ChesspieceData.damage(this.base);
-		// initAbilities(role);
 	}
 
 	public Tcoord pos() {
@@ -36,6 +38,9 @@ class Actor extends Unit implements IActor {
 	}
 
 	public void setPos(Tcoord coord) {
+		if (coord == null) {
+			return;
+		}
 		this.pos = coord;
 	}
 
@@ -79,6 +84,9 @@ class Actor extends Unit implements IActor {
 	}
 
 	public boolean equals(IActor other) {
+		if (other == null) {
+			return false;
+		}
 		return this.hp == other.hp()
 			&& this.base == other.base()
 			&& this.faction == other.faction()

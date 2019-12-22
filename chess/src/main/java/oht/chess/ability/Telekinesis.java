@@ -7,7 +7,9 @@ import java.util.Set;
 import oht.chess.shared.IActor;
 import oht.chess.shared.IBoard;
 import oht.chess.util.Tcoord;
-
+/**
+ * Kyky, joka siirtää valitun yksikön johonkin toiseen ruutuun johon kyvyn käyttäjä pystyisi hyökkäämään.
+ */
 class Telekinesis implements IAbility {
 	@Override
 	public Targeter beginUse(IActor user, IBoard board) {
@@ -31,6 +33,9 @@ class Telekinesis implements IAbility {
 
 	@Override
 	public TargeterState isComplete(Targeter t, IActor user, IBoard board) {
+		if (t == null) {
+			return TargeterState.Error;
+		}
 		if (t.size(0) == 1) {
 			if (t.size() == 1) {
 				Set<Tcoord> targets =

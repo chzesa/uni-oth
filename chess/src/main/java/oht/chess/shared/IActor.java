@@ -18,7 +18,15 @@ public interface IActor {
 
 	public int damage();
 
+	/**
+	 * Palauttaa yksikön liikkumista kuvaavat tiedot
+	 * Sotilaan tapauksessa siis edessä olevan ruudun.
+	 */
 	public Set<Vector> movementVectors();
+	/**
+	 * Palauttaa yksikön hyökkäämistä kuvaavat tiedot.
+	 * Sotilaan tapauksessa siis edessä olevat viistosuuntaiset ruudut.
+	 */
 	public Set<Vector> attackVectors();
 	public Vector forward();
 

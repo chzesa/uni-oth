@@ -1,12 +1,16 @@
 package oht.chess.ui.cli;
 
 import java.util.Scanner;
+import oht.chess.game.Composition;
 
-public class MainMenu extends Cli implements ICli {
-	public MainMenu(Scanner scanner) {
-		super(scanner);
+public class MainMenu extends DigitMenu implements ICli {
+	public MainMenu() {
+		if (scan == null) {
+			scan = new Scanner(System.in);
+		}
 	}
 
+	@Override
 	void printHelp() {
 		println("[1] Play Game");
 		println("[2] Composition Editor");
@@ -15,23 +19,17 @@ public class MainMenu extends Cli implements ICli {
 	}
 
 	@Override
-	public ICli draw() {
-		printHelp();
-		String[] input = readSplit();
-		int i = 0;
-
-		for (String s : input) {
-			try {
-				i = Integer.parseInt(s);
-			} catch (NumberFormatException e) {
-				continue;
+	ICli onDigit(int i) {
+		switch (i) {
+			case 1: return new PlayGameMenu();
+			case 2: {
+				Composition comp = pickComposition(true);
+				if (comp == null) {
+					break;
+				}
+				return new CompositionEditor(comp, this);
 			}
-
-			switch (i) {
-				case 1: return new PlayGameMenu(scan);
-				case 2: return new CompositionMenu(scan);
-				case 3: return null;
-			}
+			case 3: return null;
 		}
 
 		return this;

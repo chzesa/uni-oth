@@ -9,8 +9,8 @@ public class ChesspieceData {
 			case Pawn: return 2;
 			case Queen: return 4;
 			case Rook: return 8;
-			default: return 0;
 		}
+		throw new UnsupportedOperationException();
 	}
 
 	public static int damage(Chesspiece base) {
@@ -21,11 +21,13 @@ public class ChesspieceData {
 			case Pawn: return 1;
 			case Queen: return 4;
 			case Rook: return 5;
-			default: return 0;
 		}
+		throw new UnsupportedOperationException();
 	}
-
-	public static float costMulti(Chesspiece base) {
+	/**
+ 	* @return Shakkinappulan kerroin roolin hinnalle
+ 	*/
+	public static int costMulti(Chesspiece base) {
 		switch (base) {
 			case Bishop: return 3;
 			case King: return 4;
@@ -33,7 +35,7 @@ public class ChesspieceData {
 			case Pawn: return 1;
 			case Queen: return 4;
 			case Rook: return 5;
-			default: return 0;
 		}
+		throw new UnsupportedOperationException();
 	}
 }

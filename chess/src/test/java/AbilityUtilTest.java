@@ -1,6 +1,7 @@
+package oht.chess.ability;
+
 import java.util.HashSet;
 import java.util.Set;
-import oht.chess.ability.AbilityUtil;
 import oht.chess.shared.Role;
 import oht.chess.game.Game;
 import oht.chess.shared.Chesspiece;

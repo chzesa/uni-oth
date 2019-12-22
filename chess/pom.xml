@@ -33,7 +33,8 @@
 				<version>0.8.3</version>
 				<configuration>
 					<excludes>
-						<exclude>oht/chess/ui/*</exclude>
+						<exclude>oht/chess/ui/</exclude>
+						<exclude>oht/chess/ui/cli/*</exclude>
 					</excludes>
 				</configuration>
 				<executions>
@@ -51,7 +52,7 @@
 				<version>2.17</version>
 				<configuration>
 					<configLocation>checkstyle.xml</configLocation>
-					<excludes>oht/chess/ui/*</excludes>>
+					<excludes>oht/chess/ui/</excludes>
 				</configuration>
 			</plugin>
 			<plugin>

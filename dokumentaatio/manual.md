@@ -1,9 +1,21 @@
 # Käyttöohje
 [Lataa](https://github.com/chzesa/uni-oht/releases) ja suorita uusin release.
 
+Ohjelman voi suorittaa komennolla `java -jar chess.java`
+
 ## Valikoissa navigointi
 Navigointi valikoissa tapahtuu syöttämällä seuraavan valikon numero.
 Tallennuksen lataus valikossa käyttäjää pyydetään syöttämään tiedostopolku aiemmin tallennettuun peliin. Esimerkiksi `/home/linuxuser/savedgame`. Valikosta voi poistua syöttämällä tyhjän merkkijonon.
+
+## Composition editor
+Composition editorissa voi muokata sessiossa olevia compositioneita. Editorissa näkyy nykyisen compositionin tilantnne ja siinä on 7 komentoa
+* `rename <newname>`: muuttaa compositionin nimen, kunhan uudessa nimessä on 1 tai enemmän merkkiä. Nimien ei tarvitse olla ainutlaatuisia
+* `add <coord> <role> <base>`: lisää koordinaattiin roolin ja basen määrittelemän yksikön, jos koordinaatin ruutu on tyhjä.
+* `remove <coord>`: poistaa koordinaatisas olean yksikön
+* `help`: tulostaa komennot ja mahdolliset roolit ja shakkinappuloiden tyypt
+* `<coord>`: tulostaa tiedon syötetyssä ruudussa olevasta yksiköstä.
+* `return`: palaa päävalikkoon
+* `delete`: poistaa compositionin muistista.
 
 ## Pelaaminen
 ### Hahmon ja kyvyn valinta

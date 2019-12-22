@@ -6,16 +6,14 @@ import oht.chess.util.Targeter;
 import oht.chess.util.Tcoord;
 
 /**
- * Käyttöliittymä jonka peliä pelaavan luokan tulee toteuttaa.
+ * Rajapinta jonka peliä pelaavan luokan tulee toteuttaa.
  */
 public interface IPlayerController {
 	/**
 	 * Funktio, jonka avulla peli kysyy minkä yksikön kykyä pelaaja
 	 * haluaa vuorollaa käyttää. Kysely toistetaan kunnes pelaaja
 	 * valitsee jonkin oman yksikkönsä kyvyn.
-
 	 * @param	game	Nykyinen pelitilanne
-
 	 * @return MoveDescriptor, jossa on pelaajan oman yksikön koorinaatti ja yksikön kyvyn indeksi. Jos null, pelaaja luovuttaa.
 	 */
 	public MoveDescriptor selectAbility(Game game);

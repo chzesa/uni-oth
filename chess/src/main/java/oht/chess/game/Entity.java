@@ -12,6 +12,9 @@ import oht.chess.unit.UnitFactory;
 import oht.chess.util.Tcoord;
 import oht.chess.util.Vector;
 
+/**
+ * Yhdiste IActor ja IAbilityset rajapinnoille.
+ */
 public class Entity implements IActor, IAbilitySet {
 	IActor actor;
 	IAbilitySet abilities;
@@ -98,8 +101,26 @@ public class Entity implements IActor, IAbilitySet {
 		return actor.toString();
 	}
         
+        @Override
 	public boolean equals(IActor other) {
-		return actor.equals(other) && this.role == other.role();
+		return actor.equals(other) && this.role.equals(other.role());
+	}
+
+	@Override
+	public boolean equals(Object rhs) {
+		if (this == rhs) {
+			return true;
+		}
+		if (rhs == null) {
+			return false;
+		}
+
+		if (getClass() != rhs.getClass()) {
+			return false;
+		}
+
+		Entity other = (Entity) rhs;
+		return actor.equals(other.actor) && this.role.equals(other.role());
 	}
 
 	@Override

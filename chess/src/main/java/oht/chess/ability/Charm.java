@@ -7,7 +7,9 @@ import java.util.Set;
 import oht.chess.shared.IActor;
 import oht.chess.shared.IBoard;
 import oht.chess.util.Tcoord;
-
+/**
+ * Kyky, jolla valittu vastustaja suorittaa yhden hyökkäyksen liittolaiseensa.
+ */
 class Charm implements IAbility {
 	@Override
 	public Targeter beginUse(IActor user, IBoard board) {
@@ -25,12 +27,16 @@ class Charm implements IAbility {
 
 		Tcoord attacker = t.get(0, 0);
 		Tcoord target = t.get(1, 0);
-		Effect.damage(board.get(attacker), board.get(target), board.get(attacker).damage(), board);
+		Effect.damage(board.get(target), board.get(attacker).damage(), board);
 		return true;
 	}
 
 	@Override
 	public TargeterState isComplete(Targeter t, IActor user, IBoard board) {
+		if (t == null) {
+			return TargeterState.Error;
+		}
+
 		if (t.size(0) == 1) {
 			if (t.size() == 1) {
 				IActor target = board.get(t.get(0, 0));

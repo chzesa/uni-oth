@@ -7,12 +7,12 @@ import java.util.HashMap;
  * Edustaa valittavaa osajoukkoa jostakin koordinaattijoukosta. Pitää muistissa koordinaattien valitsemisjärjestyksen.
  */
 public class TargetSet {
-	Set<Tcoord> refSet;
-	HashSet<Tcoord> wSet = new HashSet<>();
-	HashMap<Tcoord, Integer> orderMap = new HashMap<>();
-	HashMap<Integer, Tcoord> insertionOrder = new HashMap<>();
-	int min;
-	int max;
+	private Set<Tcoord> refSet;
+	private HashSet<Tcoord> wSet = new HashSet<>();
+	private HashMap<Tcoord, Integer> orderMap = new HashMap<>();
+	private HashMap<Integer, Tcoord> insertionOrder = new HashMap<>();
+	private int min;
+	private int max;
 
 	/**
 	 * @param	targetables	Joukko koordinaatteja, joista valinta tulee suorittaa

@@ -1,8 +1,11 @@
 package oht.chess.util;
 
+/**
+ * Luokka jolla voi esimerkiksi kuvata käyttäjän valitsema yksikkö ja kyvyn indeksi.
+ */
 public class MoveDescriptor {
-	Tcoord origin;
-	int key;
+	private Tcoord origin;
+	private int key;
 
 	public MoveDescriptor(Tcoord origin, int key) {
 		this.origin = origin;

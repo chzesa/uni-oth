@@ -1,28 +1,63 @@
 package oht.chess.game;
 
 import oht.chess.ability.AbilityUseChecker;
-import oht.chess.shared.Chesspiece;
 import oht.chess.shared.Faction;
 import oht.chess.shared.IAbility;
-import oht.chess.shared.Role;
 import oht.chess.util.MoveDescriptor;
 import oht.chess.util.Targeter;
 import oht.chess.util.TargeterState;
 import oht.chess.util.Tcoord;
-
+/**
+ * Peliä suorittava luokka
+ */
 public class Game extends Board {
 	int turnCount;
-	Board board;
+	private Board board;
+	/**
+	 * Valkoisten yksiköiden johtaja, jonka menetys tarkoittaa valkoisen häviötä
+	 */
 	Entity p1Leader = null;
+	/**
+	 * Mustien yksiköiden johtaja, jonka menetys tarkoittaa mustan häviötä
+	 */
 	Entity p2Leader = null;
 
+	/**
+	 * @param	w	Laudan leveys
+	 * @param	h	Laudan korkeus
+	 */
 	public Game(int w, int h) {
 		super(w, h);
 		this.turnCount = 0;
 		this.board = new Board(w, h);
 	}
 
-	boolean isDraw(Faction f) {
+	/**
+	 * @param	width	Laudan leveys
+	 * @param	height	Laudan korkeus
+	 * @param	w	Valkoisten yksiköiden kokoonpano
+	 * @param	b	Mustien yksiköiden kokoonpano
+	 */
+	public Game(int width, int height, Composition w, Composition b) {
+		this(width, height);
+		deploy(w, Faction.White);
+		deploy(b, Faction.Black);
+	}
+
+	void deploy(Composition comp, Faction f) {
+		for (int x = 0; x < Math.min(w, comp.width()); x++) {
+			for (int y = 0; y < Math.min(h, comp.height()); y++) {
+				Entity e = comp.get(x, y);
+				if (e == null) {
+					continue;
+				}
+				Tcoord coord = f == Faction.White ? new Tcoord(x, y) : new Tcoord(w - x - 1, h - y - 1);
+				spawn(e.base(), e.role(), f, coord);
+			}
+		}
+	}
+
+	boolean canAct(Faction f) {
 		for (int x = 0; x < w; x++) {
 			for (int y = 0; y < h; y++) {
 				Entity ent = get(x, y);
@@ -33,23 +68,33 @@ public class Game extends Board {
 				for (int i = 0; i < ent.numAbilities(); i++) {
 					AbilityUseChecker check = new AbilityUseChecker(ent.getAbility(i), ent, this);
 					if (check.result()) {
-						return false;
+						return true;
 					}
 				}
 			}
 		}
 
-		return true;
+		return false;
 	}
 
+	/**
+	 * Funktio joka suorittaa peliä kunnes toinen pelaajista voittaa, tai pelitilannetta ei pysty muuttamaan.
+	 * @param	p1	Valkoisia yksiköitä kontrolloiva pelaaja
+	 * @param	p2	Mustia yksiköitä kontrolloiva pelaaja
+	 * @return	Pelin lopputulos
+	 */
 	public GameResult play(IPlayerController p1, IPlayerController p2) {
+		if (!canAct(Faction.White) || !canAct(Faction.Black)) {
+			return GameResult.Draw;
+		}
+
 		if (!assignLeaders(p1, p2)) {
 			return GameResult.None;
 		}
 		GameResult result;
 
 		while (true) {
-			if (isDraw(activeFaction())) {
+			if (!canAct(activeFaction())) {
 				return GameResult.Draw;
 			}
 
@@ -141,7 +186,9 @@ public class Game extends Board {
 
 		return GameResult.None;
 	}
-
+	/**
+	 * Faction, joka voi suorittaa siirron tällä vuorolla
+	 */
 	public Faction activeFaction() {
 		if (this.turnCount % 2 == 0) {
 			return Faction.White;
@@ -153,13 +200,16 @@ public class Game extends Board {
 		return this.turnCount;
 	}
 
+	/**
+	 * Nostaa vuoronumeroa yhdellä
+	 * @return Faction, jonka vuoro uusi vuoro on
+	 */
 	Faction nextTurn() {
 		this.turnCount++;
 		return activeFaction();
 	}
 
-	// Checkstyle finagling
-	boolean setupNotEquals(Game rhs) {
+	private boolean setupNotEquals(Game rhs) {
 		return turnCount != rhs.turnCount || w != rhs.w || h != rhs.h
 			|| p1Leader != null && !p1Leader.equals(rhs.p1Leader)
 			|| p1Leader == null && rhs.p1Leader != null
@@ -167,8 +217,7 @@ public class Game extends Board {
 			|| p2Leader == null && rhs.p2Leader != null;
 	}
 
-	// Checkstyle finagling
-	boolean contentsEquals(Game rhs) {
+	private boolean contentsEquals(Game rhs) {
 		for (int x = 0; x < w; x++) {
 			for (int y = 0; y < h; y++) {
 				Entity a = cells[x][y];
@@ -203,44 +252,5 @@ public class Game extends Board {
 
 		Game other = (Game) rhs;
 		return !setupNotEquals(other) && contentsEquals(other);
-	}
-
-	// Checkstyle finagling
-	private void spawnBlack() {
-		for (int i = 0; i < 8; i++) {
-			spawn(Chesspiece.Pawn, Role.rand(), Faction.Black, i, 6);
-		}
-
-		spawn(Chesspiece.Rook, Role.rand(), Faction.Black, 0, 7);
-		spawn(Chesspiece.Knight, Role.rand(), Faction.Black, 1, 7);
-		spawn(Chesspiece.Bishop, Role.rand(), Faction.Black, 2, 7);
-		spawn(Chesspiece.Queen, Role.rand(), Faction.Black, 3, 7);
-		spawn(Chesspiece.King, Role.rand(), Faction.Black, 4, 7);
-		spawn(Chesspiece.Bishop, Role.rand(), Faction.Black, 5, 7);
-		spawn(Chesspiece.Knight, Role.rand(), Faction.Black, 6, 7);
-		spawn(Chesspiece.Rook, Role.rand(), Faction.Black, 7, 7);
-	}
-
-	// Checkstyle finagling
-	private void spawnWhite() {
-		for (int i = 0; i < 8; i++) {
-			spawn(Chesspiece.Pawn, Role.rand(), Faction.White, i, 1);
-		}
-
-		spawn(Chesspiece.Rook, Role.rand(), Faction.White, 0, 0);
-		spawn(Chesspiece.Knight, Role.rand(), Faction.White, 1, 0);
-		spawn(Chesspiece.Bishop, Role.rand(), Faction.White, 2, 0);
-		spawn(Chesspiece.Queen, Role.rand(), Faction.White, 3, 0);
-		spawn(Chesspiece.King, Role.rand(), Faction.White, 4, 0);
-		spawn(Chesspiece.Bishop, Role.rand(), Faction.White, 5, 0);
-		spawn(Chesspiece.Knight, Role.rand(), Faction.White, 6, 0);
-		spawn(Chesspiece.Rook, Role.rand(), Faction.White, 7, 0);
-	}
-
-	public static Game rand() {
-		Game game = new Game(8, 8);
-		game.spawnBlack();
-		game.spawnWhite();
-		return game;
 	}
 }

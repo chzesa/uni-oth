@@ -4,6 +4,9 @@ import oht.chess.shared.Faction;
 import oht.chess.shared.Chesspiece;
 import oht.chess.shared.IActor;
 
+/**
+ * Luokka joka tarjoaa keinon instansoida shakkinappula
+ */
 public class UnitFactory {
 	public static IActor make(Chesspiece base, Faction faction) {
 		switch (base) {

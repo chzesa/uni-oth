@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 public class FileHandler {
 	/**
 	 * Yrittää lukea polussa sijaitsevan tiedoston.
+	 * @param	path	luettavan tiedoston polku
 	 * @return	Merkkijono joka sisältää luetun tiedoston, tai tyhjä merkkijono jos lukeminen epäonnistui.
 	 */
 	public static String readToString(String path) {

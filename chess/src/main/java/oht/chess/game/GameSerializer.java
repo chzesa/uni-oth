@@ -8,32 +8,32 @@ import oht.chess.shared.Role;
 import oht.chess.util.Tcoord;
 
 public class GameSerializer {
-	final static String WIDTH_KEY = "width";
-	final static String HEIGHT_KEY = "height";
-	final static String TURN_KEY = "turn";
-	final static String UNIT_KEY = "unit";
-	final static String LEADER_KEY = "lead";
+	private final static String WIDTH_KEY = "width";
+	private final static String HEIGHT_KEY = "height";
+	private final static String TURN_KEY = "turn";
+	private final static String UNIT_KEY = "unit";
+	private final static String LEADER_KEY = "lead";
 
-	static Pattern rTurn = Pattern.compile("^" + TURN_KEY + "\\s*(\\d*)$");
-	static Pattern rWidth = Pattern.compile("^" + WIDTH_KEY + "\\s*(\\d*)$");
-	static Pattern rHeight = Pattern.compile("^" + HEIGHT_KEY + "\\s*(\\d*)$");
-	static Pattern rUnit = Pattern.compile("^" + UNIT_KEY + " (\\S*) (\\S*) (\\S*) (\\d*) (\\d*) hp (\\d*)$");
-	static Pattern rLeader = Pattern.compile("^" + LEADER_KEY + " (\\S*) (\\d*) (\\d*)$");
+	private static Pattern rTurn = Pattern.compile("^" + TURN_KEY + "\\s*(\\d*)$");
+	private static Pattern rWidth = Pattern.compile("^" + WIDTH_KEY + "\\s*(\\d*)$");
+	private static Pattern rHeight = Pattern.compile("^" + HEIGHT_KEY + "\\s*(\\d*)$");
+	private static Pattern rUnit = Pattern.compile("^" + UNIT_KEY + " (\\S*) (\\S*) (\\S*) (\\d*) (\\d*) hp (\\d*)$");
+	private static Pattern rLeader = Pattern.compile("^" + LEADER_KEY + " (\\S*) (\\d*) (\\d*)$");
 
-	HashMap<Tcoord, Entity> units = new HashMap<>();
+	private HashMap<Tcoord, Entity> units = new HashMap<>();
 
-	Tcoord p2Lead = null;
-	Tcoord p1Lead = null;
+	private Tcoord p2Lead = null;
+	private Tcoord p1Lead = null;
 
-	int height = -1;
-	int turn = -1;
-	int width = -1;
+	private int height = -1;
+	private int turn = -1;
+	private int width = -1;
 
 	private GameSerializer() {
 
 	}
 
-	Game deserialize(String[] lines) {
+	private Game deserialize(String[] lines) {
 		Matcher m;
 		for (String line : lines) {
 			parseLine(line);
@@ -57,7 +57,7 @@ public class GameSerializer {
 		return g;
 	}
 
-	void parseLine(String line) {
+	private void parseLine(String line) {
 		Matcher m = rUnit.matcher(line);
 		if (m.matches()) {
 			parseUnit(m);
@@ -89,28 +89,28 @@ public class GameSerializer {
 		}
 	}
 
-	void parseTurn(Matcher m) {
+	private void parseTurn(Matcher m) {
 		try {
 			turn = Integer.parseInt(m.group(1));
 		} catch (NumberFormatException e) {
 		}
 	}
 
-	void parseWidth(Matcher m) {
+	private void parseWidth(Matcher m) {
 		try {
 			width = Integer.parseInt(m.group(1));
 		} catch (NumberFormatException e) {
 		}
 	}
 
-	void parseHeight(Matcher m) {
+	private void parseHeight(Matcher m) {
 		try {
 			height = Integer.parseInt(m.group(1));
 		} catch (NumberFormatException e) {
 		}
 	}
 
-	void parseLeader(Matcher m) {
+	private void parseLeader(Matcher m) {
 		int x, y;
 		Faction f;
 
@@ -134,7 +134,7 @@ public class GameSerializer {
 		}
 	}
 
-	void parseUnit(Matcher m) {
+	private void parseUnit(Matcher m) {
 		Faction f;
 		Role r;
 		Chesspiece b;
@@ -159,7 +159,13 @@ public class GameSerializer {
 		units.put(new Tcoord(x, y), e);
 	}
 
+	/**
+	 * Luo parametrinä syötetystä pelistä tekstimuotoisen esityksen, jonka voi palauttaa myöhemmin deserialize metodilla.
+	 */
 	public static String serialize(Game game) {
+		if (game == null) {
+			return "";
+		}
 		StringBuilder ret = new StringBuilder();
 		ret.append(TURN_KEY + " " + game.turn() + '\n');
 		ret.append(WIDTH_KEY + " " + game.width() + '\n');
@@ -189,6 +195,9 @@ public class GameSerializer {
 		return ret.toString();
 	}
 
+	/**
+	 * Palauttaa parametrinä syötetyn merkkijonon kuvaaman pelin, jos merkkijono kuvaa peliä. Muuten null.
+	 */
 	public static Game deserialize(String str) {
 		String[] lines = str.split("\n");
 
