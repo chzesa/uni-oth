@@ -9,7 +9,7 @@ public class Vector {
 
 	/**
 	 * @param	direction	Ruutu, johon pääsee yhdellä vektorin 'askeleella' origosta.
-	 * @param	magntidude	Kuinka monta askelta vektoria pitkin voi maksimissaan ottaa. Arvon tulee olla nollaa suurempi.
+	 * @param	magnitude	Kuinka monta askelta vektoria pitkin voi maksimissaan ottaa. Arvon tulee olla nollaa suurempi.
 	 */
 	public Vector(Tcoord direction, int magnitude) {
 		if (magnitude <= 0) {
@@ -22,7 +22,7 @@ public class Vector {
 	/**
 	 * @param	x	X-akselin suuntainen muutos yhdellä vektorin askeleella.
 	 * @param	y	Y-akselin suuntainen muutos yhdellä vektorin askeleella.
-	 * @param	magntidude	Kuinka monta askelta vektoria pitkin voi maksimissaan ottaa. Arvon tulee olla nollaa suurempi.
+	 * @param	magnitude	Kuinka monta askelta vektoria pitkin voi maksimissaan ottaa. Arvon tulee olla nollaa suurempi.
 	 */
 	public Vector(int x, int y, int magnitude) {
 		this(new Tcoord(x, y), magnitude);

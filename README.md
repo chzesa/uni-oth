@@ -12,6 +12,8 @@ Peli on shakkivariantti jossa shakkinappuloilla on hahmoluokat.
 
 [Käyttöohje](https://github.com/chzesa/uni-oth/blob/master/dokumentaatio/manual.md)
 
+[Testausdokumentti](https://github.com/chzesa/uni-oth/blob/master/dokumentaatio/testausdokumentti.md)
+
 ## Releaset
 
 [Viikko 5](https://github.com/chzesa/uni-oht/releases/tag/week5)
