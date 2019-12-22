@@ -22,8 +22,8 @@
 ||1h|Refactoring, fix checkstyle errors, update docs
 ||30m|Javadoc, manual
 21.12.|1h30m|Add composition related UI elements
-|1h30m|Add composition related stuff
+||1h30m|Add composition related stuff
 22.12. |5h|Write tests, javadoc
-|1h|Final refactoring, fixing checkstyle errors, updating documentation
+||1h|Final refactoring, fixing checkstyle errors, updating documentation
 
 Total: 43h0m
