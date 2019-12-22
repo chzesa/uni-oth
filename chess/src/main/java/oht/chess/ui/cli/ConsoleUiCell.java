@@ -1,4 +1,4 @@
-package oht.chess.ui;
+package oht.chess.ui.cli;
 
 class ConsoleUiCell {
 	char c = ' ';

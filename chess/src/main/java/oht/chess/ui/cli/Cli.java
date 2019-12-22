@@ -47,7 +47,7 @@ public class Cli {
 
 			for (int i = 0; i < comps.size(); i++) {
 				Composition c = comps.get(i);
-				println("[" + (i + offset) + "] " + c.name());
+				println("[" + (i + offset) + "] " + c.toString());
 			}
 
 			print("> ");

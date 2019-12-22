@@ -1,4 +1,4 @@
-package oht.chess.ui;
+package oht.chess.ui.cli;
 
 enum BackgroundColor {
 	Default("\u001B[0m"),

@@ -67,6 +67,6 @@ public class Composition extends Board implements IBoard {
 
 	@Override
 	public String toString() {
-		return name + " [" + value +"pts]";
+		return name + " [" + value + "pts]";
 	}
 }

@@ -1,7 +1,6 @@
 package oht.chess.ui.cli;
 
 import oht.chess.game.Game;
-import oht.chess.ui.CliClient;
 
 public class GameRunner extends Cli implements ICli {
 	Game g;

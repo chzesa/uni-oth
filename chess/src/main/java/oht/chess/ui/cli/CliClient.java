@@ -1,4 +1,4 @@
-package oht.chess.ui;
+package oht.chess.ui.cli;
 
 import java.util.ArrayList;
 import oht.chess.game.Game;
@@ -9,8 +9,9 @@ import oht.chess.shared.IAbility;
 import oht.chess.util.MoveDescriptor;
 import oht.chess.util.Targeter;
 import oht.chess.util.Tcoord;
+import oht.chess.ui.IUi;
 
-public class CliClient implements IGui, IPlayerController {
+public class CliClient implements IUi, IPlayerController {
 	ConsolePlayer player = new ConsolePlayer();
 	ConsoleUi ui = new ConsoleUi();
 

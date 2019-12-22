@@ -10,7 +10,7 @@ Tallennuksen lataus valikossa käyttäjää pyydetään syöttämään tiedostop
 ## Composition editor
 Composition editorissa voi muokata sessiossa olevia compositioneita. Editorissa näkyy nykyisen compositionin tilantnne ja siinä on 7 komentoa
 * `rename <newname>`: muuttaa compositionin nimen, kunhan uudessa nimessä on 1 tai enemmän merkkiä. Nimien ei tarvitse olla ainutlaatuisia
-* `add <coord> <role> <base>`: lisää koordinaattiin roolin ja basen määrittelemän yksikön, jos koordinaatin ruutu on tyhjä.
+* `add <coord> <role> <piece>`: lisää koordinaattiin roolin ja piecen määrittelemän yksikön, jos koordinaatin ruutu on tyhjä.
 * `remove <coord>`: poistaa koordinaatisas olean yksikön
 * `help`: tulostaa komennot ja mahdolliset roolit ja shakkinappuloiden tyypt
 * `<coord>`: tulostaa tiedon syötetyssä ruudussa olevasta yksiköstä.
@@ -18,6 +18,9 @@ Composition editorissa voi muokata sessiossa olevia compositioneita. Editorissa 
 * `delete`: poistaa compositionin muistista.
 
 ## Pelaaminen
+### Aloitus
+Pelaajan tulee koota ainakin yksi joukkuekokoonpano ennen kuin pelin voi aloittaa. Kummallekin pelaajalle asetetaan jokin kokoonpano.
+
 ### Hahmon ja kyvyn valinta
 Pelaaja valitsee haluamansa hahmon syöttämällä shakista tutun koordinaatin ohjelmaan, esimerkiksi `a1`. Valintaa voi vaihtaa syöttämällä uuden koordinaatin.
 

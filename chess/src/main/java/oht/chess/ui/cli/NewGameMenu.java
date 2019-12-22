@@ -8,8 +8,8 @@ public class NewGameMenu extends DigitMenu implements ICli {
 	Composition b = null;
 	@Override
 	void printHelp() {
-		println("[1] First player composition: " + (w == null ? "none" : w.name()));
-		println("[2] Second player composition: " + (b == null ? "none" : b.name()));
+		println("[1] First player composition: " + (w == null ? "none" : w.toString()));
+		println("[2] Second player composition: " + (b == null ? "none" : b.toString()));
 		println("[3] Play");
 		println("[4] Return");
 		print("> ");

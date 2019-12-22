@@ -1,11 +1,12 @@
-package oht.chess.ui;
+package oht.chess.ui.cli;
 
 import oht.chess.game.Game;
 import oht.chess.game.GameResult;
 import oht.chess.shared.IActor;
 import oht.chess.util.Tcoord;
+import oht.chess.ui.IUi;
 
-public class ConsoleUi implements IGui {
+public class ConsoleUi extends Cli implements IUi {
 	Iterable<Tcoord> selected;
 	Iterable<Tcoord> selectable;
 
@@ -18,11 +19,10 @@ public class ConsoleUi implements IGui {
 	}
 
 	public boolean draw(Game game) {
-		// System.out.print("\033[H\033[2J");
-		System.out.println("Turn " + game.turn() + ", " + game.activeFaction().toString());
+		clearScreen();
+		println("Turn " + game.turn() + ", " + game.activeFaction().toString());
 		
 		CliUtil.print(game, selectable, selected);
-
 		return false;
 	}
 
@@ -32,16 +32,16 @@ public class ConsoleUi implements IGui {
 
 		switch (result) {
 			case Draw:
-				System.out.println("Draw.");
+				println("Draw.");
 				break;
 			case BlackWin:
-				System.out.println("Black wins.");
+				println("Black wins.");
 				break;
 			case WhiteWin:
-				System.out.println("White wins.");
+				println("White wins.");
 				break;
 			case None:
-				System.out.println("No result.");
+				println("No result.");
 				break;
 		}
 	}

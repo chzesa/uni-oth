@@ -1,4 +1,4 @@
-package oht.chess.ui;
+package oht.chess.ui.cli;
 import java.util.regex.*;
 import oht.chess.shared.IActor;
 import oht.chess.shared.IBoard;

@@ -100,8 +100,8 @@ public class Entity implements IActor, IAbilitySet {
 	public String toString() {
 		return actor.toString();
 	}
-        
-        @Override
+
+	@Override
 	public boolean equals(IActor other) {
 		return actor.equals(other) && this.role.equals(other.role());
 	}

@@ -8,7 +8,6 @@ import oht.chess.shared.Faction;
 import oht.chess.shared.IActor;
 import oht.chess.shared.Role;
 import oht.chess.util.Tcoord;
-import oht.chess.ui.CliUtil;
 
 public class CompositionEditor extends Cli implements ICli {
 	Composition comp;
@@ -42,7 +41,7 @@ public class CompositionEditor extends Cli implements ICli {
 	}
 
 	void printHelp() {
-		println("Editing \"" + comp.name() + "\"");
+		println("Editing " + comp.toString());
 		CliUtil.print(comp, null, null);
 		println("Enter \"help\" for help.");
 		print("> ");
